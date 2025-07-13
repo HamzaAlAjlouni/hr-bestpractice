@@ -1,0 +1,162 @@
+<section class="content-header">
+  <h1>
+    Employee Projects' Competencies
+  </h1>
+  <ol class="breadcrumb">
+    <li>Organization</li>
+    <li class="active">
+      Employee Projects' Competencies
+    </li>
+  </ol>
+</section>
+
+<section class="content">
+  <div  class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">{{ GetLocalResourceObject("Search") }}</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form #SearchForm="ngForm">
+          <div class="box-body">
+            <div class="row">
+              <div class="col-xs-3">
+                <label>Year</label>
+                <select
+                  [(ngModel)]="AssesmentSearchYearID"
+                  class="form-control"
+                  id="AssesmentSearchYearID"
+                  name="AssesmentSearchYearID"
+                >
+                  <option *ngFor="let x of YearList" value="{{ x.id }}">
+                    {{ x.year }}
+                  </option>
+                </select>
+              </div>
+              <div *ngIf="userContextService.Role!=='Employee'&&userContextService.Role!=='Unit'" class="col-xs-3">
+                <label>Unit</label>
+                <select
+                  (change)="unitChange()"
+                  [(ngModel)]="ddlUnitSearch"
+                  class="form-control"
+                  id="ddlUnitSearch"
+                  name="ddlUnitSearch"
+                >
+                  <option *ngIf="modificationPermission" value="">All</option>
+                  <option *ngFor="let x of UnitsList" value="{{ x.ID }}">
+                    {{ x.NAME }}
+                  </option>
+                </select>
+              </div>
+              <div class="col-xs-6">
+                <label>Employee</label>
+                <select
+                  (change)="selectEmployeeEntry()"
+                  [(ngModel)]="AssesmentSearchEmployeeID"
+                  class="form-control"
+                  id="AssesmentSearchEmployeeID"
+                  name="AssesmentSearchEmployeeID"
+                >
+                  <option value="-1">
+                    All
+                  </option>
+                  <option *ngFor="let x of EmployeeList" value="{{ x.ID }}">
+                    {{ x.name1_1 }} {{ x.name1_4 }}
+                  </option>
+                </select>
+              </div>
+              <div class="col-xs-4">
+                <label style="margin-top: 1rem;">Projects</label>
+                <select
+                  [(ngModel)]="projectId"
+                  class="form-control"
+                  id="projectId"
+                  name="projectId"
+                >
+                  <option value="-1">
+                    All
+                  </option>
+                  <option *ngFor="let x of ProjectList" value="{{ x.ID }}">
+                    {{ x.Name }}
+                  </option>
+                </select>
+              </div>
+              <div class="col-xs-4">
+                <label style="margin-top: 1rem;">Competency</label>
+                <select
+                  [(ngModel)]="competencyId"
+                  class="form-control"
+                  id="competencyId"
+                  name="competencyId"
+                >
+                  <option value="-1">
+                    All
+                  </option>
+                  <option *ngFor="let x of CompetenciesList" value="{{ x.ID }}">
+                    {{ x.NAME }}
+                  </option>
+                </select>
+              </div>
+              <div class="col-xs-4">
+                <label style="margin-top: 1rem;">Individual Objective</label>
+                <select
+                  [(ngModel)]="objectiveId"
+                  class="form-control"
+                  id="objectiveId"
+                  name="objectiveId"
+                >
+                  <option value="-1">
+                    All
+                  </option>
+                  <option *ngFor="let x of objectivesList" value="{{ x.ID }}">
+                    {{ x.name }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <!-- /.box-body -->
+
+          <div class="box-footer">
+            <button (click)="LoadAssesment()" class="btn btn-primary">
+             Search
+            </button>
+          </div>
+        </form>
+      </div>
+      <!-- /.box -->
+    </div>
+    <!--/.col (right) -->
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">
+            {{ GetLocalResourceObject("EmployeesAssesmentList") }}
+          </h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <DataGrid
+            #gvAssesment
+            [AllowExportExcel]="false"
+            [HideFooter]="false"
+            [RowSelection]="false"
+            [ShowButtons]="false"
+          >
+          </DataGrid>
+        </div>
+        <!-- /.box-body -->
+      </div>
+      <!-- /.box -->
+
+      <!-- /.box -->
+    </div>
+    <!-- /.col -->
+  </div>
+</section>

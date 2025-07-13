@@ -1,0 +1,328 @@
+<section class="content-header" *ngIf='!AddOnFly'>
+  <h1>
+    Project Evaluation Factors
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i>{{'strategic.strategicObjective.home'| translate}}</a></li>
+    <li><a href="#">Organization </a></li>
+    <li class="active">Project Evaluation</li>
+  </ol>
+</section>
+<section class="content">
+<div class="row">
+  <div class="col-xs-12">
+    <div class="box">
+      <div class="box-header">
+        <h3 class="box-title"></h3>
+        <div class="pull-right box-tools">
+          <button
+            type="button"
+            class="btn btn-success btn-sm btn-Add-right"
+            (click)="AddMode()"
+            data-widget="Add"
+            data-toggle="tooltip"
+            title=""
+            data-original-title="Add"
+          >
+            <i class="fa fa-plus"></i>
+          </button>
+        </div>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <DataGrid
+          #gvProjectEvaluation
+          [ShowButtons]="true"
+          [RowSelection]="false"
+          [AllowExportExcel]="false"
+          [HideFooter]="false"
+          (GridEvent)="gvProjectEvaluationEvent($event)"
+        >
+        </DataGrid>
+      </div>
+      <!-- /.box-body -->
+    </div>
+  </div>
+  <!-- /.col -->
+</div>
+
+<div *ngIf="showAddEvaluation" class="row">
+  <div class="col-xs-12">
+    <div class="box">
+      <div class="box-header">
+        <h3 class="box-title">  Add new Project Evaluation  </h3>
+        <div class="pull-right box-tools">
+
+        </div>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <form #UnitsForm='ngForm'>
+          <div class="box-body">
+            <div class="row">
+
+              <div class="col-xs-6">
+                <label>Name</label>
+                <input type="text" class="form-control" required name='txtProjectEvaluationName'
+                       id='txtProjectEvaluationName' [(ngModel)]='txtProjectEvaluationName'
+                       #txtNameEntryRef='ngModel'
+
+                >
+                <ValidatorCallOut ID="txtUnitNameEntryValidator"
+                                  [Visibiltiy]="txtNameEntryRef.invalid && txtNameEntryRef.touched"
+                                  [ControlToValidate]="txtNameEntryRef"
+                                  ErrorMessage='This field is required.'>
+                </ValidatorCallOut>
+              </div>
+
+
+              <div class="col-xs-6">
+                <label>Weight</label>
+                <input type="number" class="form-control" required name='projectEvaluationWeight'
+                       id='projectEvaluationWeight' [(ngModel)]='projectEvaluationWeight'
+                       #txtWeightEntryRef='ngModel'
+
+                >
+                <ValidatorCallOut ID="txtUnitWeightEntryValidator"
+                                  [Visibiltiy]="txtWeightEntryRef.invalid && txtWeightEntryRef.touched"
+                                  [ControlToValidate]="txtWeightEntryRef"
+                                  ErrorMessage='This field is required.'>
+                </ValidatorCallOut>
+              </div>
+
+
+            </div>
+          </div>
+          <!-- /.box-body -->
+
+          <div class="box-footer">
+            <button [disabled]='UnitsForm.invalid' (click)='SaveProjectEvaluation();'
+                    class="btn btn-primary">Save</button>
+          </div>
+        </form>
+      </div>
+      <!-- /.box-body -->
+    </div>
+  </div>
+  <!-- /.col -->
+</div>
+
+
+<div *ngIf="showEditEvaluation" class="row">
+  <div class="col-xs-12">
+    <div class="box">
+      <div class="box-header">
+        <h3 class="box-title">  Update Project Evaluation  </h3>
+        <div class="pull-right box-tools">
+
+        </div>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <form #UnitsForm='ngForm'>
+          <div class="box-body">
+            <div class="row">
+
+              <div class="col-xs-6">
+                <label>Name</label>
+                <input type="text" class="form-control" required name='txtProjectEvaluationName'
+                       id='txtProjectEvaluationName' [(ngModel)]='txtProjectEvaluationName'
+                       #txtNameEntryRef='ngModel'
+
+                >
+                <ValidatorCallOut ID="txtUnitNameEntryValidator"
+                                  [Visibiltiy]="txtNameEntryRef.invalid && txtNameEntryRef.touched"
+                                  [ControlToValidate]="txtNameEntryRef"
+                                  ErrorMessage='This field is required.'>
+                </ValidatorCallOut>
+              </div>
+              <div class="col-xs-6">
+                <label>Weight</label>
+                <input type="number" class="form-control" required name='projectEvaluationWeight'
+                       id='projectEvaluationWeight' [(ngModel)]='projectEvaluationWeight'
+                       #txtWeightEntryRef='ngModel'
+
+                >
+                <ValidatorCallOut ID="txtUnitWeightEntryValidator"
+                                  [Visibiltiy]="txtWeightEntryRef.invalid && txtWeightEntryRef.touched"
+                                  [ControlToValidate]="txtWeightEntryRef"
+                                  ErrorMessage='This field is required.'>
+                </ValidatorCallOut>
+              </div>
+
+            </div>
+          </div>
+          <!-- /.box-body -->
+
+          <div class="box-footer">
+            <button [disabled]='UnitsForm.invalid' (click)='UpdateProjectEvaluation();'
+                    class="btn btn-primary">Update</button>
+          </div>
+        </form>
+      </div>
+      <!-- /.box-body -->
+    </div>
+  </div>
+  <!-- /.col -->
+</div>
+
+
+  <div *ngIf="showDetailsEvaluation" class="row">
+
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title"></h3>
+          <div class="pull-right box-tools">
+            <button
+              type="button"
+              class="btn btn-success btn-sm btn-Add-right"
+              (click)="AddSubMode()"
+              data-widget="Add"
+              data-toggle="tooltip"
+              title=""
+              data-original-title="Add"
+            >
+              <i class="fa fa-plus"></i>
+            </button>
+          </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <DataGrid
+            #gvProjectEvaluationDetails
+            [ShowButtons]="true"
+            [RowSelection]="false"
+            [AllowExportExcel]="false"
+            [HideFooter]="false"
+            (GridEvent)="gvSubProjectEvaluationEvent($event)"
+          >
+          </DataGrid>
+        </div>
+        <!-- /.box-body -->
+      </div>
+    </div>
+
+
+
+  </div>
+
+
+
+  <div *ngIf="showAddEvaluationValue" class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">  Add new Project Evaluation Value  </h3>
+          <div class="pull-right box-tools">
+
+          </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <form #UnitsForm='ngForm'>
+            <div class="box-body">
+              <div class="row">
+
+                <div class="col-xs-6">
+                  <label>Name</label>
+                  <input type="text" class="form-control" required name='txtProjectEvaluationName'
+                         id='txtProjectEvaluationName' [(ngModel)]='txtProjectEvaluationValueName'
+                         #txtNameValueEntryRef='ngModel'
+
+                  >
+                  <ValidatorCallOut ID="txtUnitWeightValueEntryValidator"
+                                    [Visibiltiy]="txtNameValueEntryRef.invalid && txtNameValueEntryRef.touched"
+                                    [ControlToValidate]="txtNameValueEntryRef"
+                                    ErrorMessage='This field is required.'>
+                  </ValidatorCallOut>
+                </div>
+                <div class="col-xs-6">
+                  <label>Weight</label>
+                  <input type="number" class="form-control" required name='projectEvaluationValueWeight'
+                         id='projectEvaluationValueWeight' [(ngModel)]='projectEvaluationValueWeight'
+                         #txtWeightValueEntryRef='ngModel'
+
+                  >
+                  <ValidatorCallOut ID="txtUnitWeightValueEntryValidator"
+                                    [Visibiltiy]="txtWeightValueEntryRef.invalid && txtWeightValueEntryRef.touched"
+                                    [ControlToValidate]="txtWeightValueEntryRef"
+                                    ErrorMessage='This field is required.'>
+                  </ValidatorCallOut>
+                </div>
+
+              </div>
+            </div>
+            <!-- /.box-body -->
+
+            <div class="box-footer">
+              <button [disabled]='UnitsForm.invalid' (click)='SaveProjectEvaluationValue();'
+                      class="btn btn-primary">Save</button>
+            </div>
+          </form>
+        </div>
+        <!-- /.box-body -->
+      </div>
+    </div>
+    <!-- /.col -->
+  </div>
+
+
+  <div *ngIf="showEditEvaluationValue" class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">  Update Project Evaluation Value </h3>
+          <div class="pull-right box-tools">
+
+          </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <form #UnitsValueForm='ngForm'>
+            <div class="box-body">
+              <div class="row">
+
+                <div class="col-xs-6">
+                  <label>Name</label>
+                  <input type="text" class="form-control" required name='txtProjectEvaluationName'
+                         id='txtProjectEvaluationValueName' [(ngModel)]='txtProjectEvaluationValueName'
+                         #txtNameValueEntryRef='ngModel'
+                  >
+                  <ValidatorCallOut ID="txtUnitNameEntryValidator"
+                                    [Visibiltiy]="txtNameValueEntryRef.invalid && txtNameValueEntryRef.touched"
+                                    [ControlToValidate]="txtNameValueEntryRef"
+                                    ErrorMessage='This field is required.'>
+                  </ValidatorCallOut>
+                </div>
+                <div class="col-xs-6">
+                  <label>Weight</label>
+                  <input type="number" class="form-control" required name='projectEvaluationValueWeight'
+                         id='projectEvaluationValueWeight' [(ngModel)]='projectEvaluationValueWeight'
+                         #txtWeightEntryRef='ngModel'
+
+                  >
+                  <ValidatorCallOut ID="txtUnitValueWeightEntryValidator"
+                                    [Visibiltiy]="txtWeightEntryRef.invalid && txtWeightEntryRef.touched"
+                                    [ControlToValidate]="txtWeightEntryRef"
+                                    ErrorMessage='This field is required.'>
+                  </ValidatorCallOut>
+                </div>
+
+              </div>
+            </div>
+            <!-- /.box-body -->
+
+            <div class="box-footer">
+              <button [disabled]='UnitsValueForm.invalid' (click)='UpdateProjectEvaluationValue();'
+                      class="btn btn-primary">Update</button>
+            </div>
+          </form>
+        </div>
+        <!-- /.box-body -->
+      </div>
+    </div>
+    <!-- /.col -->
+  </div>
+
+</section>

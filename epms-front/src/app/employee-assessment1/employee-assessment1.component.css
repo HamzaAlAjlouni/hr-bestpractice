@@ -1,0 +1,41 @@
+.modal.show {
+  display: block;
+}
+.modal.hide {
+  display: none;
+}
+.btn-save {
+  margin: 20px 0px;
+  width: 100px;
+}
+.card-form{
+    margin: 20px;
+}
+.effect-form{
+    margin: 0 15px;
+}
+.btn-add-update button{
+    margin: 15px;
+    width: 100px;
+}
+.close-modal{
+    color: white;
+    float: right;
+    cursor: pointer;
+    padding: 5px 10px;
+    font-weight: bold;
+}
+.inside-table td{
+  font-size: 13px !important;
+}
+.kpi-note{
+  width: 100%;
+}
+.modal-content{
+  position: fixed;
+  top: 50%;
+  width: 85vw;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 99999999;
+}

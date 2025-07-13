@@ -1,0 +1,1 @@
+ALTER TABLE adm_emp_competency_kpi add (target float(18,3) default 5);

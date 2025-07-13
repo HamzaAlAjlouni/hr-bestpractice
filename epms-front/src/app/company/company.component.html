@@ -1,0 +1,148 @@
+<section class="content-header">
+    <h1>
+        {{GetLocalResourceObject('HeaderOrganization')}}
+        <small>{{GetLocalResourceObject('HeaderSetup')}}</small></h1>
+    <ol class="breadcrumb">
+        <li>{{GetLocalResourceObject('HeaderSetup')}}</li>
+        <li class="active">{{GetLocalResourceObject('HeaderOrganization')}}</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{GetLocalResourceObject('OrganizationInfo')}}</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form #CompanyForm='ngForm'>
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <label class="label-form">{{GetLocalResourceObject('Name')}}</label>
+                                <input type="text" required class="form-control" name='txtCompanyNameEntry' id='txtCompanyNameEntry' [(ngModel)]='txtCompanyNameEntry'>
+                            </div>
+                            <div class="col-xs-12">
+                                <label class="label-form">{{GetLocalResourceObject('Address')}}</label>
+                                <input type="text" class="form-control" name='txtCompanyAddressEntry' id='txtCompanyAddressEntry' [(ngModel)]='txtCompanyAddressEntry'>
+                            </div>
+                            <div class="col-xs-4">
+                                <label class="label-form">{{"setup.company.country"| translate}}</label>
+                                <input type="text" class="form-control" name='txtCountry' id='txtCountry' [(ngModel)]='txtCountry'>
+                            </div>
+                            <div class="col-xs-4">
+                                <label class="label-form">{{"setup.company.city"| translate}}</label>
+                                <input type="text" class="form-control" name='txtCity' id='txtCity' [(ngModel)]='txtCity'>
+                            </div>
+                            <div class="col-xs-4">
+                                <label class="label-form">{{"setup.company.postalCode"| translate}}</label>
+                                <input type="text" class="form-control" name='txtPostalCode' id='txtPostalCode' [(ngModel)]='txtPostalCode'>
+                            </div>
+                            <div class="col-xs-4">
+                                <label class="label-form">{{GetLocalResourceObject('Email')}}</label>
+                                <input type="email" class="form-control" name='txtEMAILEntry' id='txtEMAILEntry' [(ngModel)]='txtEMAILEntry'>
+                            </div>
+                            <div class="col-xs-4">
+                                <label class="label-form">{{GetLocalResourceObject('WebSite')}}</label>
+                                <input type="text" class="form-control" name='txtWebSiteEntry' id='txtWebSiteEntry' [(ngModel)]='txtWebSiteEntry'>
+                            </div>
+                            <div class="col-xs-4">
+                                <label class="label-form">{{GetLocalResourceObject('Fax')}}</label>
+                                <input type="text" class="form-control" name='txtCompanyFaxEntry' id='txtCompanyFaxEntry' [(ngModel)]='txtCompanyFaxEntry'>
+                            </div>
+                            <div class="col-xs-4">
+                                <label class="label-form">{{GetLocalResourceObject('PHONE1')}}</label>
+                                <input type="text" class="form-control" name='txtCompanyPHONE1Entry' id='txtCompanyPHONE1Entry' [(ngModel)]='txtCompanyPHONE1Entry'>
+                            </div>
+                            <div class="col-xs-4">
+                                  <label class="label-form">{{GetLocalResourceObject('PHONE2')}}</label>
+                                <input type="text" class="form-control" name='txtCompanyPHONE2Entry' id='txtCompanyPHONE2Entry' [(ngModel)]='txtCompanyPHONE2Entry'>
+                            </div>
+                            <div class="col-xs-4">
+                                <label class="label-form">{{"setup.company.logoUrl"| translate}}</label>
+                                <input type="text" class="form-control" name='txtLogoUrl' id='txtLogoUrl' [(ngModel)]='txtLogoUrl'>
+                            </div>
+                            <div class="col-xs-4">
+                                <label class="label-form">{{GetLocalResourceObject('Currency')}}</label>
+                                <select required class="form-control" name='ddlCurrencyCode' id='ddlCurrencyCode' [(ngModel)]='ddlCurrencyCode'>
+                                    <option *ngFor="let x of currencyList" value="{{x.MINOR_NO}}">{{x.CODE}}
+                                    </option>
+
+                                </select>
+                            </div>
+                            <div class="col-xs-12">
+                                <label class="label-form">{{GetLocalResourceObject('Mission')}}</label>
+                                <textarea class="form-control" rows="3" type="textarea" name='txtMission' id='txtMission' [(ngModel)]='txtMission'></textarea>
+                            </div>
+                            <div class="col-xs-12">
+                                <label class="label-form">{{GetLocalResourceObject('Vision')}}</label>
+                                <textarea class="form-control" rows="3" type="textarea" name='txtVision' id='txtVision' [(ngModel)]='txtVision' ></textarea>
+
+                            </div>
+                            <div class="col-xs-12">
+                                <label class="label-form">{{GetLocalResourceObject('lblValues')}}</label>
+                                <textarea class="form-control" rows="3" type="textarea" name='txtValues' id='txtValues' [(ngModel)]='txtValues' ></textarea>
+
+                            </div>
+
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <div class="radio">
+                                        <label class="label-form">
+                                            <input type="radio" (change)="onProjectsLinkChange(0)" value="0"  [(ngModel)]='rdProjectLinkPlan' name="ProjectLink" id="rdProjectLinkPlan" >
+                                            {{GetLocalResourceObject('ProjectLinkPlan')}}
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label class="label-form">
+                                            <input type="radio" (change)="onProjectsLinkChange(1)" value="1"  [(ngModel)]='rdProjectLinkKPI' name="ProjectLink" id="rdProjectLinkKPI" >
+                                            {{GetLocalResourceObject('ProjectLinkKPI')}}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <div class="radio">
+                                        <label class="label-form">
+                                            <input type="radio" name="SetPlan" (change)="onPlansLinkChange(0)" id="rdSetPlan" value="0"  [(ngModel)]='rdSetPlan' >
+                                            {{GetLocalResourceObject('SetPlan')}}
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label class="label-form">
+                                            <input type="radio" (change)="onPlansLinkChange(1)" name="SetPlan" id="rdSetPlanEmployee" value="1" [(ngModel)]='rdSetPlanEmployee' >
+                                            {{GetLocalResourceObject('SetPlanEmployee')}}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <label class="label-form">{{"setup.company.objectivePerformanceFactor"| translate}}</label>
+                                <input type="number" class="form-control" name='txtObjectivePerformanceFactor' id='txtObjectivePerformanceFactor' [(ngModel)]='txtObjectivePerformanceFactor'>
+                            </div>
+
+                            <div class="col-xs-4">
+                                <label class="label-form">{{"setup.company.competencyPerformanceFactor"| translate}}</label>
+                                <input type="number" class="form-control" name='txtCompetencyPerformanceFactor' id='txtCompetencyPerformanceFactor' [(ngModel)]='txtCompetencyPerformanceFactor'>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+
+                    <div class="box-footer">
+                        <button [disabled]='CompanyForm.invalid' (click)='UpdateCompany();' class="btn btn-primary">{{GetLocalResourceObject('Save')}}</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.box -->
+        </div>
+        <!--/.col (right) -->
+    </div>
+
+</section>

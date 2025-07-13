@@ -1,0 +1,100 @@
+<section class="content-header">
+  <h1>
+    Units & Employees Account Management
+  </h1>
+</section>
+
+<section class="content">
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          Search
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form #SearchForm='ngForm'>
+          <div class="box-body">
+            <div class="row">
+              <div class="col-xs-8">
+                <label>Search </label>
+                <input [(ngModel)]='txtSearchUnits' class="form-control"
+                       id='txtUnits' name='txtSearchUnits' placeholder=""
+                       type="text">
+              </div>
+            </div>
+          </div>
+          <!-- /.box-body -->
+
+          <div class="box-footer">
+            <button (click)='LoadUnits();'
+                    class="btn btn-primary">Search
+            </button>
+          </div>
+        </form>
+      </div>
+      <!-- /.box -->
+    </div>
+    <!--/.col (right) -->
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title"></h3>
+
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <DataGrid #gvUnits (GridEvent)='gvUnitsEvent($event);' [AllowExportExcel]='false' [HideFooter]='false'
+                    [RowSelection]='false' [ShowButtons]='true'>
+          </DataGrid>
+        </div>
+        <!-- /.box-body -->
+      </div>
+    </div>
+    <!-- /.col -->
+  </div>
+
+  <div *ngIf="showUnitEntry" class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">{{ GetLocalResourceObject('UnitEntry') }}</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form #UnitsForm='ngForm'>
+          <div class="box-body">
+            <div class="row">
+              <div class="col-xs-6">
+                <label>Account New Password</label>
+                <input #txtUnitCodeRef='ngModel' [(ngModel)]='txtUnitCode' class="form-control" id='txtUnitCode'
+                       name='txtUnitCode' required type="text">
+                <ValidatorCallOut ErrorMessage='This field is required.'
+                                  ID="txtUnitCodeValidator"
+                                  [ControlToValidate]="txtUnitCodeRef"
+                                  [Visibiltiy]="txtUnitCodeRef.invalid && txtUnitCodeRef.touched">
+                </ValidatorCallOut>
+              </div>
+            </div>
+          </div>
+          <!-- /.box-body -->
+
+          <div class="box-footer">
+            <button (click)="resetUserPassword()"  [disabled]='UnitsForm.invalid'
+                    class="btn btn-primary"> Reset Password
+            </button>
+          </div>
+        </form>
+      </div>
+      <!-- /.box -->
+    </div>
+    <!--/.col (right) -->
+  </div>
+</section>

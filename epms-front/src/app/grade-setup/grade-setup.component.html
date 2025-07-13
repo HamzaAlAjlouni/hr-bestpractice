@@ -1,0 +1,133 @@
+<section class="content-header">
+  <h1>
+      {{"setup.grade.title"|translate}}
+      <small>{{"setup.grade.setup"|translate}}</small></h1>
+  <ol class="breadcrumb">
+      <li>{{"setup.grade.setup"|translate}}</li>
+      <li class="active">{{"setup.grade.title"|translate}}</li>
+  </ol>
+</section>
+<div class="container">
+  <h3 class="text-center p-3">{{ "setup.grade.title" | translate }}</h3>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">{{ "setup.grade.gradeList" | translate }}</h3>
+          <div class="pull-right box-tools">
+            <button
+              *ngIf="modificationPermission"
+              type="button"
+              class="btn btn-success btn-sm btn-Add-right"
+              (click)="gradeAddMode()"
+              data-widget="Add"
+              data-toggle="tooltip"
+              title=""
+              data-original-title="Add"
+            >
+              <i class="fa fa-plus"></i>
+            </button>
+          </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <DataGrid
+            #gvGrade
+            [ShowButtons]="true"
+            [RowSelection]="false"
+            [AllowExportExcel]="false"
+            [HideFooter]="false"
+            (GridEvent)="gvGradeEvent($event)"
+          >
+          </DataGrid>
+        </div>
+        <!-- /.box-body -->
+      </div>
+    </div>
+    <!-- /.col -->
+  </div>
+  <div class="row pb-5" *ngIf="showGradeEntry">
+    <div class="col-sm-6">
+      <label for="exampleInputName">{{
+        "setup.grade.gradeName" | translate
+      }}</label>
+      <input
+        type="text"
+        class="form-control"
+        id="exampleInputName"
+        [(ngModel)]="gradeName"
+      />
+    </div>
+    <div class="form-group col-sm-3">
+      <label for="exampleInputscaleCode">{{
+          "setup.grade.scaleCode" | translate
+        }}</label>
+      <input
+        type="text"
+        class="form-control"
+        id="exampleInputscaleCode"
+        [(ngModel)]="scaleCode"
+      />
+    </div>
+    <div class="form-group col-sm-3">
+      <label for="exampleInputscaleNumber">{{
+          "setup.grade.scaleNumber" | translate
+        }}</label>
+      <input
+        type="number"
+        class="form-control"
+        id="exampleInputscaleNumber"
+        [(ngModel)]="scaleNumber"
+      />
+    </div>
+    <div class="col-sm-3" style="margin-top: 20px">
+      <button class="btn btn-primary" (click)="editGrade()">
+        {{ "setup.approval.update" | translate }}
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="addGradeEntry">
+    <div class="form-row">
+      <div class="form-group col-sm-3">
+        <label for="exampleInputName">{{
+          "setup.grade.gradeName" | translate
+        }}</label>
+        <input
+          type="text"
+          class="form-control"
+          id="exampleInputName"
+          [(ngModel)]="gradeName"
+        />
+      </div>
+      <div class="form-group col-sm-3">
+        <label for="exampleInputscaleCode">{{
+          "setup.grade.scaleCode" | translate
+        }}</label>
+        <input
+          type="text"
+          class="form-control"
+          id="exampleInputscaleCode"
+          [(ngModel)]="scaleCode"
+        />
+      </div>
+      <div class="form-group col-sm-3">
+        <label for="exampleInputscaleNumber">{{
+          "setup.grade.scaleNumber" | translate
+        }}</label>
+        <input
+          type="number"
+          class="form-control"
+          id="exampleInputscaleNumber"
+          [(ngModel)]="scaleNumber"
+        />
+      </div>
+      <div class="col-sm-3" style="margin-top: 20px">
+        <button class="btn btn-primary" (click)="addGrade()">
+          {{ "setup.approval.add" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,1329 @@
+<!-- Content Header (Page header) -->
+<section *ngIf="!AddOnFly" class="content-header">
+  <h1>
+    {{ "reviewAndAssesment.EmployeesPerformanceAssessment" | translate }}
+    <small> {{ "reviewAndAssesment.ReviewAssessment" | translate }}</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li>{{ "reviewAndAssesment.ReviewAssessment" | translate }}</li>
+    <li class="active">
+      {{ "reviewAndAssesment.EmployeesPerformanceAssessment" | translate }}
+    </li>
+  </ol>
+</section>
+<section class="content">
+  <!--Search Area-->
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">{{ "setup.approval.search" | translate }}</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form #SearchForm="ngForm">
+          <div class="box-body">
+            <div class="row">
+              <div class="col-xs-3">
+                <label>{{ "setup.trafficLightSetup.year" | translate }}</label>
+                <select
+                  [(ngModel)]="ddlSearchYear"
+                  class="form-control"
+                  id="ddlSearchYear"
+                  name="ddlSearchYear"
+                  required
+                >
+                  <option
+                    *ngFor="let x of ddlSearchYearsList"
+                    value="{{ x.id }}"
+                  >
+                    {{ x.year }}
+                  </option>
+                </select>
+              </div>
+              <div *ngIf="userContextService.Role!=='Employee'&&userContextService.Role!=='Unit'" class="col-xs-3">
+                <label>{{ "employeesPlan.unit" | translate }}</label>
+                <select
+                  (change)="loadUnitEmployees()"
+                  [(ngModel)]="ddlSearchUnit"
+                  class="form-control"
+                  id="ddlSearchUnit"
+                  name="ddlSearchUnit"
+                >
+                  <option *ngIf="modificationPermission" selected value="">All</option>
+                  <option
+                    *ngFor="let x of ddlSearchUnitsList"
+                    value="{{ x.ID }}"
+                  >
+                    {{ x.NAME }}
+                  </option>
+                </select>
+              </div>
+
+              <div class="col-xs-6">
+                <label>{{ "strategic.actionPlan.employee" | translate }}</label>
+                <select
+                  [(ngModel)]="ddlSearchEmp"
+                  class="form-control"
+                  id="ddlSearchEmp"
+                  name="ddlSearchEmp"
+                  required
+                >
+                  <option *ngFor="let x of ddlSearchEmpList" value="{{ x.ID }}">
+                    {{ x.name1_1 }} {{ x.name1_4 }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <!-- /.box-body -->
+          <div class="box-footer">
+            <button
+              (click)="LoadEmployeeAssessment()"
+              [disabled]="SearchForm.invalid"
+              class="btn btn-primary"
+            >
+              {{ "setup.approval.search" | translate }}
+            </button>
+          </div>
+        </form>
+      </div>
+      <!-- /.box -->
+    </div>
+    <!--/.col (right) -->
+  </div>
+
+  <div *ngIf="AssesmentID" class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">
+            {{ "reviewAndAssesment.AssesmentDetails" | translate }}
+          </h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form #AssementForm="ngForm">
+          <div class="box-body">
+            <div class="row">
+              <div class="col-xs-3">
+                <label style="margin-top: 1rem;">{{ "setup.trafficLightSetup.year" | translate }}</label>
+                <select
+                  #AssesmentYearIDRef="ngModel"
+                  [(ngModel)]="AssesmentYearID"
+                  class="form-control"
+                  disabled
+                  id="AssesmentYearID"
+                  name="AssesmentYearID"
+                  required
+                >
+                  <option
+                    *ngFor="let x of ddlSearchYearsList"
+                    value="{{ x.id }}"
+                  >
+                    {{ x.year }}
+                  </option>
+                </select>
+
+                <ValidatorCallOut
+                  ErrorMessage="This field is required."
+                  ID="AssesmentYearIDValidator"
+                  [ControlToValidate]="AssesmentYearIDRef"
+                  [Visibiltiy]="
+                    AssesmentYearIDRef.invalid && AssesmentYearIDRef.touched
+                  "
+                >
+                </ValidatorCallOut>
+              </div>
+              <div class="col-xs-3">
+                <label style="margin-top: 1rem;">{{ "strategic.actionPlan.employee" | translate }}</label>
+                <select
+                  #AssesmentEmployeeIDRef="ngModel"
+                  [(ngModel)]="AssesmentEmployeeID"
+                  class="form-control"
+                  disabled
+                  id="AssesmentEmployeeID"
+                  name="AssesmentEmployeeID"
+                  required
+                >
+                  <option *ngFor="let x of ddlSearchEmpList" value="{{ x.ID }}">
+                    {{ x.name1_1 }} {{ x.name1_4 }}
+                  </option>
+                </select>
+
+                <ValidatorCallOut
+                  ErrorMessage="This field is required."
+                  ID="AssesmentEmployeeIDValidator"
+                  [ControlToValidate]="AssesmentEmployeeIDRef"
+                  [Visibiltiy]="
+                    AssesmentEmployeeIDRef.invalid &&
+                    AssesmentEmployeeIDRef.touched
+                  "
+                >
+                </ValidatorCallOut>
+              </div>
+              <div class="col-xs-3">
+                <label style="margin-top: 1rem;">Position</label>
+                <input
+                  #AssesmentPositionNameRef="ngModel"
+                  [(ngModel)]="AssesmentPositionName"
+                  [value]="AssesmentPositionName"
+                  class="form-control"
+                  disabled
+                  id="AssesmentPositionName"
+                  name="AssesmentPositionName"
+                  type="text"
+                />
+              </div>
+              <div class="col-xs-3">
+                <label style="margin-top: 1rem;">{{ "reviewAndAssesment.KPICycle" | translate }}</label>
+                <select
+                  #AssesmentKpiCycleRef="ngModel"
+                  [(ngModel)]="AssesmentKpiCycle"
+                  class="form-control"
+                  disabled
+                  id="AssesmentKpiCycle"
+                  name="AssesmentKpiCycle"
+                  required
+                >
+                  <option
+                    *ngFor="let x of KpiCycleList"
+                    value="{{ x.MINOR_NO }}"
+                  >
+                    {{ x.NAME }}
+                  </option>
+                </select>
+
+                <ValidatorCallOut
+                  ErrorMessage="This field is required."
+                  ID="AssesmentKpiCycleValidator"
+                  [ControlToValidate]="AssesmentKpiCycleRef"
+                  [Visibiltiy]="
+                    AssesmentKpiCycleRef.invalid && AssesmentKpiCycleRef.touched
+                  "
+                >
+                </ValidatorCallOut>
+              </div>
+              <div class="col-xs-3">
+                <label style="margin-top: 1rem;">{{
+                    "reviewAndAssesment.AgreementDate" | translate
+                  }}</label>
+                <input
+                  #AssesmentAgreementDateRef="ngModel"
+                  [(ngModel)]="AssesmentAgreementDate"
+                  class="form-control"
+                  disabled
+                  id="AssesmentAgreementDate"
+                  name="AssesmentAgreementDate"
+                  required
+                  type="date"
+                />
+
+                <ValidatorCallOut
+                  ErrorMessage="This field is required."
+                  ID="AssesmentAgreementDateValidator"
+                  [ControlToValidate]="AssesmentAgreementDateRef"
+                  [Visibiltiy]="
+                    AssesmentAgreementDateRef.invalid &&
+                    AssesmentAgreementDateRef.touched
+                  "
+                >
+                </ValidatorCallOut>
+              </div>
+              <div class="col-xs-3">
+                <label style="margin-top: 1rem;">{{ "reviewAndAssesment.Reviewer" | translate }}</label>
+                <select
+                  #AssesmentReviewerIDRef="ngModel"
+                  [(ngModel)]="AssesmentReviewerID"
+                  class="form-control"
+                  disabled
+                  id="AssesmentReviewerID"
+                  name="AssesmentReviewerID"
+                  required
+                >
+                  <option *ngFor="let x of ddlSearchEmpList" value="{{ x.ID }}">
+                    {{ x.name1_1 }} {{ x.name1_4 }}
+                  </option>
+                </select>
+
+                <ValidatorCallOut
+                  ErrorMessage="This field is required."
+                  ID="AssesmentReviewerIDValidator"
+                  [ControlToValidate]="AssesmentReviewerIDRef"
+                  [Visibiltiy]="
+                    AssesmentReviewerIDRef.invalid &&
+                    AssesmentReviewerIDRef.touched
+                  "
+                >
+                </ValidatorCallOut>
+              </div>
+
+              <div class="col-xs-3">
+                <label style="margin-top: 1rem;">{{
+                    "reviewAndAssesment.FinalResult" | translate
+                  }}</label>
+
+                <input
+                  #AssessmentResultRef="ngModel"
+                  [(ngModel)]="AssessmentResult"
+                  [style.background-color]="getColorStyle(AssessmentColor)"
+                  class="form-control"
+                  disabled
+                  id="AssessmentResult"
+                  name="AssessmentResult"
+                  type="number"
+                />
+              </div>
+
+              <div class="col-xs-3">
+                <label style="margin-top: 1rem;">{{
+                    "reviewAndAssesment.FinalResultDescription" | translate
+                  }}</label>
+
+                <input
+                  #AssessmentResultDescRef="ngModel"
+                  [(ngModel)]="AssessmentResultDesc"
+                  [style.background-color]="getColorStyle(AssessmentColor)"
+                  class="form-control"
+                  disabled
+                  id="AssessmentResultDesc"
+                  name="AssessmentResultDesc"
+                  type="text"
+                />
+              </div>
+
+              <div class="col-xs-3">
+                <label style="margin-top: 1rem;">{{
+                    "reviewAndAssesment.ObjectiveWeight" | translate
+                  }}</label>
+                <input
+                  #objectiveWieghtRef="ngModel"
+                  [(ngModel)]="objectiveWieght"
+                  class="form-control"
+                  id="objectiveWieght"
+                  name="objectiveWieght"
+                  required
+                  type="number"
+                />
+              </div>
+
+              <div class="col-xs-3">
+                <label style="margin-top: 1rem;">{{
+                    "reviewAndAssesment.CompetencyWeight" | translate
+                  }}</label>
+                <input
+                  #CompetencyWieghtRef="ngModel"
+                  [(ngModel)]="competencyWieght"
+                  class="form-control"
+                  id="CompetencyWieght"
+                  name="CompetencyWieght"
+                  required
+                  type="number"
+                />
+              </div>
+              <div class="col-xs-3">
+                <label style="margin-top: 3.2rem;"></label>
+                <button
+                  (click)="updateWieght(objectiveWieght, competencyWieght)"
+
+                  class="btn btn-primary btn-save"
+                >
+                  {{ "setup.approval.save" | translate }}
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- /.box-body -->
+        </form>
+      </div>
+      <!-- /.box -->
+    </div>
+    <!--/.col (right) -->
+  </div>
+
+  <div *ngIf="AssesmentID" class="nav-tabs-custom">
+    <ul class="nav nav-tabs">
+      <li (click)="activeTabChanged(1)" [class.active]=" currentActiveTab==1" class="active" id="objective_tab">
+        <a data-toggle="tab" href="#tab_1">{{
+            "reviewAndAssesment.ObjectivesAssessment" | translate
+          }}</a>
+      </li>
+      <li [class.active]=" currentActiveTab==2" id="competency_tab">
+        <a (click)="activeTabChanged(2)" data-toggle="tab" href="#tab_2">{{
+            "reviewAndAssesment.CompetenciesAssessment" | translate
+          }}</a>
+      </li>
+      <li [class.active]=" currentActiveTab==3">
+        <a (click)="activeTabChanged(3)" data-toggle="tab" href="#tab_3">{{
+            "reviewAndAssesment.FinalResult" | translate
+          }}</a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div [class.active]=" currentActiveTab==1" class="tab-pane" id="tab_1" style="background-color: #ecf0f5">
+        <section class="content">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="box">
+                <div class="box-header">
+
+                  <div class="row">
+                    <div class="col-xs-6">
+
+                      <h3 class="box-title">
+                        {{ "reviewAndAssesment.ObjectivesAssessment" | translate }}
+                      </h3>
+                    </div>
+                    <div class="col-xs-6">
+
+                      <div class="row">
+                        <div class="col-xs-2">
+                          <label class="box-title" style="margin-bottom: .8rem;">Quarters</label>
+
+                        </div>
+                        <div class="col-xs-2">
+                          <label class="box-title"><input (change)="filterQ1Changed($event)" [(ngModel)]="filterQ1"
+                                                          name="q1Filter"
+                                                          style="margin-top: 0;" type="checkbox"> Q1</label>
+
+                        </div>
+                        <div class="col-xs-2">
+                          <label class="box-title"><input (change)="filterQ2Changed($event)" [(ngModel)]="filterQ2"
+                                                          name="q2Filter"
+                                                          style="margin-top: 0;" type="checkbox"> Q2</label>
+                        </div>
+                        <div class="col-xs-2">
+                          <label class="box-title"><input (change)="filterQ3Changed($event)" [(ngModel)]="filterQ3"
+                                                          name="q3Filter"
+                                                          style="margin-top: 0;" type="checkbox"> Q3</label>
+                        </div>
+                        <div class="col-xs-2">
+                          <label class="box-title"><input (change)="filterQ4Changed($event)" [(ngModel)]="filterQ4"
+                                                          name="q4Filter"
+                                                          style="margin-top: 0;" type="checkbox"> Q4</label>
+                        </div>
+                        <div class="col-xs-2">
+                          <button
+                            (click)="LoadEmployeeAssessment()"
+                            class="btn btn-primary"
+                            style="margin-top: 0.3rem;">
+                            Filter
+                          </button>
+                        </div>
+                      </div>
+
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <div
+                  [(ngModel)]="formRow"
+                  class="
+                    box-body
+                    table-responsive
+                    no-padding
+                    table-wrapper-scroll-y
+                    my-custom-scrollbar
+                  "
+                >
+
+                  <table
+                    class="table table-hover table-bordered table-striped mb-0"
+                  >
+                    <tbody>
+                    <tr>
+                      <th class="td-col5">
+                        {{ "reviewAndAssesment.Objective" | translate }}
+                      </th>
+                      <th class="header-cols">KPIs</th>
+                      <th *ngIf="filterQ1" class="header-cols">
+                        {{ "employeesPlan.quarter1" | translate }}
+                      </th>
+                      <th *ngIf="filterQ2" class="header-cols">
+                        {{ "employeesPlan.quarter2" | translate }}
+                      </th>
+                      <th *ngIf="filterQ3" class="header-cols">
+                        {{ "employeesPlan.quarter3" | translate }}
+                      </th>
+                      <th *ngIf="filterQ4" class="header-cols">
+                        {{ "employeesPlan.quarter4" | translate }}
+                      </th>
+
+                      <th class="header-cols">
+                        {{ "reviewAndAssesment.Result" | translate }}
+                      </th>
+                      <th class="header-cols">
+                        {{ "reviewAndAssesment.FinalResult" | translate }}
+                      </th>
+                      <th class="header-cols">
+                        {{ "setup.approval.save" | translate }}
+                      </th>
+                    </tr>
+                    <tr *ngFor="let x of EmployeeObjectivesList">
+                      <td class="td-col5">
+                        <b>{{ x.name }}</b>
+                      </td>
+                      <td>
+                        <table
+                          align="center"
+                          class="table inside-table"
+                          style="background-color: bisque"
+                        >
+                          <tbody>
+                          <tr>
+                            <th style="width: 30%;">KPIs</th>
+                            <th *ngIf="filterQ1">
+                              {{ "employeesPlan.quarter1" | translate }}
+                            </th>
+                            <th *ngIf="filterQ2">
+                              {{ "employeesPlan.quarter2" | translate }}
+                            </th>
+                            <th *ngIf="filterQ3">
+                              {{ "employeesPlan.quarter3" | translate }}
+                            </th>
+                            <th *ngIf="filterQ4">
+                              {{ "employeesPlan.quarter4" | translate }}
+                            </th>
+                            <!-- <th>
+                              <div>Result</div>
+                              <div>/ Target</div>
+                            </th> -->
+                            <th>
+                              {{ "reviewAndAssesment.Result" | translate }}
+                              %
+                            </th>
+                            <!-- <th>
+                              {{
+                                "reviewAndAssesment.ResultDesc" | translate
+                              }}.
+                            </th> -->
+                            <th style="width: 20%;">
+                              {{ "setup.competency.note" | translate }}
+                            </th>
+                          </tr>
+                          <tr *ngFor="let y of x.KPIs; let d = index">
+                            <td align="center" class="td-col1">
+                              <i
+                                [class]=" y.BetterUpDown===2 ?'fa fa-arrow-down': 'fa fa-arrow-up'"></i>      {{ y.name }}
+                            </td>
+                            <td *ngIf="filterQ1">
+                              <input
+                                [(ngModel)]="y.Q1_A"
+                                [disabled]="y.Q1_P == 0"
+                                class="txt-ass1 form-control"
+                                title="Actual Target"
+                                type="number"
+
+                              />
+                              <input
+                                [(ngModel)]="y.Q1_P"
+                                [disabled]="true"
+                                class="txt-ass1 form-control"
+                                title="Plan Target"
+                                type="number"
+                              />
+                            </td>
+                            <td *ngIf="filterQ2">
+                              <input
+                                [(ngModel)]="y.Q2_A"
+                                [disabled]="y.Q2_P == 0"
+                                class="txt-ass1 form-control"
+                                title="Actual Target"
+                                type="number"
+                              />
+                              <input
+                                [(ngModel)]="y.Q2_P"
+                                [disabled]="true"
+                                class="txt-ass1 form-control"
+                                title="Plan Target"
+                                type="number"
+                              />
+                            </td>
+                            <td *ngIf="filterQ3">
+                              <input
+                                [(ngModel)]="y.Q3_A"
+                                [disabled]="y.Q3_P == 0"
+                                class="txt-ass1 form-control"
+                                title="Actual Target"
+                                type="number"
+                              />
+                              <input
+                                [(ngModel)]="y.Q3_P"
+                                [disabled]="true"
+                                class="txt-ass1 form-control"
+                                title="Plan Target"
+                                type="number"
+                              />
+                            </td>
+                            <td *ngIf="filterQ4">
+                              <input
+                                [(ngModel)]="y.Q4_A"
+                                [disabled]="y.Q4_P == 0"
+                                class="txt-ass1 form-control"
+                                title="Actual Target"
+                                type="number"
+                              />
+                              <input
+                                [(ngModel)]="y.Q4_P"
+                                [disabled]="true"
+                                class="txt-ass1 form-control"
+                                title="Plan Target"
+                                type="number"
+                              />
+                            </td>
+                            <!-- <td>
+                              {{ y.AnnualResult }}/{{ y.AnnualTarget }}
+                            </td> -->
+                            <td>
+                              {{ y.resultPerc / 20 | number: "1.1-2" }}
+                            </td>
+                            <!-- <td>
+                              {{ y.ResultDesc }}
+                            </td> -->
+                            <td>
+                              <input [(ngModel)]="y.Notes" class="kpi-note" type="text"/>
+                            </td>
+                          </tr>
+                          </tbody>
+                        </table>
+                      </td>
+
+                      <!-- <td [style.background-color]='x.resultColor'> -->
+                      <td *ngIf="filterQ1">
+                        {{ x.q1 == "NaN" ? 0 : (x.q1 | number: "1.1-2") }}
+                      </td>
+                      <td *ngIf="filterQ2">
+                        {{ x.q2 == "NaN" ? 0 : (x.q2 | number: "1.1-2") }}
+                      </td>
+                      <td *ngIf="filterQ3">
+                        {{ x.q3 == "NaN" ? 0 : (x.q3 | number: "1.1-2") }}
+                      </td>
+                      <td *ngIf="filterQ4">
+                        {{ x.q4 == "NaN" ? 0 : (x.q4 | number: "1.1-2") }}
+                      </td>
+                      <td>
+                        {{ x.Result | number: "1.1-2" }}
+                      </td>
+                      <td align="center">
+                        <div>
+                          <b>{{ x.EmployeePerformance?.Result }}</b>
+                        </div>
+                        <div>{{ x.EmployeePerformance?.ResultDesc }}</div>
+                      </td>
+
+                      <td>
+                        <button
+                          (click)="SaveObjAss(x.KPIs, x.ID)"
+                          class="btn btn-primary d-block mb-2"
+                        >
+                          {{ "setup.approval.save" | translate }}
+                        </button>
+                        <!-- <button (click)="showPerformanceRecords(x.ID)">
+                          Show
+                        </button> -->
+                        <button
+                          (click)="showPerformanceRecordsForObj(x.ID)"
+                          class="btn btn-info"
+                          data-target="#myModal"
+                          data-toggle="modal"
+                          style="margin: 10px 2px"
+                          type="button"
+                        >
+                          {{ "setup.approval.show" | translate }}
+                        </button>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- <div class="box-footer">
+                                    <button (click)='saveProjectsAssessment();'
+                                        class="btn btn-primary">{{GetLocalResourceObject('lblSave')}}</button>
+                                </div> -->
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div [class.active]=" currentActiveTab==2" class="tab-pane" id="tab_2" style="background-color: #ecf0f5">
+        <section class="content">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="box">
+                <div class="box-header">
+                  <h3 class="box-title">
+                    {{
+                      "reviewAndAssesment.CompetenciesAssessment" | translate
+                    }}
+                  </h3>
+                </div>
+
+                <div
+                  [(ngModel)]="formRow"
+                  class="
+                    box-body
+                    table-responsive
+                    no-padding
+                    table-wrapper-scroll-y
+                    my-custom-scrollbar
+                  "
+                >
+                  <table
+                    class="table table-hover table-bordered table-striped mb-0"
+                  >
+                    <tbody>
+                    <tr>
+                      <th class="td-col5">
+                        {{ "reviewAndAssesment.Competency" | translate }}
+                      </th>
+                      <th class="header-cols">KPIs</th>
+                      <th class="header-cols">Q1</th>
+                      <th class="header-cols">Q2</th>
+                      <th class="header-cols">Q3</th>
+                      <th class="header-cols">Q4</th>
+                      <th class="header-cols">
+                        {{ "reviewAndAssesment.Result" | translate }}
+                      </th>
+                      <th class="header-cols">
+                        {{ "reviewAndAssesment.FinalResult" | translate }}
+                      </th>
+                      <th class="header-cols">
+                        {{ "setup.approval.save" | translate }}
+                      </th>
+                    </tr>
+                    <tr *ngFor="let x of EmployeeCompetencyList">
+                      <td class="td-col5">
+                        <b>{{ x.name }}</b>
+                      </td>
+                      <td>
+                        <table *ngFor="let y of x.KPIs; let d = index"
+                               align="center"
+                               class="table inside-table"
+                               style="background-color: bisque; margin-top: 5px; margin-bottom: 5px; font-weight: bold"
+                        >
+                          <caption style="text-align: center; font-size: 14px;"> {{ y.name }}</caption>
+                          <tbody>
+                          <tr>
+
+                            <th>
+                              {{ "employeesPlan.quarter1" | translate }}
+                            </th>
+                            <th>
+                              {{ "employeesPlan.quarter2" | translate }}
+                            </th>
+                            <th>
+                              {{ "employeesPlan.quarter3" | translate }}
+                            </th>
+                            <th>
+                              {{ "employeesPlan.quarter4" | translate }}
+                            </th>
+                            <!-- <th>
+                              <div>Result</div>
+                              <div>/ Target</div>
+                            </th> -->
+                            <th>
+                              {{ "reviewAndAssesment.Result" | translate }}
+                              %
+                            </th>
+                            <!-- <th>
+                              {{
+                                "reviewAndAssesment.FinalResultDescription"
+                                  | translate
+                              }}.
+                            </th> -->
+                            <th style="width: 20%;">
+                              {{ "setup.competency.note" | translate }}
+                            </th>
+                          </tr>
+
+                          <tr>
+                            <!--                            <td align="center" class="td-col1">-->
+                            <!--                              {{ y.name }}-->
+                            <!--                            </td>-->
+                            <td>
+                              <input
+                                (input)="compInputChange($event)"
+                                [(ngModel)]="y.Q1_A"
+                                [disabled]="y.Q1_P == 0"
+                                class="txt-ass1 form-control"
+                                max="5"
+                                min="1"
+                                pattern="([1-5])"
+                                title="Actual Target"
+                                type="number"
+                              />
+                              <!-- <input
+                                class="txt-ass1 form-control"
+                                type="number"
+                                title="Plan Target"
+                                [disabled]="true"
+                                [(ngModel)]="y.Q1_P"
+                              /> -->
+                            </td>
+                            <td>
+                              <input
+                                (input)="compInputChange($event)"
+                                [(ngModel)]="y.Q2_A"
+                                [disabled]="y.Q2_P == 0"
+                                class="txt-ass1 form-control"
+                                max="5"
+                                min="1"
+                                pattern="([1-5])"
+                                title="Actual Target"
+                                type="number"
+                              />
+                              <!-- <input
+                                class="txt-ass1 form-control"
+                                type="number"
+                                title="Plan Target"
+                                [disabled]="true"
+                                [(ngModel)]="y.Q2_P"
+                              /> -->
+                            </td>
+                            <td>
+                              <input
+                                (input)="compInputChange($event)"
+                                [(ngModel)]="y.Q3_A"
+                                [disabled]="y.Q3_P == 0"
+                                class="txt-ass1 form-control"
+                                max="5"
+                                min="1"
+                                pattern="([1-5])"
+                                title="Actual Target"
+                                type="number"
+                              />
+                              <!-- <input
+                                class="txt-ass1 form-control"
+                                type="number"
+                                title="Plan Target"
+                                [disabled]="true"
+                                [(ngModel)]="y.Q3_P"
+                              /> -->
+                            </td>
+                            <td>
+                              <input
+                                (input)="compInputChange($event)"
+                                [(ngModel)]="y.Q4_A"
+                                [disabled]="y.Q4_P == 0"
+                                class="txt-ass1 form-control"
+                                max="5"
+                                min="1"
+                                pattern="([1-5])"
+                                title="Actual Target"
+                                type="number"
+                              />
+                              <!-- <input
+                                class="txt-ass1 form-control"
+                                type="number"
+                                title="Plan Target"
+                                [disabled]="true"
+                                [(ngModel)]="y.Q4_P"
+                              /> -->
+                            </td>
+                            <!-- <td>
+                              {{ y.AnnualResult }}/{{ y.AnnualTarget }}
+                            </td> -->
+                            <td>
+                              {{ y.resultPercOf5 | number: "1.1-2" }}
+                            </td>
+                            <!-- <td>
+                              {{ y.ResultDesc }}
+                            </td> -->
+                            <td>
+                              <input [(ngModel)]="y.Notes" class="kpi-note" type="text"/>
+                            </td>
+                          </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                      <td>
+                        {{ x.q1 == "NaN" ? 0 : (x.q1 | number: "1.1-2") }}
+                      </td>
+                      <td>
+                        {{ x.q2 == "NaN" ? 0 : (x.q2 | number: "1.1-2") }}
+                      </td>
+                      <td>
+                        {{ x.q3 == "NaN" ? 0 : (x.q3 | number: "1.1-2") }}
+                      </td>
+                      <td>
+                        {{ x.q4 == "NaN" ? 0 : (x.q4 | number: "1.1-2") }}
+                      </td>
+                      <!-- <td [style.background-color]='x.resultColor'> -->
+                      <td>
+                        {{
+                          x.Result == null ? 0 : (x.Result | number: "1.1-2")
+                        }}
+                      </td>
+                      <td align="center">
+                        <div>
+                          <b>{{
+                              x.EmployeePerformance?.Result == null
+                                ? 0
+                                : x.EmployeePerformance?.Result
+                            }}</b>
+                        </div>
+                        <div>{{ x.EmployeePerformance?.ResultDesc }}</div>
+                      </td>
+                      <td>
+                        <button
+                          (click)="SaveComAss(x.KPIs, x.Id)"
+                          class="btn btn-primary d-block mb-2"
+                        >
+
+                          {{ "setup.approval.save" | translate }}
+                        </button>
+
+                        <button
+                          (click)="
+                              showPerformanceRecordsForCom(x.CompetencyId)
+                            "
+                          class="btn btn-info"
+                          data-target="#myModal"
+                          data-toggle="modal"
+                          style="margin: 10px 2px"
+                          type="button"
+                        >
+                          {{ "setup.approval.show" | translate }}
+                        </button>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- <div class="box-footer">
+                                                <button (click)='saveProjectsAssessment();'
+                                                    class="btn btn-primary">{{GetLocalResourceObject('lblSave')}}</button>
+                                            </div> -->
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div [class.active]=" currentActiveTab==3" class="tab-pane" id="tab_3" style="background-color: #ecf0f5">
+        <section class="content">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="box">
+                <div class="box-header">
+                  <h3 class="box-title">
+                    {{ "reviewAndAssesment.ResultForObjectives" | translate }}
+                  </h3>
+                </div>
+                <table class="table">
+                  <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">
+                      {{ "reviewAndAssesment.ObjectiveName" | translate }}
+                    </th>
+                    <th scope="col">
+                      {{ "reviewAndAssesment.Result" | translate }}
+                    </th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr
+                    *ngFor="
+                        let obj of objectiveFinalResultList;
+                        let i = index
+                      "
+                  >
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td>{{ obj.name }}</td>
+                    <td>{{ obj.ObjFinalResult }}</td>
+                  </tr>
+                  <tr>
+                    <th scope="col">
+                      {{ "reviewAndAssesment.Result" | translate }}
+                    </th>
+                    <th scope="col">{{ objectiveFinalResulDesc }}</th>
+                    <th scope="col">{{ objectiveFinalResulValue }}</th>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="box">
+                <div class="box-header">
+                  <h3 class="box-title">
+                    {{ "reviewAndAssesment.ResultForCompetencies" | translate }}
+                  </h3>
+                </div>
+                <table class="table">
+                  <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">
+                      {{ "reviewAndAssesment.Competencies" | translate }}
+                    </th>
+                    <th scope="col">
+                      {{ "reviewAndAssesment.Result" | translate }}
+                    </th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr
+                    *ngFor="
+                        let comp of competencyFinalResultList;
+                        let i = index
+                      "
+                  >
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td>{{ comp.name }}</td>
+                    <td>{{ comp.CompFinalResult }}</td>
+                  </tr>
+                  <tr>
+                    <th scope="col">
+                      {{ "reviewAndAssesment.Result" | translate }}
+                    </th>
+                    <th scope="col">{{ competencyFinalResulDesc }}</th>
+                    <th scope="col">{{ competencyFinalResulValue }}</th>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="box final-table">
+                <div class="box-header">
+                  <h3 class="box-title">
+                    {{ "reviewAndAssesment.FinalResult" | translate }}
+                  </h3>
+                </div>
+                <table class="table">
+                  <thead>
+                  <tr>
+                    <th scope="col">
+                      {{
+                        "reviewAndAssesment.ResultForObjectives" | translate
+                      }}
+                    </th>
+                    <th scope="col">
+                      {{ "reviewAndAssesment.ObjectiveWeight" | translate }}
+                    </th>
+                    <th scope="col">
+                      {{ "reviewAndAssesment.Competencies" | translate }}
+                    </th>
+                    <th scope="col">
+                      {{ "reviewAndAssesment.CompetencyWeight" | translate }}
+                    </th>
+                    <th>
+                      {{ "reviewAndAssesment.finalReview" | translate }}
+                    </th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <!-- <th scope="row">{{ i + 1 }}</th> -->
+                    <td>{{ objectiveFinalResulValue }}</td>
+                    <td>{{ objectiveWieght }}</td>
+                    <td>{{ competencyFinalResulValue }}</td>
+                    <td>{{ competencyWieght }}</td>
+                    <td>
+                      {{
+                        objectiveFinalResulValue * (objectiveWieght / 100) +
+                        competencyFinalResulValue * (competencyWieght / 100)
+                          | number: "1.1-2"
+                      }}
+                    </td>
+                  </tr>
+                  <!-- <tr>
+                    <th scope="col">
+                      {{ "reviewAndAssesment.Result" | translate }}
+                    </th>
+                    <th scope="col">{{ competencyFinalResulDesc }}</th>
+                    <th scope="col">{{ competencyFinalResulValue }}</th>
+                  </tr> -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="AssesmentID" class="col-xs-12">
+    <div class="box">
+      <div class="box-header">
+        <h3 class="box-title">
+          Assessment Result Approval Order
+
+        </h3>
+
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+          <span>
+            <p
+              style="padding: 0.6rem;">- Manager Approval: {{ AssessmentStatus >= 3 ? "Results Reviewed by: " + getEmployeeName(AssessmentEmpManagerId) : "Results Need Review From (" + getEmployeeName(AssessmentEmpManagerId) + ")" }} </p>
+            <p
+              style="padding: 0.6rem;">- Director Approval: {{ AssessmentStatus >= 4 ? "Results Approved by: " + getEmployeeName(AssessmentEmpReviewerId) : "Results Need Approval From (" + getEmployeeName(AssessmentEmpReviewerId) + ")" }}</p>
+          </span>
+      </div>
+      <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+    <div *ngIf="showApproveAction()" class="box-footer">
+      <button (click)="changeAssessmentStatus()" class="btn btn-primary">
+        {{ getApprovalActionText() }}
+      </button>
+    </div>
+    <!-- /.box -->
+  </div>
+
+</section>
+
+<!-- Trigger the modal with a button -->
+
+<!-- Modal -->
+<!-- <div
+  id="myModal"
+  class="modal fade"
+  role="dialog"
+  data-dismiss="modal"
+  (click)="showModal = false"
+>
+  <div class="modal-dialog" style="min-width: 98vw; overflow: scroll"> -->
+<!-- Modal content-->
+<div *ngIf="showModal" class="modal-content">
+  <div class="modal-header">
+    <h4 class="modal-title" style="display: inline-block">
+      {{ "reviewAndAssesment.EmployeePerformance" | translate }}
+    </h4>
+    <div
+      (click)="showModal = false"
+      class="close-modal"
+      data-dismiss="modal"
+    >
+      x
+    </div>
+  </div>
+  <div class="modal-body">
+    <div class="view-table">
+      <table class="table table-hover table-bordered table-striped mb-0">
+        <thead>
+        <tr>
+          <th style="width: 13%">
+            {{ "reviewAndAssesment.date" | translate }}
+          </th>
+          <th style="width: 20%">
+            {{ "reviewAndAssesment.Behavior" | translate }}
+          </th>
+          <th style="width: 12%">
+            {{ "reviewAndAssesment.Effect" | translate }}
+          </th>
+          <th style="width: 20%">
+            {{ "reviewAndAssesment.agreedAction" | translate }}
+          </th>
+          <th style="width: 20%">
+            {{ "reviewAndAssesment.Comment" | translate }}
+          </th>
+          <th style="width: 15%">Actions</th>
+        </tr>
+        </thead>
+        <tbody *ngIf="isObjective">
+        <tr *ngFor="let emp of empObj">
+          <td>
+            {{ emp.PerformanceDate }}
+          </td>
+          <td>
+            {{ emp.Behavior }}
+          </td>
+          <td>
+            {{ emp.Effect ? "Positive" : "Negative" }}
+          </td>
+          <td>
+            {{ emp.AgreedAction }}
+          </td>
+          <td>
+            {{ emp.Comment }}
+          </td>
+          <td>
+            <button
+              (click)="editEmpPerformance(emp)"
+              class="btn btn-info btn-sm"
+            >
+              {{ "reviewAndAssesment.edit" | translate }}
+            </button>
+            <button
+              (click)="deleteEmpPerformance(emp.id)"
+              class="btn btn-danger btn-sm"
+            >
+              {{ "reviewAndAssesment.delete" | translate }}
+            </button>
+          </td>
+        </tr>
+        <div *ngIf="empObj.length == 0" style="text-align: center">
+          {{ "reviewAndAssesment.noData" | translate }}
+        </div>
+        </tbody>
+
+        <tbody *ngIf="!isObjective">
+        <tr *ngFor="let emp of empCom">
+          <td>
+            {{ emp.Comment }}
+          </td>
+          <td>
+            {{ emp.AgreedAction }}
+          </td>
+          <td>
+            {{ emp.Effect ? "Positive" : "Negative" }}
+          </td>
+          <td>
+            {{ emp.Behavior }}
+          </td>
+          <td>
+            {{ emp.PerformanceDate }}
+          </td>
+          <td>
+            <button
+              (click)="editEmpPerformance(emp)"
+              class="btn btn-info btn-sm"
+            >
+              {{ "reviewAndAssesment.edit" | translate }}
+            </button>
+            <button
+              (click)="deleteEmpPerformance(emp.id)"
+              class="btn btn-danger btn-sm"
+            >
+              {{ "reviewAndAssesment.delete" | translate }}
+            </button>
+          </td>
+        </tr>
+
+        <div *ngIf="empCom.length == 0" style="text-align: center">
+          {{ "reviewAndAssesment.noData" | translate }}
+        </div>
+        </tbody>
+      </table>
+
+      <div class="card-form">
+        <div class="form-group col-sm-6">
+          <label for="exampleInputEmail1">{{
+              "reviewAndAssesment.date" | translate
+            }}</label>
+          <input
+            [(ngModel)]="datePerformance"
+            aria-describedby="date"
+            class="form-control"
+            id="exampleInputDate"
+            type="date"
+          />
+        </div>
+
+        <div class="form-group col-sm-6">
+          <label for="exampleInputEmail1">{{
+              "reviewAndAssesment.Behavior" | translate
+            }}</label>
+          <input
+            [(ngModel)]="behaviorPerformance"
+            aria-describedby="date"
+            class="form-control"
+            id="exampleInputBehavior"
+            type="text"
+          />
+        </div>
+
+        <div class="form-group col-sm-6">
+          <label for="exampleInputEmail1">{{
+              "reviewAndAssesment.agreedAction" | translate
+            }}</label>
+          <input
+            [(ngModel)]="actionPerformance"
+            aria-describedby="date"
+            class="form-control"
+            id="exampleInputAgreed"
+            type="text"
+          />
+        </div>
+
+        <div class="form-group col-sm-6">
+          <label for="exampleInputEmail1">{{
+              "reviewAndAssesment.Comment" | translate
+            }}</label>
+          <input
+            [(ngModel)]="commentPerformance"
+            aria-describedby="date"
+            class="form-control"
+            id="exampleInputDate"
+            type="text"
+          />
+        </div>
+
+        <fieldset class="form-group col-sm-12 effect-form">
+          <div class="row">
+            <legend class="col-form-label p-3">
+              <b>{{ "reviewAndAssesment.Effect" | translate }}</b>
+            </legend>
+            <div class="col-sm-12">
+              <div class="form-check">
+                <input
+                  (change)="effectPerformance = $event.target.value"
+                  [checked]="effectPerformance == true"
+                  id="male"
+                  name="gender"
+                  type="radio"
+                  value="true"
+                />
+                <label for="male">{{
+                    "reviewAndAssesment.Positive" | translate
+                  }}</label
+                ><br/>
+              </div>
+              <div class="form-check">
+                <input
+                  (change)="effectPerformance = $event.target.value"
+                  [checked]="effectPerformance == false"
+                  id="female"
+                  name="gender"
+                  type="radio"
+                  value="false"
+                />
+                <label for="female">
+                  {{ "reviewAndAssesment.Negative" | translate }}</label
+                ><br/>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+        <div class="form-group btn-add-update">
+          <button
+            (click)="savePerformance()"
+            *ngIf="!isUpdate"
+            class="btn btn-primary mx-3"
+          >
+            {{ "setup.approval.add" | translate }}
+          </button>
+          <button
+            (click)="updatePerformance()"
+            *ngIf="isUpdate"
+            class="btn btn-info mx-3"
+          >
+            {{ "setup.approval.update" | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button
+      (click)="showModal = false"
+      class="btn btn-danger"
+      data-dismiss="modal"
+      type="button"
+    >
+      {{ "setup.approval.close" | translate }}
+    </button>
+  </div>
+</div>
+<!-- </div>
+</div> -->

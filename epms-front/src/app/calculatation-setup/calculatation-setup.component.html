@@ -1,0 +1,65 @@
+<section class="content-header">
+  <h1>
+    Operation And Project Calculation Setup
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i>{{'strategic.strategicObjective.home'| translate}}</a></li>
+    <li><a href="#">Organization </a></li>
+    <li class="active">Calculation Setup</li>
+  </ol>
+</section>
+
+
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title"></h3>
+          <div class="pull-right box-tools">
+
+          </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <div class="row">
+
+            <div class="col-xs-12">
+              <label>Projects / Operations Calculation Link Setup </label>
+
+              <div class="form-group">
+                <div class="radio">
+                  <label class="label-form">
+                    <input type="radio" name="skpi" id="kpi" value="1" [disabled]="hasProjects" [(ngModel)]="optionValue" style="margin-top: 0">
+                    KPIs
+                  </label>
+                </div>
+                <div class="radio">
+                  <label class="label-form">
+                    <input type="radio" name="skpi" id="so"  value="2" [disabled]="hasProjects" [(ngModel)]="optionValue" style="margin-top: 0">
+                    Strategic objectives
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group">
+
+                <label  *ngIf="hasProjects" class="" style="color: red">You can't edit since there are already added projects / operations </label>
+
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="box-footer">
+          <button [disabled]="hasProjects" (click)='updateOption();' class="btn btn-primary">Save</button>
+        </div>
+      </div>
+      <!-- /.box-body -->
+    </div>
+  </div>
+
+
+</section>

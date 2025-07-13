@@ -1,0 +1,273 @@
+<section class="content-header">
+  <h1>
+    Leadership Dashboard
+  </h1>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-primary">
+
+        <form #SearchFrm='ngForm'>
+          <div class="box-body">
+            <div class="row">
+              <div class="col-xs-4">
+                <label>Year</label>
+                <select (change)="search()" [(ngModel)]='ddlYear' class="form-control" id='ddlYear' name='ddlYear'
+                        required required>
+                  <option *ngFor="let x of yearLst" value="{{x.id}}">{{ x.year }}</option>
+                </select>
+              </div>
+              <div class="col-xs-4">
+                <label>Unit</label>
+                <select
+                  [(ngModel)]="ddlUnit"
+                  class="form-control"
+                  id="ddlUnit"
+                  name="ddlUnit"
+                >
+                  <option [value]="0" selected>
+                   All
+                  </option>
+                  <option *ngFor="let x of unitLst" value="{{ x.ID }}">
+                    {{ x.NAME }}
+                  </option>
+                </select>
+              </div>
+
+            </div>
+          </div>
+          <!-- /.box-body -->
+
+          <div class="box-footer">
+            <button (click)="search()" [disabled]='SearchFrm.invalid'
+                    class="btn btn-primary pull-right">{{ GetLocalResourceObject('lblSearch') }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-lg-4 col-6">
+
+      <div class="small-box theme-background">
+        <div class="inner">
+          <h3 style="color: white !important;">{{ this.objectives }}</h3>
+          <p style="color: white !important;">Strategic Objective</p>
+        </div>
+        <div class="icon" style="margin-top: 1rem;">
+          <i class="ion ion-stats-bars"></i>
+        </div>
+        <div style="padding: 0.8rem;"></div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-6">
+
+      <div class="small-box theme-background">
+        <div class="inner">
+          <h3 style="color: white !important;">{{ this.goals }}</h3>
+          <p style="color: white !important;">Operational KPIs</p>
+        </div>
+        <div class="icon" style="margin-top: 1rem;">
+          <i class="ion ion-stats-bars"></i>
+        </div>
+        <div style="padding: 0.8rem;"></div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-6">
+
+      <div class="small-box theme-background">
+        <div class="inner">
+          <h3 style="color: white !important;">{{ this.projects }}</h3>
+          <p style="color: white !important;">Projects</p>
+        </div>
+        <div class="icon" style="margin-top: 1rem;">
+          <i class="ion ion-stats-bars"></i>
+        </div>
+        <div style="padding: 0.8rem;"></div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-6">
+
+      <div class="small-box theme-background">
+        <div class="inner">
+          <h3 style="color: white !important;">{{ this.objectivesKpis }}</h3>
+          <p style="color: white !important;">Strategic Objective KPIs</p>
+        </div>
+        <div class="icon" style="margin-top: 1rem;">
+          <i class="ion ion-stats-bars"></i>
+        </div>
+        <div style="padding: 0.8rem;"></div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-6">
+
+      <div class="small-box theme-background">
+        <div class="inner">
+          <h3 style="color: white !important;"> {{ this.goalsPercentage ? this.goalsPercentage.toFixed(2) : 0.00 }}%</h3>
+          <p style="color: white !important;">Operational KPIs %</p>
+        </div>
+        <div class="icon" style="margin-top: 1rem;">
+          <i class="ion ion-stats-bars"></i>
+        </div>
+        <div style="padding: 0.8rem;"></div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-6">
+
+      <div class="small-box theme-background">
+        <div class="inner">
+          <h3 style="color: white !important;">{{ this.operations }}</h3>
+          <p style="color: white !important;">Operations</p>
+        </div>
+        <div class="icon" style="margin-top: 1rem;">
+          <i class="ion ion-stats-bars"></i>
+        </div>
+        <div style="padding: 0.8rem;"></div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+
+      <div class="box box-primary" style="min-height: 500px;">
+        <div class="box-header with-border">
+          <h3 class="box-title">{{ GetLocalResourceObject('lblContainer2') }}</h3>
+        </div>
+        <div class="box-body">
+          <div *ngIf="show0101pnl" class="overlay">
+            No Data Found
+          </div>
+          <div id="container2" style=" height: 50%; margin: 0 auto"></div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-lg-12">
+
+      <div class="box box-primary" style="min-height: 500px;">
+
+        <div class="box-header with-border">
+          <h2 class="box-title">Contribution percentage of all departments
+            with the strategic plan</h2>
+        </div>
+        <div class="box-body">
+
+          <canvas id="myChart"></canvas>
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+  <!--  <div class="row" *ngIf='showDashBoardpnl'>-->
+  <!--    <div class="col-md-6">-->
+  <!--      <div class="box box-primary">-->
+  <!--        <div class="box-header with-border">-->
+  <!--          <h3 class="box-title">{{GetLocalResourceObject('lblContainer2')}}</h3>-->
+  <!--        </div>-->
+  <!--        <div class="box-body">-->
+  <!--          <div class="overlay" *ngIf="show0101pnl">-->
+  <!--            No Data Found-->
+  <!--          </div>-->
+  <!--          <div id="container2" style="min-width: 310px; height: 50%; margin: 0 auto"></div>-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--    <div class="col-md-6">-->
+  <!--      <div class="box box-primary">-->
+  <!--        <div class="box-header with-border">-->
+  <!--          <h3 class="box-title">{{GetLocalResourceObject('lblContainer3')}}</h3>-->
+  <!--        </div>-->
+  <!--        <div class="box-body">-->
+  <!--          <div class="overlay" *ngIf="show0103pnl">-->
+  <!--            {{GetLocalResourceObject('lblNoDataFound')}}-->
+  <!--          </div>-->
+  <!--          <div id="container3" style="min-width: 310px; height: 50%; margin: 0 auto"></div>-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+
+  <!--  <div class="row" *ngIf='showDashBoardpnl'>-->
+  <!--    <div class="col-md-12">-->
+  <!--      <div class="box box-primary">-->
+  <!--        <div class="box-header with-border">-->
+  <!--          <h3 class="box-title">{{GetLocalResourceObject('lblContainer')}}</h3>-->
+  <!--        </div>-->
+  <!--        <div class="box-body">-->
+  <!--          <div class="overlay" style="text-align: center;" *ngIf="show0102pnl">-->
+  <!--            {{GetLocalResourceObject('lblNoDataFound')}}-->
+  <!--          </div>-->
+  <!--          <div id="container" style="min-width: 310px; height: 100%;max-width: 100%; margin: 0 auto"></div>-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+
+
+  <!--  <div class="row">-->
+  <!--    <div class="col-md-12">-->
+  <!--      <div class="box box-primary">-->
+  <!--        <div class="box-header with-border">-->
+  <!--          <h3 class="box-title">{{GetLocalResourceObject('lblContainer5')}}</h3>-->
+  <!--        </div>-->
+  <!--        <div class="box-body">-->
+  <!--          <div class="overlay" *ngIf="show0101pnl">-->
+  <!--            {{GetLocalResourceObject('lblNoDataFound')}}-->
+  <!--          </div>-->
+  <!--          <div id="container5" style="min-width: 310px;max-width: 100%; margin: 0 auto"></div>-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+
+  <!--  <div class="row">-->
+  <!--    <div class="col-md-12">-->
+  <!--      <div class="box box-primary">-->
+  <!--        <div class="box-header with-border">-->
+  <!--          <h3 class="box-title">{{GetLocalResourceObject('lblContainer6')}}</h3>-->
+  <!--        </div>-->
+  <!--        <div class="box-body">-->
+  <!--          <div class="overlay" *ngIf="show0101pnl">-->
+  <!--            {{GetLocalResourceObject('lblNoDataFound')}}-->
+  <!--          </div>-->
+  <!--          <div id="container6" style="min-width: 310px;max-width: 100%; margin: 0 auto"></div>-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+
+
+  <!--  <div class="row" *ngIf='showDashBoardpnl'>-->
+
+  <!--    <div class="col-md-12">-->
+  <!--      <div class="box box-primary">-->
+  <!--        <div class="box-header with-border">-->
+  <!--          <h3 class="box-title">{{GetLocalResourceObject('lblContainer4')}}</h3>-->
+  <!--        </div>-->
+  <!--        <div class="box-body">-->
+  <!--          <div class="overlay" *ngIf="show0104pnl">-->
+  <!--            {{GetLocalResourceObject('lblNoDataFound')}}-->
+  <!--          </div>-->
+  <!--          <div id="container4" style="min-width: 310px; height: 400px; margin: 0 auto"></div>-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+</section>

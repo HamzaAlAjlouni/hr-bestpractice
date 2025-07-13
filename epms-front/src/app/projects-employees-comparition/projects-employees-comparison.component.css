@@ -1,0 +1,11 @@
+.border-bold{
+
+  border-width: medium!important;
+  border-color: #6b41c5;
+
+
+}
+table.table > tbody > tr > td{
+  font-size: 13px!important;
+  font-weight: bold!important;
+}

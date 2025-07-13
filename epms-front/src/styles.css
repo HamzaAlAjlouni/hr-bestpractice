@@ -1,0 +1,99 @@
+﻿/* You can add global styles to this file, and also import other style files */
+/* @import '~bootstrap/dist/css/bootstrap.min.css';*/
+/*Added By Yousef Sleit*/
+
+@import url('https://fonts.cdnfonts.com/css/tajawal');
+.border-bold{
+
+  border-width: medium!important;
+  border-color: #6b41c5;
+
+
+}
+.highcharts-drilldown-data-label span{
+
+color: white !important;
+text-decoration: none !important;
+}
+.orgchart .node .content {
+  min-height: auto!important;
+  height: 100%;
+  padding: 1rem;
+
+
+}
+.orgchart .node .content  h2{
+  margin-bottom: 1rem;
+
+
+}
+.orgchart .node .title{
+  padding: 2rem;
+  width: 100% !important;
+
+}
+.theme-background{
+
+  background-color: #6b41c5 !important;
+
+}
+.btn-primary {
+  margin: 0 2px 0 2px;
+}
+text.highcharts-credits {
+  display: none;
+}
+
+.td-col1 {
+  width: 300px;
+}
+
+.td-col2 {
+  width: 50px;
+}
+
+.td-col3 {
+  width: 100px;
+}
+
+.td-col4 {
+  width: 150px;
+}
+.td-col5 {
+  width: 120px;
+  min-width: 120px;
+}
+.txt-ass1 {
+  width: 65px;
+}
+
+.txt-ass2 {
+  width: 100px;
+}
+
+.my-custom-scrollbar {
+  position: relative;
+  height: 400px;
+  overflow: auto;
+}
+.table-wrapper-scroll-y {
+  display: block;
+}
+
+.orgchart .hierarchy {
+  text-align: center !important;
+}
+
+tr > td {
+  text-align: center;
+  vertical-align: middle !important;
+}
+
+
+.row-margin{
+
+  margin-bottom: 1.5rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
+
+}

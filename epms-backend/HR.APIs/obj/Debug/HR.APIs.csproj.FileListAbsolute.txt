@@ -1,0 +1,249 @@
+D:/HR System/HR-System/HR.APIs/bin/HR.APIs.dll.config
+D:/HR System/HR-System/HR.APIs/bin/HR.APIs.dll
+D:/HR System/HR-System/HR.APIs/bin/HR.APIs.pdb
+D:/HR System/HR-System/HR.APIs/bin/Antlr3.Runtime.dll
+D:/HR System/HR-System/HR.APIs/bin/EntityFramework.dll
+D:/HR System/HR-System/HR.APIs/bin/EntityFramework.SqlServer.dll
+D:/HR System/HR-System/HR.APIs/bin/ExcelDataReader.DataSet.dll
+D:/HR System/HR-System/HR.APIs/bin/ExcelDataReader.dll
+D:/HR System/HR-System/HR.APIs/bin/HR.Entities.dll
+D:/HR System/HR-System/HR.APIs/bin/Microsoft.Web.Infrastructure.dll
+D:/HR System/HR-System/HR.APIs/bin/Newtonsoft.Json.dll
+D:/HR System/HR-System/HR.APIs/bin/Swashbuckle.Core.dll
+D:/HR System/HR-System/HR.APIs/bin/System.Net.Http.Formatting.dll
+D:/HR System/HR-System/HR.APIs/bin/System.Web.Helpers.dll
+D:/HR System/HR-System/HR.APIs/bin/System.Web.Http.dll
+D:/HR System/HR-System/HR.APIs/bin/System.Web.Http.WebHost.dll
+D:/HR System/HR-System/HR.APIs/bin/System.Web.Mvc.dll
+D:/HR System/HR-System/HR.APIs/bin/System.Web.Optimization.dll
+D:/HR System/HR-System/HR.APIs/bin/System.Web.Razor.dll
+D:/HR System/HR-System/HR.APIs/bin/System.Web.WebPages.Deployment.dll
+D:/HR System/HR-System/HR.APIs/bin/System.Web.WebPages.dll
+D:/HR System/HR-System/HR.APIs/bin/System.Web.WebPages.Razor.dll
+D:/HR System/HR-System/HR.APIs/bin/WebActivatorEx.dll
+D:/HR System/HR-System/HR.APIs/bin/WebGrease.dll
+D:/HR System/HR-System/HR.APIs/bin/HR.Entities.pdb
+D:/HR System/HR-System/HR.APIs/bin/HR.Entities.dll.config
+D:/HR System/HR-System/HR.APIs/bin/EntityFramework.xml
+D:/HR System/HR-System/HR.APIs/bin/EntityFramework.SqlServer.xml
+D:/HR System/HR-System/HR.APIs/bin/ExcelDataReader.pdb
+D:/HR System/HR-System/HR.APIs/bin/ExcelDataReader.xml
+D:/HR System/HR-System/HR.APIs/bin/ExcelDataReader.DataSet.pdb
+D:/HR System/HR-System/HR.APIs/bin/ExcelDataReader.DataSet.xml
+D:/HR System/HR-System/HR.APIs/bin/Newtonsoft.Json.xml
+D:/HR System/HR-System/HR.APIs/bin/System.Net.Http.Formatting.xml
+D:/HR System/HR-System/HR.APIs/bin/System.Web.Helpers.xml
+D:/HR System/HR-System/HR.APIs/bin/System.Web.Http.xml
+D:/HR System/HR-System/HR.APIs/bin/System.Web.Http.WebHost.xml
+D:/HR System/HR-System/HR.APIs/bin/System.Web.Mvc.xml
+D:/HR System/HR-System/HR.APIs/bin/System.Web.Optimization.xml
+D:/HR System/HR-System/HR.APIs/bin/System.Web.Razor.xml
+D:/HR System/HR-System/HR.APIs/bin/System.Web.WebPages.xml
+D:/HR System/HR-System/HR.APIs/bin/System.Web.WebPages.Deployment.xml
+D:/HR System/HR-System/HR.APIs/bin/System.Web.WebPages.Razor.xml
+D:/HR System/HR-System/HR.APIs/bin/Antlr3.Runtime.pdb
+D:/HR System/HR-System/HR.APIs/obj/Debug/HR.APIs.csprojAssemblyReference.cache
+D:/HR System/HR-System/HR.APIs/obj/Debug/HR.APIs.csproj.CoreCompileInputs.cache
+D:/HR System/HR-System/HR.APIs/obj/Debug/HR.APIs.csproj.CopyComplete
+D:/HR System/HR-System/HR.APIs/obj/Debug/HR.APIs.dll
+D:/HR System/HR-System/HR.APIs/obj/Debug/HR.APIs.pdb
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/HR.APIs.dll.config
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/HR.APIs.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/HR.APIs.pdb
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/Antlr3.Runtime.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/EntityFramework.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/EntityFramework.SqlServer.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/ExcelDataReader.DataSet.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/ExcelDataReader.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/HR.Entities.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/Microsoft.Web.Infrastructure.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/Newtonsoft.Json.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/Swashbuckle.Core.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/System.Net.Http.Formatting.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/System.Web.Helpers.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/System.Web.Http.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/System.Web.Http.WebHost.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/System.Web.Mvc.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/System.Web.Optimization.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/System.Web.Razor.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/System.Web.WebPages.Deployment.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/System.Web.WebPages.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/System.Web.WebPages.Razor.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/WebActivatorEx.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/WebGrease.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/HR.Entities.pdb
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/HR.Entities.dll.config
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/EntityFramework.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/EntityFramework.SqlServer.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/ExcelDataReader.pdb
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/ExcelDataReader.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/ExcelDataReader.DataSet.pdb
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/ExcelDataReader.DataSet.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/Newtonsoft.Json.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/System.Net.Http.Formatting.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/System.Web.Helpers.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/System.Web.Http.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/System.Web.Http.WebHost.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/System.Web.Mvc.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/System.Web.Optimization.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/System.Web.Razor.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/System.Web.WebPages.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/System.Web.WebPages.Deployment.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/System.Web.WebPages.Razor.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/bin/Antlr3.Runtime.pdb
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/obj/Debug/HR.APIs.csproj.AssemblyReference.cache
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/obj/Debug/HR.APIs.csproj.CoreCompileInputs.cache
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/obj/Debug/HR.APIs.csproj.CopyComplete
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/obj/Debug/HR.APIs.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.APIs/obj/Debug/HR.APIs.pdb
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/HR.APIs.dll.config
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/HR.APIs.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/HR.APIs.pdb
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/Antlr3.Runtime.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/EntityFramework.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/EntityFramework.SqlServer.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/ExcelDataReader.DataSet.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/ExcelDataReader.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/HR.Entities.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/Microsoft.Web.Infrastructure.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/Newtonsoft.Json.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/Swashbuckle.Core.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/System.Net.Http.Formatting.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/System.Web.Helpers.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/System.Web.Http.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/System.Web.Http.WebHost.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/System.Web.Mvc.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/System.Web.Optimization.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/System.Web.Razor.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/System.Web.WebPages.Deployment.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/System.Web.WebPages.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/System.Web.WebPages.Razor.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/WebActivatorEx.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/WebGrease.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/HR.Entities.pdb
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/HR.Entities.dll.config
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/EntityFramework.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/EntityFramework.SqlServer.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/ExcelDataReader.pdb
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/ExcelDataReader.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/ExcelDataReader.DataSet.pdb
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/ExcelDataReader.DataSet.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/Newtonsoft.Json.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/System.Net.Http.Formatting.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/System.Web.Helpers.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/System.Web.Http.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/System.Web.Http.WebHost.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/System.Web.Mvc.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/System.Web.Optimization.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/System.Web.Razor.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/System.Web.WebPages.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/System.Web.WebPages.Deployment.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/System.Web.WebPages.Razor.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/bin/Antlr3.Runtime.pdb
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/obj/Debug/HR.APIs.csproj.AssemblyReference.cache
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/obj/Debug/HR.APIs.csproj.CoreCompileInputs.cache
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/obj/Debug/HR.APIs.csproj.CopyComplete
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/obj/Debug/HR.APIs.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.APIs/obj/Debug/HR.APIs.pdb
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/HR.APIs.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/HR.APIs.pdb
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/Antlr3.Runtime.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/EntityFramework.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/EntityFramework.SqlServer.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/ExcelDataReader.DataSet.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/ExcelDataReader.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/HR.Entities.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/Microsoft.Web.Infrastructure.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/Newtonsoft.Json.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/Swashbuckle.Core.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/System.Net.Http.Formatting.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/System.Web.Helpers.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/System.Web.Http.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/System.Web.Http.WebHost.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/System.Web.Mvc.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/System.Web.Optimization.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/System.Web.Razor.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/System.Web.WebPages.Deployment.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/System.Web.WebPages.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/System.Web.WebPages.Razor.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/WebActivatorEx.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/WebGrease.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/HR.Entities.pdb
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/HR.Entities.dll.config
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/EntityFramework.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/EntityFramework.SqlServer.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/ExcelDataReader.pdb
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/ExcelDataReader.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/ExcelDataReader.DataSet.pdb
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/ExcelDataReader.DataSet.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/Newtonsoft.Json.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/System.Net.Http.Formatting.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/System.Web.Helpers.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/System.Web.Http.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/System.Web.Http.WebHost.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/System.Web.Mvc.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/System.Web.Optimization.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/System.Web.Razor.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/System.Web.WebPages.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/System.Web.WebPages.Deployment.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/System.Web.WebPages.Razor.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/Antlr3.Runtime.pdb
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/obj/Debug/HR.APIs.csproj.AssemblyReference.cache
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/obj/Debug/HR.APIs.csproj.CoreCompileInputs.cache
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/obj/Debug/HR.APIs.csproj.CopyComplete
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/obj/Debug/HR.APIs.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/obj/Debug/HR.APIs.pdb
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/System.Web.Cors.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/System.Web.Http.Cors.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.APIs/bin/System.Web.Http.Cors.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/HR.APIs.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/HR.APIs.pdb
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/Antlr3.Runtime.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/EntityFramework.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/EntityFramework.SqlServer.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/ExcelDataReader.DataSet.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/ExcelDataReader.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/HR.Entities.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/Microsoft.Web.Infrastructure.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/Newtonsoft.Json.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/Swashbuckle.Core.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/System.Net.Http.Formatting.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/System.Web.Cors.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/System.Web.Helpers.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/System.Web.Http.Cors.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/System.Web.Http.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/System.Web.Http.WebHost.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/System.Web.Mvc.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/System.Web.Optimization.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/System.Web.Razor.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/System.Web.WebPages.Deployment.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/System.Web.WebPages.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/System.Web.WebPages.Razor.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/WebActivatorEx.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/WebGrease.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/HR.Entities.pdb
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/HR.Entities.dll.config
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/EntityFramework.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/EntityFramework.SqlServer.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/ExcelDataReader.pdb
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/ExcelDataReader.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/ExcelDataReader.DataSet.pdb
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/ExcelDataReader.DataSet.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/Newtonsoft.Json.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/System.Web.Http.Cors.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/System.Net.Http.Formatting.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/System.Web.Helpers.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/System.Web.Http.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/System.Web.Http.WebHost.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/System.Web.Mvc.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/System.Web.Optimization.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/System.Web.Razor.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/System.Web.WebPages.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/System.Web.WebPages.Deployment.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/System.Web.WebPages.Razor.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/bin/Antlr3.Runtime.pdb
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/obj/Debug/HR.APIs.csproj.AssemblyReference.cache
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/obj/Debug/HR.APIs.csproj.CoreCompileInputs.cache
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/obj/Debug/HR.APIs.csproj.CopyComplete
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/obj/Debug/HR.APIs.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.APIs/obj/Debug/HR.APIs.pdb

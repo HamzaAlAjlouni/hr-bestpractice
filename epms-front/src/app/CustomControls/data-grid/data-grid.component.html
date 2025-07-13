@@ -1,0 +1,98 @@
+<style>
+    .selectedRow {
+        background-color: #0098d133 !important;
+
+    }
+</style>
+<div class="dataTables_wrapper">
+    <div class="table-responsive">
+        <div *ngIf="dsGridList && dsGridList.length == 0"><img class="no-data-found" src="../../../assets/dist/img/nodatafound.png" /></div>
+        <table class="table table-striped table-hover dt-responsive display nowrap dataTable no-footer dtr-inline" id='{{GridID}}'
+            *ngIf="dsGridList && dsGridList.length > 0" role="grid" aria-describedby="example1_info">
+            <thead>
+                <tr role="row">
+                    <th style="width:2%;" *ngIf='RowSelection && RowSelection==true && ShowCheckBoxHeder==false'>
+                        <input type="checkbox" name="chkGrid" (change)="CheckAll(GridID,$event)" />
+                    </th>
+                    <th style="width:5%;" *ngIf='RowSelection && RowSelection==true  && ShowCheckBoxHeder==true'> {{CheckBoxHeder}} </th>
+                    <ng-container *ngFor='let col of Columns'>
+                        <th style="cursor: pointer" (click)='SortList(col.DataField)' [ngStyle]="{'width': col.Width,'cursor':'pointer'}">
+                            <span class="table-header">{{col.HeaderText}}</span>
+                            <span class="sort-icon">
+                                &nbsp;<span [innerHTML]='DrawSortIcon(col.DataField)'></span>
+                            </span>
+                        </th>
+                    </ng-container>
+                    <th *ngIf='ShowButtons && ShowButtons==true'>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of GridPagedItems;index  as index" [class]='(index == selectedIndex)?selectedRecord:""'
+                 [ngStyle]="(data.style != 'undefind' && data.style != null && data.style != '')?getStyleObj(data.style):''">
+                    <td *ngIf='RowSelection && RowSelection==true'>
+                        <input type="checkbox" [disabled]="( data.disabled != 'undefind' ? ( data.disabled== true ?'true':false ) : false  )"
+                        [checked]="( data.CHECKED != 'undefind' ? ( data.CHECKED== true ?'true':false ) : false  )"
+                        [value]="data.ID" name="gvDataGrid_chkDelete_{{data.ID}}" (change)="HandleCheckedRows($event)" />
+                    </td>
+                    <td *ngFor='let cols of Columns' align="center">
+                        <span [ngStyle]="(cols.Linkable && cols.Linkable == 'true')?{'cursor':'pointer','color':'blue'}:''"
+                        (click)='(cols.Linkable && cols.Linkable == "true")?GridEventHandler(data[cols.DataValue],cols.Action,index):""'
+                            [class.pull-right]="cols.format != null && cols.format == 'decimal'"  data-toggle="tooltip" style="font-size: 14px;"
+                            title="{{((cols.TitleDataField != null && data[cols.TitleDataField] ==null)?'':data[cols.TitleDataField]) }}">
+                            {{ (cols.format && cols.format == 'decimal' )?(data[cols.DataField]|number: '3') :
+                            ((data[cols.DataField] ==null)?'':data[cols.DataField]) }}</span>
+                    </td>
+                    <td *ngIf='ShowButtons && ShowButtons==true' class="table-actions">
+                        <a *ngFor='let btn of Buttons' class="Edit GirdIcons"
+                        [ngStyle]="(btn.DisabledIfEmpty && (data[btn.DisabledIfEmpty] == '' || data[btn.DisabledIfEmpty] == null))?{'cursor':'not-allowed'}:''"
+                         (click)='GridEventHandler(data[btn.DataValue],btn.Action,index,data[btn.DisabledIfEmpty])' data-toggle="tooltip"
+                            title="{{btn.title}}">
+                            <i class="{{btn.Icon_Awesome}}"></i> &nbsp;
+                        </a>
+                    </td>
+                </tr>
+                <tr *ngIf='dsGridList && dsGridList.length == 0'>
+                    <td colspan="100">No Data Found</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td style="width:2%;" *ngIf='RowSelection && RowSelection==true && ShowCheckBoxHeder==false'></td>
+                    <td style="width:5%;" *ngIf='RowSelection && RowSelection==true && ShowCheckBoxHeder==true'></td>
+                    <td style="border-style: groove;
+                    border-width: 1px;" *ngFor='let cols of Columns'>
+                        <span *ngIf='cols.Sum' class="" style="text-align: center; font-weight: bold">{{ (calc(cols.Sum)) }}</span>
+                        <span *ngIf='cols.Avg' class="pull-right">{{ (calcAvg(cols.Avg)) }}</span>
+                    </td>
+                    <td *ngIf='ShowButtons && ShowButtons==true'></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div class="datatable-footer" *ngIf="dsGridList && dsGridList.length > 0 && !HideFooter">
+        <span class="records-number">
+            <i class="fa fa-table" aria-hidden="true"></i>&nbsp;{{dsGridList.length}} record(s)</span>
+        <span class="records-number" style="font-size:1.5em">
+<!--            <a *ngIf='AllowExportExcel && AllowExportExcel == true' style='cursor:pointer;color: green' (click)='ExportExcel(ExcelSource);'>-->
+<!--                <i class="fa fa-file-excel-o" title="Export to Excel" data-original-title="Export to Excel"-->
+<!--                    data-toggle="tooltip"></i>-->
+<!--            </a>-->
+        </span>
+        <div class="ActionBar pull-right">Page
+            <input type="text" maxlength="5" class="txt page-num-text" id="SamplePageIndex" #GridPageIndex
+            value="{{GridPager.currentPage}}"> of {{GridPager.totalPages}}
+            <input type="button" value="Go" (click)="setGridPage((GridPager.currentPage + parseInt(GridPageIndex.value)) - GridPager.currentPage)"
+                 class="btn btn-xs btn-primary">&nbsp;&nbsp;&nbsp;
+            <input type="button" value="< Previos" (click)="setGridPage(GridPager.currentPage - 1,ddlPageSize.value)"
+                class="btn btn-xs btn-primary" n [ngClass]="{disabled:GridPager.currentPage === 1}">
+
+            <input type="button" value="Next >" (click)="setGridPage(GridPager.currentPage + 1,ddlPageSize.value)"
+                [ngClass]="{disabled:GridPager.currentPage === GridPager.totalPages}" class="btn btn-xs btn-primary">
+            <select id="ddlPageSize" #ddlPageSize class="ddlform" (change)='setPageSize(ddlPageSize.value);'>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+            </select>
+        </div>
+    </div>
+</div>

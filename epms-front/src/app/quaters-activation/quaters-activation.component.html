@@ -1,0 +1,103 @@
+<section class="content-header">
+  <h1>
+    Quarters Activations
+    <small>{{"setup.grade.setup"|translate}}</small></h1>
+  <ol class="breadcrumb">
+    <li>{{"setup.grade.setup"|translate}}</li>
+    <li class="active">Quarters Activations</li>
+  </ol>
+</section>
+<div class="container" style="margin-top: 2rem;">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">Quarters Activations</h3>
+          <div class="pull-right box-tools">
+
+          </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <DataGrid
+            #gvQuarter
+            [ShowButtons]="true"
+            [RowSelection]="false"
+            [AllowExportExcel]="false"
+            [HideFooter]="false"
+            (GridEvent)="gvQuartersEvent($event)"
+          >
+          </DataGrid>
+        </div>
+        <!-- /.box-body -->
+      </div>
+    </div>
+    <!-- /.col -->
+  </div>
+  <div class="row" *ngIf="editQuarterActivation">
+
+    <div class="col-sm-3">
+
+      <div class="form-check">
+
+        <label class="form-check-label">
+          Quarter Status Active
+        </label>
+
+        <select
+          style="margin-top: 1rem;"
+          required
+          class="form-control"
+          name="quarterActivationValue"
+          id="quarterActivationValue"
+          [(ngModel)]="quarterActivationValue"
+
+        >
+          <option value="1">
+            Active
+          </option>
+          <option value="0">
+            InActive
+          </option>
+        </select>
+      </div>
+      <button class="btn btn-primary " style="margin-top: 1rem;" (click)="editquarterActivation()">
+        Update
+      </button>
+    </div>
+
+  </div>
+  <!--
+    <div class="row" *ngIf="addGradeEntry">
+      <div class="col-sm-6">
+        <label for="exampleInputName">{{
+          "setup.grade.gradeName" | translate
+        }}</label>
+        <input
+          type="text"
+          class="form-control"
+          id="exampleInputName"
+          [(ngModel)]="gradeName"
+        />
+        <label for="exampleInputscaleCode">{{
+          "setup.grade.scaleCode" | translate
+        }}</label>
+        <input
+          type="text"
+          class="form-control"
+          id="exampleInputscaleCode"
+          [(ngModel)]="scaleCode"
+        />
+        <label for="exampleInputscaleNumber">{{
+          "setup.grade.scaleNumber" | translate
+        }}</label>
+        <input
+          type="number"
+          class="form-control"
+          id="exampleInputscaleNumber"
+          [(ngModel)]="scaleNumber"
+        />
+        <button class="btn btn-primary" (click)="addGrade()">Save</button>
+      </div>
+    </div> -->
+</div>

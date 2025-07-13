@@ -1,0 +1,11 @@
+#chart-container {
+  height: 600px;
+  border: 2px solid #aaa;
+}
+.orgchart {
+  background: #fff;
+}
+
+.node .content {
+  min-height: 25px !important;
+}

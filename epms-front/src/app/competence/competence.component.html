@@ -1,0 +1,280 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    {{GetLocalResourceObject('HeaderCompetencies')}}
+    <small>{{GetLocalResourceObject('HeaderSettings')}}</small></h1>
+  <ol class="breadcrumb">
+    <li>{{GetLocalResourceObject('HeaderSettings')}}</li>
+    <li class="active">{{GetLocalResourceObject('HeaderCompetencies')}}</li>
+  </ol>
+</section>
+
+<!--Competencies -->
+<section class="content">
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">{{GetLocalResourceObject('Search')}}</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form #SearchForm='ngForm'>
+          <div class="box-body">
+            <div class="row">
+              <div class="col-xs-12">
+                <label>{{GetLocalResourceObject('SearchCompetence')}}</label>
+                <input type="text" placeholder="{{GetLocalResourceObject('SearchCompetence')}}"
+                       class="form-control" name='txtSearchCompetenceName' id='txtSearchCompetenceName'
+                       [(ngModel)]='txtSearchCompetenceName'>
+              </div>
+            </div>
+          </div>
+          <!-- /.box-body -->
+
+          <div class="box-footer">
+            <button (click)='LoadCompetence();' [disabled]='IsExcludedAction("btnSearch")'
+                    class="btn btn-primary">{{GetLocalResourceObject('Search')}}</button>
+          </div>
+        </form>
+      </div>
+      <!-- /.box -->
+    </div>
+    <!--/.col (right) -->
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">{{GetLocalResourceObject('CompetenciesList')}}</h3>
+          <div class="pull-right box-tools">
+            <button *ngIf="modificationPermission" type="button" class="btn btn-success btn-sm btn-Add-right"
+                    (click)='CompetenceAddMode();' data-widget="Add" data-toggle="tooltip" title=""
+                    data-original-title="Add">
+              <i class="fa fa-plus"></i></button>
+          </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <DataGrid #gvCompetence [ShowButtons]='true' [RowSelection]='false' [AllowExportExcel]='false'
+                    [HideFooter]='false' (GridEvent)='gvCompetenceEvent($event);'>
+          </DataGrid>
+        </div>
+        <!-- /.box-body -->
+      </div>
+      <!-- /.box -->
+
+
+      <!-- /.box -->
+    </div>
+    <!-- /.col -->
+  </div>
+  <div *ngIf="showCompetencEntry" class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">{{GetLocalResourceObject('CompetenceEntry')}}</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form #CompetenceForm='ngForm'>
+          <div class="box-body">
+            <div class="row">
+              <div style="display: none" class="col-xs-3">
+                <label>{{GetLocalResourceObject('Code')}}</label>
+                <input type="text" required class="form-control" name='txtCompetenceCode'
+                       id='txtCompetenceCode' [(ngModel)]='txtCompetenceCode' #txtCompetenceCodeRef='ngModel'>
+
+                <ValidatorCallOut ID="txtCompetenceCodeValidator"
+                                  [Visibiltiy]="txtCompetenceCodeRef.invalid && txtCompetenceCodeRef.touched"
+                                  [ControlToValidate]="txtCompetenceCodeRef"
+                                  ErrorMessage='This field is required.'>
+                </ValidatorCallOut>
+              </div>
+              <div class="col-xs-12">
+                <label>{{GetLocalResourceObject('Name')}}</label>
+                <input type="text" required class="form-control" name='txtCompetenceName'
+                       id='txtCompetenceName' [(ngModel)]='txtCompetenceName' #txtCompetenceNameRef='ngModel'>
+
+                <ValidatorCallOut ID="txtCompetenceNameValidator"
+                                  [Visibiltiy]="txtCompetenceNameRef.invalid && txtCompetenceNameRef.touched"
+                                  [ControlToValidate]="txtCompetenceNameRef"
+                                  ErrorMessage='This field is required.'>
+                </ValidatorCallOut>
+              </div>
+
+              <div class="col-xs-3">
+                <label>{{GetLocalResourceObject('Nature')}}</label>
+                <select required class="form-control" name='ddlCompetenceNatureID'
+                        id='ddlCompetenceNatureID' [(ngModel)]='ddlCompetenceNatureID'
+                        #ddlCompetenceNatureIDRef='ngModel'>
+                  <option *ngFor="let x of competenceNatureList" value="{{x.MINOR_NO}}">{{x.NAME}}
+                  </option>
+
+                </select>
+
+                <ValidatorCallOut ID="ddlCompetenceNatureIDValidator"
+                                  [Visibiltiy]="ddlCompetenceNatureIDRef.invalid && ddlCompetenceNatureIDRef.touched"
+                                  [ControlToValidate]="ddlCompetenceNatureIDRef"
+                                  ErrorMessage='This field is required.'>
+                </ValidatorCallOut>
+              </div>
+              <div class="col-xs-9">
+
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" name='cbCompetenceMandetory' id='cbCompetenceMandetory'
+                           [(ngModel)]='cbCompetenceMandetory'>{{GetLocalResourceObject('IsMandetory')}}
+
+                  </label>
+
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <label>{{'setup.competency.note' | translate}}</label>
+                <textarea class="form-control" rows="2" name='txtNotes'
+                          id='txtNotes' [(ngModel)]='txtNotes'></textarea>
+              </div>
+            </div>
+          </div>
+          <!-- /.box-body -->
+
+          <div class="box-footer">
+            <button [disabled]='CompetenceForm.invalid' (click)='SaveCompetence();'
+                    class="btn btn-primary">{{GetLocalResourceObject('Save')}}</button>
+          </div>
+        </form>
+      </div>
+      <!-- /.box -->
+    </div>
+    <!--/.col (right) -->
+  </div>
+  <!-- /.row -->
+</section>
+<!--Competence KPI-->
+<section *ngIf="showKPI" class="content">
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">{{GetLocalResourceObject('Search')}}</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form #SearchForm='ngForm'>
+          <div class="box-body">
+            <div class="row">
+              <div class="col-xs-12">
+                <label>{{GetLocalResourceObject('Level')}}</label>
+                <select required class="form-control" name='ddlCompeteceKPIType'
+                        id='ddlCompeteceKPIType' [(ngModel)]='ddlCompeteceKPIType' #ddlCompeteceKPITypeRef='ngModel'>
+                  <option *ngFor="let x of KPILevelList" value="{{x.MINOR_NO}}">{{x.NAME}}
+                  </option>
+
+                </select>
+                <ValidatorCallOut ID="ddlCompeteceKPITypeValidator"
+                                  [Visibiltiy]="ddlCompeteceKPITypeRef.invalid && ddlCompeteceKPITypeRef.touched"
+                                  [ControlToValidate]="ddlCompeteceKPITypeRef"
+                                  ErrorMessage='This field is required.'>
+                </ValidatorCallOut>
+              </div>
+            </div>
+          </div>
+          <!-- /.box-body -->
+
+          <div class="box-footer">
+            <button (click)='LoadCompetenceKPI();'
+                    class="btn btn-primary">{{GetLocalResourceObject('Search')}}</button>
+          </div>
+        </form>
+      </div>
+      <!-- /.box -->
+    </div>
+    <!--/.col (right) -->
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">{{GetLocalResourceObject('KPIsList')}}</h3>
+          <div class="pull-right box-tools">
+            <button type="button" class="btn btn-success btn-sm btn-Add-right"
+                    (click)='CompetenceKPIAddMode();' data-widget="Add" data-toggle="tooltip" title=""
+                    data-original-title="Add">
+              <i class="fa fa-plus"></i></button>
+          </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <DataGrid #gvCompetenciesKpi [ShowButtons]='true' [RowSelection]='false' [AllowExportExcel]='false'
+                    [HideFooter]='false' (GridEvent)='gvCompetenceKPIEvent($event);'>
+          </DataGrid>
+        </div>
+        <!-- /.box-body -->
+      </div>
+      <!-- /.box -->
+
+
+      <!-- /.box -->
+    </div>
+    <!-- /.col -->
+  </div>
+  <div *ngIf="showKPIEntry" class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">{{GetLocalResourceObject('KPIEntry')}}</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form #CompetenceKPIForm='ngForm'>
+          <div class="box-body">
+            <div class="row">
+              <div class="col-xs-12">
+                <label>{{GetLocalResourceObject('Name')}}</label>
+                <input type="" required class="form-control" name='txtCompeteceKPIName'
+                       id='txtCompeteceKPIName' [(ngModel)]='txtCompeteceKPIName' #txtCompeteceKPINameRef='ngModel'>
+
+                <ValidatorCallOut ID="txtCompeteceKPINameValidator"
+                                  [Visibiltiy]="txtCompeteceKPINameRef.invalid && txtCompeteceKPINameRef.touched"
+                                  [ControlToValidate]="txtCompeteceKPINameRef"
+                                  ErrorMessage='This field is required.'>
+                </ValidatorCallOut>
+              </div>
+<!--              <div *ngIf="showNegativeIndicator && ! CompetenceKPIUpdateMode" class="col-xs-12">-->
+              <div  class="col-xs-12">
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" name="cbNegativeIndicator" id="cbNegativeIndicator" value="0"
+                           [(ngModel)]='cbNegativeIndicator'>
+                    {{GetLocalResourceObject('NegativeIndicator')}}
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.box-body -->
+
+          <div class="box-footer">
+            <button [disabled]='CompetenceKPIForm.invalid' (click)='SaveCompetenceKPI();'
+                    class="btn btn-primary">{{GetLocalResourceObject('Save')}}</button>
+          </div>
+        </form>
+      </div>
+      <!-- /.box -->
+    </div>
+    <!--/.col (right) -->
+  </div>
+  <!-- /.row -->
+</section>

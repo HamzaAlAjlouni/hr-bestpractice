@@ -1,0 +1,267 @@
+
+<section class="content-header" *ngIf='!AddOnFly'>
+        <h1>
+            {{GetLocalResourceObject('lblProjectPlannerHeader')}}
+            <small>{{GetLocalResourceObject('lblStratigicHeader')}}</small></h1>
+        <ol class="breadcrumb">
+            <li>{{GetLocalResourceObject('lblStratigicHeader')}}</li>
+            <li class="active">{{GetLocalResourceObject('lblProjectPlannerHeader')}}</li>
+        </ol>
+</section>
+
+<!--Search-->
+<section class="content">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">{{GetLocalResourceObject('lblSearchHeader')}}</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form #search='ngForm'>
+                        <div class="box-body">
+                            <div class="row">
+
+                                <div class="col-xs-3">
+                                    <label for="exampleInputPassword1">{{GetLocalResourceObject('lblYear')}}</label>
+                                    <select name='ddlYearSearch' id='ddlYearSearch' required class="form-control" [(ngModel)]='ddlYearSearch'>
+                                        <option *ngFor='let x of yearslist' value='{{x.id}}'>{{x.year}}</option>
+
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="box-footer" style="text-align:right">
+
+                            <button (click)='LoadChart();' [disabled]='search.invalid' class="btn btn-primary">{{GetLocalResourceObject('lblSearchHeader')}}</button>
+
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">{{GetLocalResourceObject('lblOrgObjStrucHeader')}}</h3>
+                    </div>
+                    <div class="box-body">
+
+
+                        <div class="box-body container-fluid" *ngIf='!isHide'>
+                            <div class="chart-container">
+                                <div id="OrgObject">
+                                    <div class="stiff-chart-inner">
+
+                                        <ng-container *ngFor='let c of allList'>
+                                            <div class="stiff-chart-level" [attr.data-level]="c.level" style="direction: rtl;">
+                                                <div class="stiff-main-parent">
+
+                                                    <ul>
+                                                        <li [attr.data-parent]="c.id">
+                                                            <div class="the-chart">
+                                                                <p>
+                                                                    <b>{{c.shortName}}</b>
+                                                                </p>
+                                                                <br>
+                                                                <button class="btn btn-success btn-sm" (click)='onAddObjective(c.id)'
+                                                                data-widget="Add" data-toggle="tooltip" [attr.title]= "GetLocalResourceObject('lblAddObjective')" [attr.data-original-title]="GetLocalResourceObject('lblAddObjective')">
+                                                                    <i class="fa fa-plus"></i>
+                                                                </button>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="stiff-chart-level" [attr.data-level]="2" style="direction: rtl;">
+                                                <div class="stiff-child" [attr.data-child-from]="c.id">
+                                                    <ul>
+
+                                                        <li *ngFor='let obj of c.objectives' [attr.data-parent]="obj.id">
+                                                            <div class="the-chart">
+                                                              <div class="mt-3">
+                                                                <p data-toggle="tooltip" title="{{obj.name}}">{{obj.shortName}}</p>
+                                                                <p data-toggle="tooltip" [attr.title]="GetLocalResourceObject('lblPlannedCost')" style="font-size:small;"><span class="planne-m planne-m1"><i class="fa fa-fw fa-money"></i> {{GetLocalResourceObject('lblPlannedCost')}}: </span> <span class="planne-m planne-m2"><b>{{obj.plannedCost}}</b> AED </span></p>
+                                                                <p data-toggle="tooltip" [attr.title]="GetLocalResourceObject('lblWeight')" style="font-size:small;"><span class="planne-m planne-m1"><i class="fa fa-fw fa-balance-scale"></i> {{GetLocalResourceObject('lblWeight')}}:</span> <span class="planne-m planne-m2"> <b>{{obj.weight}} %</b> </span></p>
+                                                              </div>
+
+                                                              <div class="mt-3">
+                                                                <button class="btn btn-success btn-sm" (click)='onEditOjective(obj.id)'
+                                                                        data-widget="Add" data-toggle="tooltip" [attr.title]="GetLocalResourceObject('lblEditObjective')" [attr.data-original-title]="GetLocalResourceObject('lblEditObjective')">
+                                                                  <i class="fa fa-pencil"></i>
+                                                                </button>
+                                                                &nbsp;
+                                                                <button class="btn btn-success btn-sm" (click)='onAddProject(obj.id)'
+                                                                        data-widget="Add" data-toggle="tooltip" [attr.title]="GetLocalResourceObject('lblAddProject')"
+                                                                        (data-original-title)="GetLocalResourceObject('lblAddProject')">
+                                                                  <i class="fa fa-plus"></i>
+                                                                </button>
+                                                                &nbsp;
+                                                                <button class="btn btn-success btn-sm" (click)='onProjectsListClick(obj.id)'
+                                                                        data-widget="Add" data-toggle="tooltip" [attr.title]="GetLocalResourceObject('lblProjectsList')" [attr.data-original-title]="GetLocalResourceObject('lblProjectsList')">
+                                                                  <i class="fa fa-list"></i>
+                                                                </button>
+                                                                &nbsp;
+                                                                <button class="btn btn-success btn-sm" (click)='onAddObjecitveKPIsResult(obj.id)'
+                                                                        data-widget="Add" data-toggle="tooltip" [attr.title]="GetLocalResourceObject('lblObjectiveKPIsAssessment')" [attr.data-original-title]="GetLocalResourceObject('lblObjectiveKPIsAssessment')">
+                                                                  <i class="fa fa-check"></i>
+                                                                </button>
+
+                                                              </div>
+
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <ng-container *ngFor='let obj of c.objectives'>
+                                                <div class="stiff-chart-level" [attr.data-level]="3">
+                                                    <div class="stiff-child" [attr.data-child-from]="obj.id">
+                                                        <ul>
+
+                                                            <li *ngFor='let proj of obj.Projects' [attr.data-parent]="proj.id">
+                                                                <div class="the-chart">
+                                                                    <p>{{proj.shortName}}</p>
+                                                                    <p data-toggle="tooltip" [attr.title]="GetLocalResourceObject('lblPlannedCost')" style="font-size:small;" ><i class="fa fa-fw fa-money"></i> {{GetLocalResourceObject('lblPlannedCost')}}: <b>{{proj.plannedCost}}</b> AED</p>
+                                                                    <p data-toggle="tooltip" [attr.title]="GetLocalResourceObject('lblWeight')" style="font-size:small;"><i class="fa fa-fw fa-balance-scale"></i> {{GetLocalResourceObject('lblWeight')}}: <b>{{proj.weight}}</b> %</p>
+                                                                    <br>
+
+                                                                    <button class="btn btn-success btn-sm" (click)='onEditProject(proj.id)'
+                                                                     data-widget="Add" data-toggle="tooltip" [attr.title]="GetLocalResourceObject('lblEditProject')" [attr.data-original-title]="GetLocalResourceObject('lblEditProject')">
+                                                                        <i class="fa fa-pencil"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </ng-container>
+                                        </ng-container>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <div class="modal fade" id="addObjectiveModal" style="display: none;">
+        <div class="modal-dialog modal-lg" style="overflow-y: auto; height: 500px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="closeaddObjectiveModal();" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title">{{GetLocalResourceObject('lblModalStrucObj')}}</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form role="form">
+                                <app-stratigicobjectives #ObjectiveModal [AddOnFly]='true' (AddOnFlyObjectiveSave)='AddOnFlyObjectiveSave($event);'></app-stratigicobjectives>
+                            </form>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="addProjectModal" style="display: none;">
+        <div class="modal-dialog modal-lg" style="overflow-y: auto; height: 500px;width:90%">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="closeProjectModal();" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title">{{GetLocalResourceObject('lblModalProjects')}}</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form role="form">
+                                <app-projects #ProjectModal [AddOnFly]='true' (AddOnFlyProjectSave)='AddOnFlyProjectSave($event);'></app-projects>
+                            </form>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="addAssessmentModal" style="display: none;">
+        <div class="modal-dialog modal-lg" style="overflow-y: auto; height: 500px;width:90%">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="closeAssessmentModal();" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title">{{GetLocalResourceObject('lblModalProjAssessment')}}</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form role="form">
+                                <app-projects-assessment #AssessmentModal [AddOnFly]='true' (AddOnFlyAssessmentSave)='AddOnFlyAssessmentSave($event);'></app-projects-assessment>
+                            </form>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="ObjeciveKpiModal" style="display: none;">
+            <div class="modal-dialog modal-lg" style="overflow-y: auto; height: 500px;width:90%">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" (click)="closeObjeciveKpiModal();" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <h4 class="modal-title">{{GetLocalResourceObject('lblModelObjectiveKPIs')}}</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form role="form">
+                                    <app-objective-kpi-assessment #ObjectiveKpiModal></app-objective-kpi-assessment>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

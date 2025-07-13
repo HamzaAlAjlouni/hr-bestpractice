@@ -1,0 +1,429 @@
+<section class="content-header">
+  <h1>
+    {{GetLocalResourceObject('EmployeesperfomanceAssessment')}}
+    <small>{{GetLocalResourceObject('OperationAssessment')}}</small></h1>
+  <ol class="breadcrumb">
+    <li>{{GetLocalResourceObject('OperationAssessment')}}</li>
+    <li class="active">{{GetLocalResourceObject('EmployeesperfomanceAssessment')}}</li>
+  </ol>
+</section>
+<section class="content">
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">{{GetLocalResourceObject('Search')}}</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form #SearchForm='ngForm'>
+          <div class="box-body">
+            <div class="row">
+              <div class="col-xs-3"><label>{{GetLocalResourceObject('Year')}}</label>
+                <select class="form-control" required name='AssesmentSearchYearID' id='AssesmentSearchYearID'
+                        [(ngModel)]='AssesmentSearchYearID' #AssesmentSearchYearIDRef='ngModel'>
+                  <option *ngFor="let x of YearList" value="{{x.id}}">{{x.year}}</option>
+                </select>
+
+
+                <ValidatorCallOut ID="AssesmentSearchYearIDValidator"
+                                  [Visibiltiy]="AssesmentSearchYearIDRef.invalid && AssesmentSearchYearIDRef.touched"
+                                  [ControlToValidate]="AssesmentSearchYearIDRef" ErrorMessage='This field is required.'>
+                </ValidatorCallOut>
+              </div>
+
+              <div class="col-xs-3"><label>Unit</label>
+                <select class="form-control" (change)='loadUnitEmployees()'
+                        name='ddlUnitSearch' id='ddlUnitSearch' [(ngModel)]='ddlUnitSearch'>
+                  <option value="">All</option>
+                  <option *ngFor="let x of UnitsList" value="{{x.ID}}">{{x.NAME}}</option>
+                </select>
+              </div>
+
+              <div class="col-xs-6">
+                <label>{{GetLocalResourceObject('Employee')}}</label>
+                <select class="form-control" required name='AssesmentSearchEmployeeID' id='AssesmentSearchEmployeeID'
+                        [(ngModel)]='AssesmentSearchEmployeeID' #AssesmentSearchEmployeeIDRef='ngModel'>
+                  <option *ngFor="let x of EmployeeList" value="{{x.ID}}">{{x.name1_1}} {{x.name1_4}}
+                  </option>
+                </select>
+
+                <ValidatorCallOut ID="AssesmentSearchEmployeeIDValidator"
+                                  [Visibiltiy]="AssesmentSearchEmployeeIDRef.invalid && AssesmentSearchEmployeeIDRef.touched"
+                                  [ControlToValidate]="AssesmentSearchEmployeeIDRef"
+                                  ErrorMessage='This field is required.'>
+                </ValidatorCallOut>
+
+              </div>
+            </div>
+          </div>
+          <!-- /.box-body -->
+
+          <div class="box-footer">
+            <button (click)='LoadAssesment();' class="btn btn-primary">{{GetLocalResourceObject('Search')}}</button>
+          </div>
+        </form>
+      </div>
+      <!-- /.box -->
+    </div>
+    <!--/.col (right) -->
+  </div>
+  <div class="row" *ngIf="AssesmentID">
+    <!-- left column -->
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">{{GetLocalResourceObject('AssesmentDetails')}}</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form #AssementForm='ngForm'>
+          <div class="box-body">
+            <div class="row">
+              <div class="col-xs-3"><label>{{GetLocalResourceObject('Year')}}</label>
+                <select disabled class="form-control" required name='AssesmentYearID' id='AssesmentYearID'
+                        [(ngModel)]='AssesmentYearID' #AssesmentYearIDRef='ngModel'>
+                  <option *ngFor="let x of YearList" value="{{x.id}}">{{x.year}}</option>
+                </select>
+
+                <ValidatorCallOut ID="AssesmentYearIDValidator"
+                                  [Visibiltiy]="AssesmentYearIDRef.invalid && AssesmentYearIDRef.touched"
+                                  [ControlToValidate]="AssesmentYearIDRef" ErrorMessage='This field is required.'>
+                </ValidatorCallOut>
+              </div>
+              <div class="col-xs-9">
+                <label>{{GetLocalResourceObject('Employee')}}</label>
+                <select disabled class="form-control" required name='AssesmentEmployeeID' id='AssesmentEmployeeID'
+                        [(ngModel)]='AssesmentEmployeeID' #AssesmentEmployeeIDRef='ngModel'>
+                  <option *ngFor="let x of EmployeeList" value="{{x.ID}}">{{x.name1_1}} {{x.name1_4}}
+                  </option>
+                </select>
+
+
+                <ValidatorCallOut ID="AssesmentEmployeeIDValidator"
+                                  [Visibiltiy]="AssesmentEmployeeIDRef.invalid && AssesmentEmployeeIDRef.touched"
+                                  [ControlToValidate]="AssesmentEmployeeIDRef" ErrorMessage='This field is required.'>
+                </ValidatorCallOut>
+
+              </div>
+              <div class="col-xs-3"><label>{{GetLocalResourceObject('KPICycle')}}</label>
+                <select disabled class="form-control" required name='AssesmentKpiCycle' id='AssesmentKpiCycle'
+                        [(ngModel)]='AssesmentKpiCycle' #AssesmentKpiCycleRef='ngModel'>
+                  <option *ngFor="let x of KpiCycleList" value="{{x.MINOR_NO}}">{{x.NAME}}</option>
+                </select>
+
+
+                <ValidatorCallOut ID="AssesmentKpiCycleValidator"
+                                  [Visibiltiy]="AssesmentKpiCycleRef.invalid && AssesmentKpiCycleRef.touched"
+                                  [ControlToValidate]="AssesmentKpiCycleRef" ErrorMessage='This field is required.'>
+                </ValidatorCallOut>
+
+              </div>
+              <div class="col-xs-9">
+                <label>{{GetLocalResourceObject('Reviewer')}}</label>
+                <select disabled class="form-control" required name='AssesmentReviewerID' id='AssesmentReviewerID'
+                        [(ngModel)]='AssesmentReviewerID' #AssesmentReviewerIDRef='ngModel'>
+                  <option *ngFor="let x of EmployeeList" value="{{x.ID}}">{{x.name1_1}} {{x.name1_4}}
+                  </option>
+                </select>
+
+
+                <ValidatorCallOut ID="AssesmentReviewerIDValidator"
+                                  [Visibiltiy]="AssesmentReviewerIDRef.invalid && AssesmentReviewerIDRef.touched"
+                                  [ControlToValidate]="AssesmentReviewerIDRef" ErrorMessage='This field is required.'>
+                </ValidatorCallOut>
+
+              </div>
+              <div class="col-xs-3">
+                <label>{{GetLocalResourceObject('AgreementDate')}}</label>
+                <input disabled required type="date" id='AssesmentAgreementDate' name='AssesmentAgreementDate'
+                       [(ngModel)]='AssesmentAgreementDate' #AssesmentAgreementDateRef='ngModel' class="form-control">
+
+                <ValidatorCallOut ID="AssesmentAgreementDateValidator"
+                                  [Visibiltiy]="AssesmentAgreementDateRef.invalid && AssesmentAgreementDateRef.touched"
+                                  [ControlToValidate]="AssesmentAgreementDateRef"
+                                  ErrorMessage='This field is required.'>
+                </ValidatorCallOut>
+              </div>
+              <div class="col-xs-3">
+                <label>{{GetLocalResourceObject('Result')}}</label>
+
+                <input disabled type="number" id='AssessmentResult' name='AssessmentResult'
+                       [(ngModel)]='AssessmentResult' #AssessmentResultRef='ngModel' class="form-control"
+                       [style.background-color]='getColorStyle(AssessmentColor)'>
+
+                <ValidatorCallOut ID="AssessmentResultValidator"
+                                  [Visibiltiy]="AssessmentResultRef.invalid && AssessmentResultRef.touched"
+                                  [ControlToValidate]="AssessmentResultRef" ErrorMessage='This field is required.'>
+                </ValidatorCallOut>
+              </div>
+
+              <div class="col-xs-3">
+                <label>{{GetLocalResourceObject('Target')}}</label>
+                <input disabled required type="number" id='AssessmentTarget' name='AssessmentTarget'
+                       [(ngModel)]='AssessmentTarget' #AssessmentTargetRef='ngModel' class="form-control">
+
+
+                <ValidatorCallOut ID="AssessmentTargetValidator"
+                                  [Visibiltiy]="AssessmentTargetRef.invalid && AssessmentTargetRef.touched"
+                                  [ControlToValidate]="AssessmentTargetRef" ErrorMessage='This field is required.'>
+                </ValidatorCallOut>
+              </div>
+            </div>
+          </div>
+          <!-- /.box-body -->
+
+
+        </form>
+      </div>
+      <!-- /.box -->
+    </div>
+    <!--/.col (right) -->
+  </div>
+  <div class="row" *ngIf="AssesmentID">
+    <div class="col-md-12">
+      <!-- Custom Tabs -->
+      <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs">
+          <li class="active">
+            <a href="#tab_1" data-toggle="tab">{{GetLocalResourceObject('ObjectivesAssessment')}}</a>
+          </li>
+          <li><a href="#tab_2" data-toggle="tab">{{GetLocalResourceObject('CompetenciesAssessment')}}</a></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="tab_1" style="background-color: #ecf0f5;">
+            <section class="content">
+
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="box">
+                    <div class="box-header">
+                      <h3 class="box-title">{{GetLocalResourceObject('ObjectivesAssessment')}}
+                      </h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body table-responsive no-padding" [(ngModel)]='formRow'>
+                      <table class="table table-hover">
+                        <tbody>
+                        <tr>
+                          <th>{{GetLocalResourceObject('Objective')}}</th>
+                          <th>{{GetLocalResourceObject('Q1')}}</th>
+                          <th>{{GetLocalResourceObject('Q2')}}</th>
+                          <th>{{GetLocalResourceObject('Q3')}}</th>
+                          <th>{{GetLocalResourceObject('Q4')}}</th>
+                          <th>{{GetLocalResourceObject('Result')}}</th>
+                          <th>Final Result(5)</th>
+                        </tr>
+                        <ng-container *ngFor="let x of employeeObjectivesAssessmentList;  let i = index">
+                          <tr>
+                            <td class="td-col1">{{x.ObjectiveName}}</td>
+
+                            <td class="td-col3"><input class="txt-ass1" type="number" [disabled]="x.Q1_Disabled"
+                                                       [(ngModel)]="x.Q1_A"> / {{x.Q1_P}}
+                            </td>
+                            <td class="td-col3"><input class="txt-ass1" type="number" [disabled]="x.Q2_Disabled"
+                                                       [(ngModel)]="x.Q2_A"> / {{x.Q2_P}}
+                            </td>
+                            <td class="td-col3"><input class="txt-ass1" type="number" [disabled]="x.Q3_Disabled"
+                                                       [(ngModel)]="x.Q3_A"> / {{x.Q3_P}}
+                            </td>
+                            <td class="td-col3"><input class="txt-ass1" type="number" [disabled]="x.Q4_Disabled"
+                                                       [(ngModel)]="x.Q4_A"> / {{x.Q4_P}}
+                            </td>
+                            <td>{{x.result_after_round}}</td>
+                            <td [style.background-color]='getColorStyle(x.color)'>{{x.final_point_result}}</td>
+                          </tr>
+
+                          <tr>
+                            <td colspan="8">
+                              <div>
+                                <table class="table" style="background-color: bisque">
+                                  <tbody>
+                                  <tr>
+                                    <th>{{GetLocalResourceObject('KPI')}}
+                                    </th>
+                                    <th>{{GetLocalResourceObject('Q1')}}
+                                    </th>
+                                    <th>{{GetLocalResourceObject('Q2')}}
+                                    </th>
+                                    <th>{{GetLocalResourceObject('Q3')}}
+                                    </th>
+                                    <th>{{GetLocalResourceObject('Q4')}}
+                                    </th>
+                                    <th>Result
+                                    </th>
+                                    <th>Result Desc.
+                                    </th>
+                                    <th>Note
+                                    </th>
+                                  </tr>
+
+                                  <tr *ngFor="let y of x.KPIs;  let i = index">
+                                    <td class="td-col1">{{y.ObjKpiName}}</td>
+                                    <td class="td-col3"><input class="txt-ass1" type="number" [disabled]="x.Q1_Disabled"
+                                                               [(ngModel)]="y.Q1_A"> / {{y.Q1_P}}
+                                    </td>
+                                    <td class="td-col3"><input class="txt-ass1" type="number" [disabled]="x.Q2_Disabled"
+                                                               [(ngModel)]="y.Q2_A"> / {{y.Q2_P}}
+                                    </td>
+                                    <td class="td-col3"><input class="txt-ass1" type="number" [disabled]="x.Q3_Disabled"
+                                                               [(ngModel)]="y.Q3_A"> / {{y.Q3_P}}
+                                    </td>
+                                    <td class="td-col3"><input class="txt-ass1" type="number" [disabled]="x.Q4_Disabled"
+                                                               [(ngModel)]="y.Q4_A"> / {{y.Q4_P}}
+                                    </td>
+                                    <td>{{y.ObjKPIResult}}</td>
+                                    <td>{{y.ObjKPIResultDesc}}</td>
+                                    <td style="width: 300px"><input style="width: 300px" type="text"
+                                                                    [(ngModel)]="y.ObjKPINote">
+                                    </td>
+                                  </tr>
+
+
+                                  </tbody>
+                                </table>
+                                <div class="box-footer">
+                                  <button (click)='SaveObjectiveKpiResults(x.KPIs)'
+                                          class="btn btn-primary">{{GetLocalResourceObject('Save')}}</button>
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                        </ng-container>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="box-footer">
+                      <button (click)='SaveObjectivesResults(employeeObjectivesAssessmentList);'
+                              class="btn btn-success">{{GetLocalResourceObject('Save')}}</button>
+                    </div>
+                    <!-- /.box-body -->
+                  </div>
+                </div>
+                <!-- /.col -->
+              </div>
+
+
+            </section>
+          </div>
+          <div class="tab-pane" id="tab_2" style="background-color: #ecf0f5;">
+
+            <section class="content">
+
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="box">
+                    <div class="box-header">
+                      <h3 class="box-title">{{GetLocalResourceObject('CompetenciesAssessment')}}
+                      </h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body table-responsive no-padding" [(ngModel)]='formRow'>
+                      <table class="table table-hover">
+
+                        <tbody>
+                        <tr>
+
+                          <th class="col-8">{{GetLocalResourceObject('Competency')}}</th>
+                          <th>{{GetLocalResourceObject('Q1')}}</th>
+                          <th>{{GetLocalResourceObject('Q2')}}</th>
+                          <th>{{GetLocalResourceObject('Q3')}}</th>
+                          <th>{{GetLocalResourceObject('Q4')}}</th>
+                          <th>{{GetLocalResourceObject('Result')}}</th>
+                        </tr>
+                        <ng-container *ngFor="let x of employeeCompetenciesAssessmentList;  let i = index">
+                          <tr>
+
+                            <td ng-style="max-width: 100px" style="max-width: 100px">
+                              {{x.competencyName}}</td>
+
+                            <td style="width: 50px"><input style="width: 50px" type="number" [disabled]="x.Q1_Disabled"
+                                                           [(ngModel)]="x.Q1_A"> / {{x.Q1_P}}
+                            </td>
+                            <td style="width: 50px"><input style="width: 50px" type="number" [disabled]="x.Q2_Disabled"
+                                                           [(ngModel)]="x.Q2_A"> / {{x.Q2_P}}
+                            </td>
+                            <td style="width: 50px"><input style="width: 50px" type="number" [disabled]="x.Q3_Disabled"
+                                                           [(ngModel)]="x.Q3_A"> / {{x.Q3_P}}
+                            </td>
+                            <td style="width: 50px"><input style="width: 50px" type="number" [disabled]="x.Q4_Disabled"
+                                                           [(ngModel)]="x.Q4_A"> / {{x.Q4_P}}
+                            </td>
+                            <td [style.background-color]="getColorStyle(x.color)">{{x.ResultAfterRound}}</td>
+
+                          </tr>
+
+                          <tr>
+                            <td colspan="8">
+
+                              <table class="table" style="background-color: bisque">
+                                <tbody>
+                                <tr>
+                                  <th>{{GetLocalResourceObject('KPI')}}</th>
+                                  <th>{{GetLocalResourceObject('Q1')}}</th>
+                                  <th>{{GetLocalResourceObject('Q2')}}</th>
+                                  <th>{{GetLocalResourceObject('Q3')}}</th>
+                                  <th>{{GetLocalResourceObject('Q4')}}</th>
+                                  <th>Result
+                                  </th>
+                                  <th>Result Desc.
+                                  </th>
+                                  <th>Note
+                                  </th>
+
+                                </tr>
+
+                                <tr *ngFor="let y of x.KPIs;  let i = index">
+                                  <td>{{y.CompKpiName}}</td>
+                                  <td><input style="width: 50px" type="number" [disabled]="x.Q1_Disabled"
+                                             [(ngModel)]="y.Q1_A"> / {{y.Q1_P}}
+                                  </td>
+                                  <td><input style="width: 50px" type="number" [disabled]="x.Q2_Disabled"
+                                             [(ngModel)]="y.Q2_A"> / {{y.Q2_P}}
+                                  </td>
+                                  <td><input style="width: 50px" type="number" [disabled]="x.Q3_Disabled"
+                                             [(ngModel)]="y.Q3_A"> / {{y.Q3_P}}
+                                  </td>
+                                  <td><input style="width: 50px" type="number" [disabled]="x.Q4_Disabled"
+                                             [(ngModel)]="y.Q4_A"> / {{y.Q4_P}}
+                                  </td>
+                                  <td>{{y.CompKPIResult}}</td>
+                                  <td>{{y.CompKPIResultDesc}}</td>
+                                  <td style="width: 300px"><input style="width: 300px" type="text"
+                                                                  [(ngModel)]="y.CompKPINote">
+                                  </td>
+                                </tr>
+                                </tbody>
+                              </table>
+
+
+                              <div class="box-footer">
+                                <button (click)='SaveCompetencyKpiResults(x.KPIs)'
+                                        class="btn btn-primary">{{GetLocalResourceObject('Save')}}</button>
+                              </div>
+
+                            </td>
+                          </tr>
+                        </ng-container>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="box-footer">
+                      <button (click)='SaveCompetenciesResults(employeeCompetenciesAssessmentList);'
+                              class="btn btn-success">{{GetLocalResourceObject('Save')}}</button>
+                    </div>
+                    <!-- /.box-body -->
+                  </div>
+                </div>
+                <!-- /.col -->
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,82 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    {{GetLocalResourceObject('lblSkillTypePageHeader')}}
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i>{{GetLocalResourceObject('lblHome')}}</a></li>
+    <li><a href="#">{{GetLocalResourceObject('lblSettings')}}</a></li>
+    <li class="active">{{GetLocalResourceObject('lblSkillTypePageHeader')}}</li>
+  </ol>
+</section>
+<!-- Grid-->
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">{{GetLocalResourceObject('lblSkillTypesSearchHeader')}}</h3>
+          <div class="pull-right box-tools">
+            <button *ngIf="modificationPermission" type="button" class="btn btn-success btn-sm btn-Add-right" (click)='AddMode();' data-widget="Add"
+              data-toggle="tooltip" title="" data-original-title="Add">
+              <i class="fa fa-plus"></i></button>
+          </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <DataGrid #gvSkills [ShowButtons]='true' [RowSelection]='false' [AllowExportExcel]='false'
+            [HideFooter]='false' (GridEvent)='gridEvent($event);'>
+          </DataGrid>
+        </div>
+        <!-- /.box-body -->
+      </div>
+      <!-- /.box -->
+
+
+      <!-- /.box -->
+    </div>
+    <!-- /.col -->
+  </div>
+
+  <div class="row" *ngIf="showSkillEntry" >
+    <!-- left column -->
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">{{GetLocalResourceObject('lblSkillsEntry')}}</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form #skillsForm='ngForm'>
+          <div class="box-body">
+            <div class="row">
+              <div class="col-xs-12">
+                <label for="exampleInputEmail1">{{GetLocalResourceObject('lblSkillsName')}}</label>
+                <input type="text" required class="form-control" name='txtSkillName' id='txtSkillName'
+                  [(ngModel)]='txtSkillName' #txtSkillNameRef='ngModel' >
+                  <ValidatorCallOut
+                  ID="txtSkillNameValidator"
+                  [Visibiltiy]="txtSkillNameRef.invalid && txtSkillNameRef.touched"
+                  [ControlToValidate]="txtSkillNameRef"
+                  ErrorMessage = 'This field is required.'>
+                  </ValidatorCallOut>
+              </div>
+
+            </div>
+          </div>
+          <!-- /.box-body -->
+
+          <div class="box-footer">
+            <button [disabled]='skillsForm.invalid' (click)='SaveSettings();'
+              class="btn btn-primary pull-right">{{GetLocalResourceObject('lblSkillsSave')}}</button>
+          </div>
+        </form>
+      </div>
+      <!-- /.box -->
+    </div>
+    <!--/.col (right) -->
+  </div>
+  <!-- /.row -->
+</section>
+<!-- /.content -->

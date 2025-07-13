@@ -1,0 +1,162 @@
+<!-- Content Header (Page header) -->
+<section class="content-header" *ngIf='!IsChildInOtherPage'>
+  <h1>
+      {{GetLocalResourceObject('lblPerformanceLevelsQuota')}}
+  </h1>
+</section>
+
+<section class="content">
+  <div class="row" *ngIf='!IsChildInOtherPage'>
+    <div class="col-md-12">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">{{GetLocalResourceObject('lblSearch')}}</h3>
+        </div>
+        <!-- /.box-header -->
+        <form #Search='ngForm'>
+          <div class="box-body">
+            <div class="row">
+              <div class="col-xs-3"><label>{{GetLocalResourceObject('lblYear')}}</label>
+                <select class="form-control" name='ddlYear' id='ddlYear' [(ngModel)]='ddlYear'>
+                  <option *ngFor="let x of YearList" value="{{x.id}}">{{x.year}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="box-footer">
+            <button [disabled]='Search.invalid' (click)='LoadAllPerformanceLevelQuotaView()'
+              class="btn btn-primary">{{GetLocalResourceObject('lblSearch')}}</button>
+          </div>
+        </form>
+        <!-- /.box-body -->
+      </div>
+      <!-- /.box -->
+
+
+      <!-- /.box -->
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
+
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">{{GetLocalResourceObject('lblPerformanceLevelsQuota')}}</h3>
+          <div class="pull-right box-tools">
+            <button type="button" class="btn btn-success btn-sm btn-Add-right" (click)='AddMode();' data-widget="Add"
+              data-toggle="tooltip" title="" data-original-title="Add">
+              <i class="fa fa-plus"></i></button>
+          </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+
+          <table class="table table-hover">
+            <tbody>
+              <tr>
+                <th>{{GetLocalResourceObject('lblProjectsResultsRanges')}}</th>
+                <ng-container *ngFor="let level of performanceLevelQuotaView.LevelsNumbers;  let i = index">
+                  <th>{{level}}</th>
+                </ng-container>
+                <th>{{GetLocalResourceObject('lblActions')}}</th>
+              </tr>
+              <tr *ngFor="let rangesQuota of performanceLevelQuotaView.RangesQuotaList;  let y = index">
+                <td class="td-col1">{{rangesQuota.FromPercentage}} % - {{rangesQuota.ToPercentage}} %</td>
+                <ng-container *ngFor="let Quota of rangesQuota.QuotaList;  let n = index">
+                  <td class="td-col3">
+                    {{Quota.QuotaTypeDesc}}
+                  </td>
+                </ng-container>
+                <td>
+                  <button
+                    (click)='DeletePerformanceQuota(rangesQuota.FromPercentage)'
+                    class="btn btn-primary">{{GetLocalResourceObject('lblDelete')}}</button>
+                  <button
+                    (click)='EditPerformanceQuota(rangesQuota.FromPercentage)'
+                    class="btn btn-primary">{{GetLocalResourceObject('lblEdit')}}</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- /.box-body -->
+      </div>
+      <!-- /.box -->
+
+
+      <!-- /.box -->
+    </div>
+    <!-- /.col -->
+  </div>
+
+  <div class="row" *ngIf='showEntry'>
+    <!-- left column -->
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Details</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form #LevelsForm='ngForm'>
+          <div class="box-body">
+            <div class="row">
+              <div class="col-xs-3">
+                <label>{{GetLocalResourceObject('lblFromPercentage')}}</label>
+                <input type="text" disabled='{{updateMode}}' required class="form-control" name='txtFromPercentage' id='txtFromPercentage'
+                  [(ngModel)]='RangesQuota.FromPercentage'>
+              </div>
+              <div class="col-xs-3">
+                <label>{{GetLocalResourceObject('lblToPercentage')}}</label>
+                <input type="text" required disabled='{{updateMode}}' class="form-control" name='txtToPercentage' id='txtToPercentage'
+                  [(ngModel)]='RangesQuota.ToPercentage'>
+              </div>
+            </div>
+
+            <div class="row">
+
+              <ng-container *ngFor="let Quota of RangesQuota.QuotaList;  let i = index">
+
+                <div class="col-xs-3">
+                  <label>{{this.userContextService.language == "en" ? GetLocalResourceObject('lblLevel') + " " + Quota.LevelNumber + " " +  GetLocalResourceObject('lblQuota') : GetLocalResourceObject('lblQuota')   + " " + GetLocalResourceObject('lblLevel') +  " " + Quota.LevelNumber }}</label>
+                  <select Required class="form-control" name="{{'ddlQuota' + Quota.LevelNumber}}" id="{{'ddlQuota' + Quota.LevelNumber}}" [(ngModel)]='Quota.QuotaType'>
+                      <option value="0"></option>
+                      <option value="1">{{GetLocalResourceObject('lblِAllQuota')}}</option>
+                      <option value="2">{{GetLocalResourceObject('lblRemaining')}}</option>
+                    </select>
+
+                </div>
+
+              </ng-container>
+            </div>
+
+
+
+          </div>
+
+          <!-- /.box-body -->
+
+          <div class="box-footer">
+            <button [disabled]='LevelsForm.invalid' (click)='SavePerformaceQuota();' class="btn btn-primary">{{GetLocalResourceObject('lblSave')}}</button>
+          </div>
+        </form>
+      </div>
+      <!-- /.box -->
+    </div>
+    <!--/.col (right) -->
+  </div>
+    <!-- /.row -->
+</section>
+
+
+<!-- Main content -->
+
+
+<!-- /.row -->
+
+<!-- /.content -->

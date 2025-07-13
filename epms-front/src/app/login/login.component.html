@@ -1,0 +1,75 @@
+<div class="login-container ">
+  <div class="col-4 col-md-4 col-sm-12 center-element ">
+
+    <div class="test">
+
+      <!-- /.login-logo -->
+      <div class="login-box-body p-5">
+        <div class="text-center">
+          <a href="#"
+          ><span style="color: #b78c4c; font-weight: 600; font-size:42px; ">BP- </span
+          ><b style="font-size:42px; color: #282727">IPMS </b></a>
+        </div>
+        <h1 class="text-center login-title">Sign in to start your session</h1>
+        <form action="#/positions" method="post">
+          <div class="form-group has-feedback ">
+            <input
+              #Username
+              class="form-control login-input"
+              id="Username"
+              placeholder="Username"
+              type="text"
+            />
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+          </div>
+          <div class="form-group has-feedback">
+            <input
+              #Password
+              class="form-control login-input"
+              id="Password"
+              placeholder="Password"
+              type="password"
+            />
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          </div>
+          <div class="row">
+            <!-- /.col -->
+            <div class="col-xs-12">
+              <button
+                (click)="login(Username.value, Password.value)"
+                class="btn btn-block btn-primary login-input"
+                type="submit"
+              >
+                Sign In
+              </button>
+            </div>
+            <!-- /.col -->
+          </div>
+          <!--
+                  <div class="row" >
+                      <div class="col-xs-12">
+                          <a href="#">I forgot my password</a>
+                      </div>
+                  </div> -->
+        </form>
+      </div>
+      <!-- /.login-box-body -->
+    </div>
+  </div>
+  <div class="col-6 col-md-6 col-sm-12 center-element ">
+
+    <img
+      class="" height="100%"
+      id=""
+      src="assets/dist/img/login-image-side.jpg"
+      width="100%"
+    />
+  </div>
+
+</div>
+
+
+<!--<div class=" col-6 col-md-4 col-sm-5 login-content">-->
+<!-- -->
+<!--</div>-->
+

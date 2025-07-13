@@ -1,0 +1,4 @@
+<app-master *ngIf='user.isLoggedIn'></app-master>
+<div class="login-page">
+    <app-login *ngIf='!user.isLoggedIn'></app-login>
+</div>

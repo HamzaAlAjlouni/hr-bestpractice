@@ -1,0 +1,191 @@
+<section class="content-header">
+  <h1>
+    {{ "setup.approval.approvalsSetup" | translate }}
+  </h1>
+  <ol class="breadcrumb">
+    <li>{{ "setup.approval.setup" | translate }}</li>
+    <li class="active">{{ "setup.approval.approvals" | translate }}</li>
+  </ol>
+</section>
+
+<section class="content">
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">{{ "setup.approval.search" | translate }}</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form #SearchForm="ngForm">
+          <div class="box-body">
+            <div class="row">
+              <div class="col-xs-12">
+                <label>{{ "setup.approval.pageName" | translate }}</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="txtPageNameSearch"
+                  id="txtPageNameSearch"
+                  [(ngModel)]="txtPageNameSearch"
+                />
+              </div>
+            </div>
+          </div>
+          <!-- /.box-body -->
+
+          <div class="box-footer">
+            <button (click)="LoadApprovals()" class="btn btn-primary">
+              {{ "setup.approval.search" | translate }}
+            </button>
+          </div>
+        </form>
+      </div>
+      <!-- /.box -->
+    </div>
+    <!--/.col (right) -->
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">
+            {{ "setup.approval.approvelList" | translate }}
+          </h3>
+          <div class="pull-right box-tools">
+            <button
+              type="button"
+              class="btn btn-success btn-sm btn-Add-right"
+              (click)="AddApproval()"
+              data-widget="Add"
+              data-toggle="tooltip"
+              title=""
+              data-original-title="Add"
+            >
+              <i class="fa fa-plus"></i>
+            </button>
+          </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <DataGrid
+            #gvApprovals
+            [ShowButtons]="true"
+            [RowSelection]="false"
+            [AllowExportExcel]="false"
+            [HideFooter]="false"
+            (GridEvent)="gvApprovalsHandler($event)"
+          >
+          </DataGrid>
+        </div>
+        <!-- /.box-body -->
+      </div>
+    </div>
+    <!-- /.col -->
+  </div>
+
+  <div *ngIf="showEntry" class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">
+            {{ "setup.approval.approvalSetupEntry" | translate }}
+          </h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form #approvalForm="ngForm">
+          <div class="box-body">
+            <div class="row">
+              <div class="col-xs-3">
+                <label>{{ "setup.approval.name" | translate }}</label>
+                <input
+                  type="text"
+                  required
+                  class="form-control"
+                  name="txtName"
+                  id="txtName"
+                  [(ngModel)]="txtName"
+                  #txtNameRef="ngModel"
+                />
+                <ValidatorCallOut
+                  ID="txtNameValidator"
+                  [Visibiltiy]="txtNameRef.invalid && txtNameRef.touched"
+                  [ControlToValidate]="txtNameRef"
+                  ErrorMessage="This field is required."
+                >
+                </ValidatorCallOut>
+              </div>
+
+              <div class="col-xs-3">
+                <label>{{ "setup.approval.reviewingUser" | translate }}</label>
+                <select
+                  required
+                  class="form-control"
+                  name="ddlUser"
+                  id="ddlUser"
+                  [(ngModel)]="ddlUser"
+                  #ddlUserRef="ngModel"
+                >
+                  <option *ngFor="let x of usersList" value="{{ x.USERNAME }}">
+                    {{ x.NAME }}
+                  </option>
+                </select>
+
+                <ValidatorCallOut
+                  ID="ddlUserValidator"
+                  [Visibiltiy]="ddlUserRef.invalid && ddlUserRef.touched"
+                  [ControlToValidate]="ddlUserRef"
+                  ErrorMessage="This field is required."
+                >
+                </ValidatorCallOut>
+              </div>
+
+              <div class="col-xs-3">
+                <label>{{ "setup.approval.pageName" | translate }}</label>
+                <select
+                  required
+                  class="form-control"
+                  name="ddlPageUrl"
+                  id="ddlPageUrl"
+                  [(ngModel)]="ddlPageUrl"
+                  #ddlPageUrlRef="ngModel"
+                >
+                  <option *ngFor="let x of MenuList" value="{{ x.URL }}">
+                    {{ x.NAME }}
+                  </option>
+                </select>
+
+                <ValidatorCallOut
+                  ID="ddlPageUrlValidatior"
+                  [Visibiltiy]="ddlPageUrlRef.invalid && ddlPageUrlRef.touched"
+                  [ControlToValidate]="ddlPageUrlRef"
+                  ErrorMessage="This field is required."
+                >
+                </ValidatorCallOut>
+              </div>
+            </div>
+          </div>
+          <!-- /.box-body -->
+
+          <div class="box-footer">
+            <button
+              [disabled]="approvalForm.invalid"
+              (click)="SaveApproval()"
+              class="btn btn-primary"
+            >
+              {{ "setup.approval.save" | translate }}
+            </button>
+          </div>
+        </form>
+      </div>
+      <!-- /.box -->
+    </div>
+    <!--/.col (right) -->
+  </div>
+</section>

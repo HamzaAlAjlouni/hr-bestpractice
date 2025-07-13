@@ -1,0 +1,487 @@
+<section class="content-header" *ngIf="!AddOnFly">
+  <h1>
+    {{ "employee.employees" | translate }}
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+      <a href="#">{{ "employee.setup" | translate }}</a>
+    </li>
+    <li class="active">{{ "employee.employees" | translate }}</li>
+  </ol>
+</section>
+
+<section class="content">
+  <div class="row" *ngIf="!AddOnFly">
+    <div class="col-md-12">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">{{ "employee.search" | translate }}</h3>
+        </div>
+        <div class="box-body">
+          <div class="row">
+            <div class="col-xs-3">
+              <label>{{ "employee.EmployeeNo" | translate }}</label>
+              <input
+                type="text"
+                class="form-control"
+                id="txtSearchEmpNo"
+                name="txtSearchEmpNo"
+                [(ngModel)]="txtSearchEmpNo"
+              />
+            </div>
+            <div class="col-xs-3">
+              <label>{{ "employee.Name" | translate }}</label>
+              <input
+                type="text"
+                class="form-control"
+                id="txtSearchEmpName"
+                name="txtSearchEmpName"
+                [(ngModel)]="txtSearchEmpName"
+              />
+            </div>
+            <div class="col-xs-3">
+              <label>{{ "employee.unit" | translate }}</label>
+              <select
+                class="form-control"
+                id="ddlSearchUnits"
+                name="ddlSearchUnits"
+                [(ngModel)]="ddlSearchUnits"
+              >
+                <option
+                  *ngFor="let unit of UnitsSearchList"
+                  value="{{ unit.ID }}"
+                >
+                  {{ unit.NAME }}
+                </option>
+              </select>
+            </div>
+            <div class="col-xs-3">
+              <label>{{ "employee.position" | translate }}</label>
+              <select
+                class="form-control"
+                id="ddlSearchPosition"
+                name="ddlSearchPosition"
+                [(ngModel)]="ddlSearchPosition"
+              >
+                <option
+                  *ngFor="let pos of PositionsSearchList"
+                  value="{{ pos.ID }}"
+                >
+                  {{ pos.NAME }}
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-3">
+              <label>{{ "employee.status" | translate }}</label>
+              <select
+                class="form-control"
+                id="ddlSearchStatus"
+                name="ddlSearchStatus"
+                [(ngModel)]="ddlSearchStatus"
+              >
+                <option value="">{{ "employee.all" | translate }}</option>
+                <option value="1">{{ "employee.active" | translate }}</option>
+                <option value="2">{{ "employee.inactive" | translate }}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="box-footer">
+          <button
+            type="submit"
+            (click)="SearchEmployees()"
+            class="btn btn-primary pull-right"
+          >
+            {{ "employee.search" | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="!AddOnFly">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">{{ "employee.employees" | translate }}</h3>
+          <div class="pull-right box-tools">
+            <button *ngIf="modificationPermission"
+              type="button"
+              class="btn btn-success btn-sm btn-Add-right"
+              data-widget="Add"
+              (click)="addMode()"
+              data-toggle="tooltip"
+              title=""
+              data-original-title="Add"
+            >
+              <i class="fa fa-plus"></i>
+            </button>
+            <button *ngIf="modificationPermission"
+              type="button"
+              class="btn btn-primary btn-sm"
+              data-widget="Import"
+              data-toggle="tooltip"
+              title=""
+              (click)="ShowImportPnl()"
+              data-original-title="Import"
+            >
+              <i class="fa fa-download"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="box-body">
+          <DataGrid
+            #gvEmployees
+            [ShowButtons]="true"
+            [RowSelection]="false"
+            [AllowExportExcel]="false"
+            [HideFooter]="false"
+            (GridEvent)="gridEvent($event)"
+          >
+          </DataGrid>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="modificationPermission" class="row">
+    <div class="col-xs-12" id="empEntry">
+      <form #EmpDetails="ngForm">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="box box-primary">
+              <div class="box-header with-border" *ngIf="!AddOnFly">
+                <h3 class="box-title">
+                  {{ "employee.employeeEntry" | translate }}
+                </h3>
+              </div>
+              <div class="box-body">
+                <div class="row">
+                  <div class="col-xs-9">
+                    <div class="row">
+                      <div class="col-xs-3">
+                        <label>{{ "employee.employeeNo" | translate }}</label>
+                        <input
+                          required
+                          type="text"
+                          id="txtEmpNumber"
+                          name="txtEmpNumber"
+                          [(ngModel)]="txtEmpNumber"
+                          #txtEmpNumberRef="ngModel"
+                          class="form-control"
+                        />
+                        <ValidatorCallOut
+                          ID="EmpNumberValidator"
+                          [Visibiltiy]="
+                            txtEmpNumberRef.invalid && txtEmpNumberRef.touched
+                          "
+                          [ControlToValidate]="txtEmpNumberRef"
+                          ErrorMessage="This field is required."
+                        >
+                        </ValidatorCallOut>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-3">
+                        <label>{{ "employee.firstName" | translate }}</label>
+                        <input
+                          required
+                          type="text"
+                          id="txtFirstEmpName"
+                          name="txtFirstEmpName"
+                          [(ngModel)]="txtFirstEmpName"
+                          #txtFirstEmpNameRef="ngModel"
+                          class="form-control"
+                        />
+                        <ValidatorCallOut
+                          ID="txtFirstEmpNameValidator"
+                          [Visibiltiy]="
+                            txtFirstEmpNameRef.invalid &&
+                            txtFirstEmpNameRef.touched
+                          "
+                          [ControlToValidate]="txtFirstEmpNameRef"
+                          ErrorMessage="This field is required."
+                        >
+                        </ValidatorCallOut>
+                      </div>
+                      <div class="col-xs-3">
+                        <label>{{ "employee.scondName" | translate }}</label>
+                        <input
+                          type="text"
+                          id="txtSecondName"
+                          name="txtSecondName"
+                          [(ngModel)]="txtSecondName"
+                          class="form-control"
+                        />
+                      </div>
+                      <div class="col-xs-3">
+                        <label>{{ "employee.thirdName" | translate }}</label>
+                        <input
+                          type="text"
+                          id="txtThirdName"
+                          name="txtThirdName"
+                          [(ngModel)]="txtThirdName"
+                          class="form-control"
+                        />
+                      </div>
+                      <div class="col-xs-3">
+                        <label>{{ "employee.familyName" | translate }}</label>
+                        <input
+                          required
+                          type="text"
+                          id="txtFamilyName"
+                          name="txtFamilyName"
+                          [(ngModel)]="txtFamilyName"
+                          class="form-control"
+                          #txtFamilyNameRef="ngModel"
+                        />
+                        <ValidatorCallOut
+                          ID="txtFamilyNameValidator"
+                          [Visibiltiy]="
+                            txtFamilyNameRef.invalid && txtFamilyNameRef.touched
+                          "
+                          [ControlToValidate]="txtFamilyNameRef"
+                          ErrorMessage="This field is required."
+                        >
+                        </ValidatorCallOut>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-3" style="text-align: end">
+                    <a class="btn btn-app" style="height: 128px">
+                      <img
+                        (click)="uploadImg(EmpImg)"
+                        class="profile-user-img img-responsive img-circle"
+                        id="imgEmpPic"
+                        src="assets/dist/img/Default.jpg"
+                      />
+                      <input
+                        type="file"
+                        id="EmpImg"
+                        (change)="PreviewImg()"
+                        name="EmpImg"
+                        accept="image/x-png,image/gif,image/jpeg"
+                        #EmpImg
+                        style="display: none"
+                      />
+                    </a>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-3">
+                    <label>{{ "employee.unit" | translate }}</label>
+                    <select
+                      required
+                      class="form-control"
+                      id="ddlUnits"
+                      name="ddlUnits"
+                      [(ngModel)]="ddlUnits"
+                      #ddlUnitsRef="ngModel"
+                    >
+                      <option
+                        *ngFor="let unit of UnitsList"
+                        value="{{ unit.ID }}"
+                      >
+                        {{ unit.NAME }}
+                      </option>
+                    </select>
+                    <ValidatorCallOut
+                      ID="ddlUnitsValidator"
+                      [Visibiltiy]="ddlUnitsRef.invalid && ddlUnitsRef.touched"
+                      [ControlToValidate]="ddlUnitsRef"
+                      ErrorMessage="This field is required."
+                    >
+                    </ValidatorCallOut>
+                  </div>
+                  <div class="col-xs-6">
+                    <label>{{ "employee.position" | translate }}</label>
+                    <select
+                      required
+                      class="form-control"
+                      id="ddlPosition"
+                      name="ddlPosition"
+                      [(ngModel)]="ddlPosition"
+                      #ddlPositionRef="ngModel"
+                    >
+                      <option
+                        *ngFor="let pos of postionsList"
+                        value="{{ pos.ID }}"
+                      >
+                        {{ pos.NAME }}
+                      </option>
+                    </select>
+                    <ValidatorCallOut
+                      ID="ddlPositionValidator"
+                      [Visibiltiy]="
+                        ddlPositionRef.invalid && ddlPositionRef.touched
+                      "
+                      [ControlToValidate]="ddlPositionRef"
+                      ErrorMessage="This field is required."
+                    >
+                    </ValidatorCallOut>
+                  </div>
+
+                  <div class="col-xs-3">
+                    <label>{{ "employee.scale" | translate }}</label>
+                    <select
+                      required
+                      class="form-control"
+                      id="ddlScale"
+                      name="ddlScale"
+                      [(ngModel)]="ddlScale"
+                      #ddlScaleRef="ngModel"
+                    >
+                      <option
+                        *ngFor="let scale of ScaleList"
+                        value="{{ scale.ID }}"
+                      >
+                        {{ scale.NAME }}
+                      </option>
+                    </select>
+                    <ValidatorCallOut
+                      ID="ddlScaleValidator"
+                      [Visibiltiy]="ddlScaleRef.invalid && ddlScaleRef.touched"
+                      [ControlToValidate]="ddlScaleRef"
+                      ErrorMessage="This field is required."
+                    >
+                    </ValidatorCallOut>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>{{ "employee.address" | translate }}</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="txtAddress"
+                    name="txtAddress"
+                    [(ngModel)]="txtAddress"
+                  />
+                </div>
+
+                <div class="row">
+                  <div class="col-xs-4">
+                    <label>{{ "employee.phone1" | translate }}</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="00962-xxxxxxxx"
+                      id="txtPhone1"
+                      name="txtPhone1"
+                      [(ngModel)]="txtPhone1"
+                    />
+                  </div>
+                  <div class="col-xs-4">
+                    <label>{{ "employee.phone2" | translate }}</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="00962-xxxxxxxx"
+                      id="txtPhone2"
+                      name="txtPhone2"
+                      [(ngModel)]="txtPhone2"
+                    />
+                  </div>
+                  <div class="col-xs-4">
+                    <label>{{ "employee.manger" | translate }}</label>
+                    <select
+                      [disabled]="AddOnFly"
+                      class="form-control"
+                      id="ddlManagers"
+                      name="ddlManagers"
+                      [(ngModel)]="ddlManagers"
+                    >
+                      <option
+                        *ngFor="let emp of ManagersList"
+                        value="{{ emp.ID }}"
+                      >
+                        {{ emp.fullName }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-xs-4">
+                    <div class="checkbox">
+                      <label>
+                        <input
+                          type="checkbox"
+                          id="chkStatus"
+                          name="chkStatus"
+                          [(ngModel)]="chkStatus"
+                        />
+                        {{ "employee.active" | translate }}
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="box-footer">
+                <button
+
+                  type="submit"
+                  class="btn btn-primary pull-right"
+                  [disabled]="EmpDetails.invalid"
+                  (click)="SaveEmployee()"
+                >
+                  {{ "employee.save" | translate }}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <form #ImportEmployees="ngForm" *ngIf="ImportFile">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="box box-primary">
+              <div class="box-header with-border">
+                <h3 class="box-title">
+                  {{ "employee.importEmployees" | translate }}
+                </h3>
+                <div class="pull-right box-tools">
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-sm"
+                    data-widget="Cancel"
+                    data-toggle="tooltip"
+                    title=""
+                    (click)="HideImportPnl()"
+                    data-original-title="Cancel"
+                  >
+                    <i class="fa fa-close"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="box-body">
+                <div class="row">
+                  <div class="col-xs-3">
+                    <label>{{ "employee.chooseFile" | translate }}</label>
+                    <input
+                      required
+                      class="form-control"
+                      type="file"
+                      #fileInput
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="box-footer">
+                <button
+                  type="submit"
+                  class="btn btn-primary pull-right"
+                  (click)="ImportFromExcel()"
+                  [disabled]="ImportEmployees.invalid"
+                >
+                  {{ "employee.import" | translate }}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

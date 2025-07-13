@@ -1,0 +1,505 @@
+<!-- Content Header (Page header) -->
+<section class="content-header" *ngIf='!AddOnFly'>
+  <h1>
+    {{GetLocalResourceObject('lblStratigicObjectives')}}
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i>{{'strategic.strategicObjective.home'| translate}}</a></li>
+    <li><a href="#">{{GetLocalResourceObject('lblOrganization')}}</a></li>
+    <li class="active">{{GetLocalResourceObject('lblStratigicObjectives')}}</li>
+  </ol>
+</section>
+<!--Search-->
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">{{GetLocalResourceObject('lblCompanyInfo')}}</h3>
+          <div class="pull-right box-tools">
+            <button type="button" class="btn btn-success btn-sm btn-Add-right" (click)='toggleComp()' data-widget=""
+                    data-toggle="tooltip" title="" data-original-title="">
+              <i class="fa fa-expand"></i></button>
+          </div>
+        </div>
+        <div class="box-body" id='dvCompInfo' style="display: none;">
+          <div class='row'>
+            <div class="col-md-12" [innerHTML]='txtMission'>
+
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12" [innerHTML]='txtVision'>
+
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-md-12" [innerHTML]='txtValues'>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  <div class="row" *ngIf='!AddOnFly'>
+    <!-- left column -->
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">{{GetLocalResourceObject('lblSearch')}}</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form role="form">
+          <div class="box-body">
+            <div class="row">
+
+              <div class="col-xs-3">
+                <label>{{GetLocalResourceObject('lblYear')}}</label>
+
+                <select required class="form-control" placeholder="Please Select" name='ddlSearchObjectiveYear'
+                        id='ddlSearchObjectiveYear' [(ngModel)]='ddlObjectiveYear' #ddlObjectiveYearRef='ngModel'>
+                  <option *ngFor="let year of years" [value]="year.id">
+                    {{year.year}}
+                  </option>
+                </select>
+
+                <ValidatorCallOut ID="ddlObjectiveYearValidator"
+                                  [Visibiltiy]="ddlObjectiveYearRef.invalid && ddlObjectiveYearRef.touched"
+                                  [ControlToValidate]="ddlObjectiveYearRef" ErrorMessage='This field is required.'>
+                </ValidatorCallOut>
+              </div>
+
+              <div class="col-xs-3">
+                <label>{{GetLocalResourceObject('lblBSC')}}</label>
+                <select class="form-control" name='ddlObjBSC' id='ddlObjBSC' [(ngModel)]='ddlObjBSCSearch'>
+                  <option value='' selected>{{GetLocalResourceObject('lblKpiBSCALLOption')}}</option>
+                  <option value='1'>{{GetLocalResourceObject('lblKpiBSCFinancialOption')}}</option>
+                  <option value='2'>{{GetLocalResourceObject('lblKpiBSCCustomersOption')}}</option>
+                  <option value='3'>{{GetLocalResourceObject('lblKpiBSCInternalProcessOption')}}</option>
+                  <option value='4'>{{GetLocalResourceObject('lblKpiBSCLearninggrowthOption')}}</option>
+                </select>
+              </div>
+
+            </div>
+
+          </div>
+          <!-- /.box-body -->
+
+          <div class="box-footer" style="text-align:right">
+
+            <button type="submit" (click)='SearchAllStratigicObjectives()'
+                    class="btn btn-primary">{{GetLocalResourceObject('lblSearch')}}</button>
+
+          </div>
+
+        </form>
+      </div>
+      <!-- /.box -->
+    </div>
+    <!--/.col (right) -->
+  </div>
+  <!-- /.row -->
+
+  <div class="row" *ngIf='!AddOnFly'>
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">{{GetLocalResourceObject('lblStratigicObjectives')}}</h3>
+          <div class="pull-right box-tools">
+            <button *ngIf="modificationPermission && hasEditPermission()" type="button" class="btn btn-success btn-sm btn-Add-right"
+                    (click)='AddMode();' data-widget="Add"
+                    data-toggle="tooltip" title="" data-original-title="Add">
+              <i class="fa fa-plus"></i></button>
+          </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <DataGrid #gvObjectives [ShowButtons]='true' [RowSelection]='false' [AllowExportExcel]='false'
+                    [HideFooter]='false' (GridEvent)='gvObjectivesEvent($event);'>
+          </DataGrid>
+        </div>
+        <!-- /.box-body -->
+      </div>
+      <!-- /.box -->
+
+
+      <!-- /.box -->
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
+
+  <div class="row" *ngIf='addMode || updateMode'>
+    <!-- left column -->
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-primary">
+        <div class="box-header with-border" *ngIf='!AddOnFly'>
+          <h3 class="box-title">{{GetLocalResourceObject('lblDetails')}}</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form #ObjectivesForm='ngForm'>
+          <div class="box-body">
+            <div class="row">
+
+              <div class="col-xs-6">
+                <label>{{GetLocalResourceObject('lblObjectiveName')}}</label>
+                <input type="text" required class="form-control" name='txtObjectiveName' id='txtObjectiveName'
+                       [(ngModel)]='txtObjectiveName' #txtObjectiveNameRef='ngModel'>
+                <ValidatorCallOut ID="txtObjectiveNameValidator"
+                                  [Visibiltiy]="txtObjectiveNameRef.invalid && txtObjectiveNameRef.touched"
+                                  [ControlToValidate]="txtObjectiveNameRef" ErrorMessage='This field is required.'>
+                </ValidatorCallOut>
+              </div>
+
+              <div class="col-xs-3">
+                <label>{{GetLocalResourceObject('lblObjectivesWeight')}}</label>
+                <input type="number" required [max]="remainingWeight" min="1" class="form-control"
+                       name='txtObjectiveWeight' id='txtObjectiveWeight' [(ngModel)]='txtObjectiveWeight'
+                       #txtObjectiveWeightRef='ngModel'>
+
+                <ValidatorCallOut ID="txtObjectiveWeightValidator"
+                                  [Visibiltiy]="txtObjectiveWeightRef.invalid && txtObjectiveWeightRef.touched"
+                                  [ControlToValidate]="txtObjectiveWeightRef" ErrorMessage='This field is required.'>
+                </ValidatorCallOut>
+              </div>
+
+              <div class="col-xs-3">
+                <label>{{GetLocalResourceObject('lblBSC')}}</label>
+                <select class="form-control" required name='ddlObjBSC' id='ddlObjBSC' [(ngModel)]='ddlObjBSC'
+                        #ddlObjBSCRef='ngModel'>
+                  <option value='1'>{{GetLocalResourceObject('lblKpiBSCFinancialOption')}}</option>
+                  <option value='2'>{{GetLocalResourceObject('lblKpiBSCCustomersOption')}}</option>
+                  <option value='3'>{{GetLocalResourceObject('lblKpiBSCInternalProcessOption')}}</option>
+                  <option value='4'>{{GetLocalResourceObject('lblKpiBSCLearninggrowthOption')}}</option>
+                </select>
+
+                <ValidatorCallOut ID="ddlObjBSCValidator" [Visibiltiy]="ddlObjBSCRef.invalid && ddlObjBSCRef.touched"
+                                  [ControlToValidate]="ddlObjBSCRef" ErrorMessage='This field is required.'>
+                </ValidatorCallOut>
+              </div>
+
+            </div>
+          </div>
+          <!-- /.box-body -->
+
+          <div class="box-footer">
+            <button [disabled]='ObjectivesForm.invalid' (click)='SaveStratigicObjective();'
+                    class="btn btn-primary pull-right">{{GetLocalResourceObject('lblSave')}}</button>
+          </div>
+        </form>
+      </div>
+      <!-- /.box -->
+    </div>
+    <!--/.col (right) -->
+  </div>
+
+  <div class="row" *ngIf='showTabs' id='tabsDiv'>
+    <div class="col-md-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">{{lblSelectedStratigicObjective}}</h3>
+        </div>
+      </div>
+      <!-- Custom Tabs -->
+      <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs">
+          <li class="active">
+            <a href="#tab_1" data-toggle="tab">{{GetLocalResourceObject('lblTabRelatedKpis')}}</a>
+          </li>
+          <li>
+            <a href="#tab_2" data-toggle="tab">{{GetLocalResourceObject('lblTabRelatedProjets')}}</a>
+          </li>
+
+          <li>
+            <a href="#tab_3"
+               data-toggle="tab">{{'strategic.strategicObjective.objectivesEvidencesDocument'| translate}}</a>
+          </li>
+
+        </ul>
+        <div class="tab-content">
+
+          <div class="tab-pane active" id="tab_1" style="background-color: #ecf0f5;">
+            <section class="content">
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="box">
+                    <div class="box-header">
+                      <h3 class="box-title">
+                        {{GetLocalResourceObject('lblObjKpiList')}}
+                      </h3>
+                      <div class="pull-right box-tools">
+                        <button *ngIf="hasEditPermission()" type="button" class="btn btn-success btn-sm" (click)='ObjectiveKpiAdd();'
+                                data-widget="Add" data-toggle="tooltip" title="" data-original-title="Add">
+                          <i class="fa fa-plus"></i></button>
+                      </div>
+                    </div>
+                    <div class="box-body">
+<!--                    -->
+<!--                      <div class="row">-->
+<!--                        <div class="col-xs-3">-->
+<!--                          <label>{{GetLocalResourceObject('lblBSC')}}</label>-->
+<!--                          <select class="form-control" (change)='refreshObjKpisList()' name='ddlObjBSC' id='ddlObjBSC'-->
+<!--                                  [(ngModel)]='ddlObjKpiBSCSearch'>-->
+<!--                            <option value='' selected>{{GetLocalResourceObject('lblKpiBSCALLOption')}}</option>-->
+<!--                            <option *ngFor="let bsc of bscList" [value]="bsc.id">{{bsc.name}}</option>-->
+
+<!--                          </select>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                      <br>-->
+                      <DataGrid #gvKPIs [ShowButtons]='true' [RowSelection]='false' [AllowExportExcel]='false'
+                                [HideFooter]='false' (GridEvent)='gvKPIsHandler($event);'>
+                      </DataGrid>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row" *ngIf='showKpiEntry'>
+                <div class="col-md-12">
+                  <div class="box">
+                    <div class="box-header">
+                      <h3 class="box-title">
+                        {{GetLocalResourceObject('lblObjKpiEntry')}}
+                      </h3>
+                    </div>
+                    <form #ObjectiveKPIsEntry='ngForm'>
+                      <div class="box-body">
+
+                        <div class="row">
+                          <div class="col-xs-5">
+                            <label>{{GetLocalResourceObject('lblKpiName')}}</label>
+                            <input class="form-control" type="text" name='txtKpiName' id='txtKpiName'
+                                   [(ngModel)]='txtKpiName' required #txtKpiNameRef='ngModel'/>
+
+                            <ValidatorCallOut ID="txtKpiNameValidator"
+                                              [Visibiltiy]="txtKpiNameRef.invalid && txtKpiNameRef.touched"
+                                              [ControlToValidate]="txtKpiNameRef"
+                                              ErrorMessage='This field is required.'>
+                            </ValidatorCallOut>
+                          </div>
+                          <div class="col-xs-7">
+                            <label>{{GetLocalResourceObject('lblKpiDesc')}}</label>
+                            <textarea class="form-control" name='txtDesc' id='txtDesc' [(ngModel)]='txtKpiDesc'>
+                                                            </textarea>
+                          </div>
+                        </div>
+                        <div class="row " style="margin-top: 1rem;">
+                          <div class="col-xs-3">
+                            <label> Better Up/Down </label>
+                            <select
+                              required
+                              class="form-control"
+                              name="ddlBetterUpDown"
+                              id="ddlBetterUpDown"
+                              [(ngModel)]="ddlBetterUpDown"
+                              #ddlBetterUpDownRef="ngModel"
+                              (change)="betterUpDownChange()"
+                            >
+                              <option
+                                *ngFor="let x of BetterUpDownList"
+                                value="{{ x.id }}"
+                              >
+                                {{ x.name }}
+                              </option>
+                            </select>
+
+                            <ValidatorCallOut
+                              ID="betterUpDownValidator"
+                              [Visibiltiy]="ddlBetterUpDownRef.invalid && ddlBetterUpDownRef.touched"
+                              [ControlToValidate]="ddlBetterUpDownRef"
+                              ErrorMessage="This field is required.">
+                            </ValidatorCallOut>
+                          </div>
+                          <div class="col-xs-3">
+                            <label>{{GetLocalResourceObject('lblKpiMeasure')}}</label>
+                            <select class="form-control" required name='ddlMeasurement' id='ddlMeasurement'
+                                    [(ngModel)]='ddlKpiMeasurement' #ddlKpiMeasurementRef='ngModel'>
+                              <option value='1'>{{GetLocalResourceObject('lblKpiMeasurePercentageOption')}}</option>
+                              <option value='2'>{{GetLocalResourceObject('lblKpiMeasureValueOption')}}</option>
+                            </select>
+
+                            <ValidatorCallOut ID="ddlKpiMeasurementValidator"
+                                              [Visibiltiy]="ddlKpiMeasurementRef.invalid && ddlKpiMeasurementRef.touched"
+                                              [ControlToValidate]="ddlKpiMeasurementRef"
+                                              ErrorMessage='This field is required.'>
+                            </ValidatorCallOut>
+                          </div>
+                          <div class="col-xs-3">
+                            <label>{{GetLocalResourceObject('lblKpiTarget')}}</label>
+                            <input class="form-control" required type="number" name="txtTarget" id='txtTarget'
+                                   [(ngModel)]='txtKpiTarget' #txtKpiTargetRef='ngModel'/>
+
+                            <ValidatorCallOut ID="txtKpiTargetValidator"
+                                              [Visibiltiy]="txtKpiTargetRef.invalid && txtKpiTargetRef.touched"
+                                              [ControlToValidate]="txtKpiTargetRef"
+                                              ErrorMessage='This field is required.'>
+                            </ValidatorCallOut>
+                          </div>
+                          <div class="col-xs-3">
+                            <label>{{GetLocalResourceObject('lblKpiWeight')}}</label>
+                            <input class="form-control" [max]='remainingKPIWeight' [min]='0' required type="number"
+                                   name="txtweight" id='txtweight' [(ngModel)]='txtKpiweight'
+                                   #txtKpiweightRef='ngModel'/>
+
+                            <ValidatorCallOut ID="txtKpiweightValidator"
+                                              [Visibiltiy]="txtKpiweightRef.invalid && txtKpiweightRef.touched"
+                                              [ControlToValidate]="txtKpiweightRef"
+                                              ErrorMessage='This field is required.'>
+                            </ValidatorCallOut>
+                          </div>
+
+
+                          <!--                          <div class="col-xs-3">-->
+                          <!--                            <label>{{GetLocalResourceObject('lblBSC')}}</label>-->
+                          <!--                            <select class="form-control" required name='ddlBSC' id='ddlBSC' [(ngModel)]='ddlKpiBSC'-->
+                          <!--                                    #ddlKpiBSCRef='ngModel'>-->
+                          <!--                              <option *ngFor="let bsc of bscList" [value]="bsc.id">{{bsc.name}}</option>-->
+                          <!--                            </select>-->
+
+                          <!--                            <ValidatorCallOut ID="ddlKpiBSCValidator"-->
+                          <!--                                              [Visibiltiy]="ddlKpiBSCRef.invalid && ddlKpiBSCRef.touched"-->
+                          <!--                                              [ControlToValidate]="ddlKpiBSCRef" ErrorMessage='This field is required.'>-->
+                          <!--                            </ValidatorCallOut>-->
+                          <!--                          </div>-->
+
+                        </div>
+
+                      </div>
+                    </form>
+                    <div class="box-footer" style="text-align:right">
+                      <button [disabled]='ObjectiveKPIsEntry.invalid' (click)='SaveObjectiveKpi()'
+                              class="btn btn-primary">{{GetLocalResourceObject('btnKpiSave')}}</button>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+              <div *ngIf="showEvidancesKPI">
+                <div class="box-header" style="vertical-align:middle;">
+                  <h3 class="box-title">{{'strategic.strategicObjective.evidancesForKPI'| translate}}</h3>
+                  <div class="pull-right box-tools">
+                    <button *ngIf="hasEditPermission()" type="button" class="btn btn-success btn-sm btn-Add-right"
+                            (click)="viewAddEvidancesForKPI()" data-widget="Add" data-toggle="tooltip" title=""
+                            data-original-title="Add">
+                      <i class="fa fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
+                <DataGrid #evidancesKPI [ShowButtons]='true' [RowSelection]='false' [AllowExportExcel]='false'
+                          [HideFooter]='false' (GridEvent)='evidancesKPIHandler($event)'>
+                </DataGrid>
+                <div *ngIf="showAddEvidance">
+                  <label>{{GetLocalResourceObject('docName')}}</label>
+                  <input type="text" [(ngModel)]="txtEvidanceKPI" name="txtEvidanceKPI" class="form-control"
+                         id="txtEvidanceKPI"/>
+                  <button type="button" class="btn btn-success btn-sm btn-Add-right" (click)="AddEvidancesForKPI()"
+                          data-widget="Add" data-toggle="tooltip" title="" data-original-title="Add">
+                    Save
+                  </button>
+                </div>
+
+                <div *ngIf="showUpdateEvidance">
+                  <label>{{GetLocalResourceObject('docName')}}</label>
+                  <input type="text" [(ngModel)]="txtEvidanceKPI" name="txtEvidanceKPI" class="form-control"
+                         id="txtEvidanceKPI"/>
+                  <button type="button" class="btn btn-success btn-sm btn-Add-right" (click)="updateEvidancesForKPI()">
+                    Update
+                  </button>
+                </div>
+
+              </div>
+            </section>
+          </div>
+          <div class="tab-pane" id="tab_2" style="background-color: #ecf0f5;">
+            <section class="content">
+              <div class="row">
+                <div class="col-xs-12">
+                  <app-projects #ProjectsCom [AddOnFly]='true' (AddOnFlyProjectSave)='AddOnFlyProjectSave($event);'>
+                  </app-projects>
+                </div>
+
+              </div>
+            </section>
+          </div>
+
+          <div class="tab-pane" id="tab_3" style="background-color: #ecf0f5;">
+            <section class="content">
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="row">
+                    <div class="col-md-12" *ngIf='showTabs'>
+                      <div class="box">
+                        <div class="box-header" style="vertical-align:middle;">
+                          <h3 class="box-title">{{'strategic.strategicObjective.evidencesList'| translate}}</h3>
+                          <div class="pull-right box-tools">
+                            <button *ngIf="hasEditPermission()" type="button" class="btn btn-success btn-sm btn-Add-right" (click)="AddDocument()"
+                                    data-widget="Add" data-toggle="tooltip" title="" data-original-title="Add">
+                              <i class="fa fa-plus"></i>
+                            </button>
+                          </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                          <DataGrid #gvDocuments [ShowButtons]='true' [RowSelection]='false' [AllowExportExcel]='false'
+                                    [HideFooter]='false' (GridEvent)='gvDocumentsHandler($event);'>
+                          </DataGrid>
+                        </div>
+                        <!-- /.box-body -->
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12" *ngIf="ShowDocumentEntry && showTabs">
+                      <div class="box box-primary">
+                        <div class="box-header with-border" *ngIf='!AddOnFly'>
+                          <h3 class="box-title">{{'strategic.strategicObjective.evidences'| translate}}</h3>
+                        </div>
+                        <form #ProjectDocumentsForm='ngForm'>
+                          <div class="box-body">
+                            <div class="row">
+                              <div class="col-xs-12">
+                                <label>{{'strategic.strategicObjective.evidencesName'| translate}}</label>
+                                <input type="text" required class="form-control" name='txtDocumentName'
+                                       id='txtDocumentName' [(ngModel)]='txtDocumentName' #txtDocumentNameRef='ngModel'>
+
+                                <ValidatorCallOut ID="txtDocumentNameValidator"
+                                                  [Visibiltiy]="txtDocumentNameRef.invalid && txtDocumentNameRef.touched"
+                                                  [ControlToValidate]="txtDocumentNameRef"
+                                                  ErrorMessage='This field is required.'>
+                                </ValidatorCallOut>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="box-footer  text-right">
+                            <button class="btn btn-primary btn-sm" [disabled]='ProjectDocumentsForm.invalid'
+                                    (click)="SaveProjectDocuments()">{{'setup.approval.save'| translate}}</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </section>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- /.row -->
+</section>
+<!-- /.content -->

@@ -1,0 +1,223 @@
+D:/Projects/2019/HR.System/HR.Entities/bin/Debug/HR.Entities.dll.config
+D:/Projects/2019/HR.System/HR.Entities/bin/Debug/HR.Entities.dll
+D:/Projects/2019/HR.System/HR.Entities/bin/Debug/HR.Entities.pdb
+D:/Projects/2019/HR.System/HR.Entities/bin/Debug/EntityFramework.dll
+D:/Projects/2019/HR.System/HR.Entities/bin/Debug/EntityFramework.SqlServer.dll
+D:/Projects/2019/HR.System/HR.Entities/bin/Debug/MySql.Data.dll
+D:/Projects/2019/HR.System/HR.Entities/bin/Debug/MySql.Data.Entity.EF6.dll
+D:/Projects/2019/HR.System/HR.Entities/bin/Debug/Oracle.ManagedDataAccess.dll
+D:/Projects/2019/HR.System/HR.Entities/bin/Debug/Oracle.ManagedDataAccess.EntityFramework.dll
+D:/Projects/2019/HR.System/HR.Entities/bin/Debug/EntityFramework.xml
+D:/Projects/2019/HR.System/HR.Entities/bin/Debug/EntityFramework.SqlServer.xml
+D:/Projects/2019/HR.System/HR.Entities/bin/Debug/MySql.Data.xml
+D:/Projects/2019/HR.System/HR.Entities/bin/Debug/MySql.Data.Entity.EF6.xml
+D:/Projects/2019/HR.System/HR.Entities/obj/Debug/HR.Entities.dll
+D:/Projects/2019/HR.System/HR.Entities/obj/Debug/HR.Entities.pdb
+D:/Projects/2019/HR.System/HR.Entities/obj/Debug/HR.Entities.csprojResolveAssemblyReference.cache
+D:/New.HR.System/New.HR.System/HR.Entities/bin/Debug/HR.Entities.dll.config
+D:/New.HR.System/New.HR.System/HR.Entities/bin/Debug/HR.Entities.dll
+D:/New.HR.System/New.HR.System/HR.Entities/bin/Debug/HR.Entities.pdb
+D:/New.HR.System/New.HR.System/HR.Entities/bin/Debug/EntityFramework.dll
+D:/New.HR.System/New.HR.System/HR.Entities/bin/Debug/EntityFramework.SqlServer.dll
+D:/New.HR.System/New.HR.System/HR.Entities/bin/Debug/MySql.Data.dll
+D:/New.HR.System/New.HR.System/HR.Entities/bin/Debug/MySql.Data.Entity.EF6.dll
+D:/New.HR.System/New.HR.System/HR.Entities/bin/Debug/Oracle.ManagedDataAccess.dll
+D:/New.HR.System/New.HR.System/HR.Entities/bin/Debug/Oracle.ManagedDataAccess.EntityFramework.dll
+D:/New.HR.System/New.HR.System/HR.Entities/bin/Debug/EntityFramework.xml
+D:/New.HR.System/New.HR.System/HR.Entities/bin/Debug/EntityFramework.SqlServer.xml
+D:/New.HR.System/New.HR.System/HR.Entities/bin/Debug/MySql.Data.xml
+D:/New.HR.System/New.HR.System/HR.Entities/bin/Debug/MySql.Data.Entity.EF6.xml
+D:/New.HR.System/New.HR.System/HR.Entities/obj/Debug/HR.Entities.csproj.CoreCompileInputs.cache
+D:/New.HR.System/New.HR.System/HR.Entities/obj/Debug/HR.Entities.csproj.CopyComplete
+D:/New.HR.System/New.HR.System/HR.Entities/obj/Debug/HR.Entities.dll
+D:/New.HR.System/New.HR.System/HR.Entities/obj/Debug/HR.Entities.pdb
+D:/New.HR.System/New.HR.System/HR.Entities/obj/Debug/HR.Entities.csprojAssemblyReference.cache
+C:/Users/s-n_e/Source/Repos/ahmedalmi95/HR-System/HR.Entities/bin/Debug/HR.Entities.dll.config
+C:/Users/s-n_e/Source/Repos/ahmedalmi95/HR-System/HR.Entities/bin/Debug/HR.Entities.dll
+C:/Users/s-n_e/Source/Repos/ahmedalmi95/HR-System/HR.Entities/bin/Debug/HR.Entities.pdb
+C:/Users/s-n_e/Source/Repos/ahmedalmi95/HR-System/HR.Entities/bin/Debug/EntityFramework.dll
+C:/Users/s-n_e/Source/Repos/ahmedalmi95/HR-System/HR.Entities/bin/Debug/EntityFramework.SqlServer.dll
+C:/Users/s-n_e/Source/Repos/ahmedalmi95/HR-System/HR.Entities/bin/Debug/MySql.Data.dll
+C:/Users/s-n_e/Source/Repos/ahmedalmi95/HR-System/HR.Entities/bin/Debug/MySql.Data.Entity.EF6.dll
+C:/Users/s-n_e/Source/Repos/ahmedalmi95/HR-System/HR.Entities/bin/Debug/Oracle.ManagedDataAccess.dll
+C:/Users/s-n_e/Source/Repos/ahmedalmi95/HR-System/HR.Entities/bin/Debug/Oracle.ManagedDataAccess.EntityFramework.dll
+C:/Users/s-n_e/Source/Repos/ahmedalmi95/HR-System/HR.Entities/bin/Debug/EntityFramework.xml
+C:/Users/s-n_e/Source/Repos/ahmedalmi95/HR-System/HR.Entities/bin/Debug/EntityFramework.SqlServer.xml
+C:/Users/s-n_e/Source/Repos/ahmedalmi95/HR-System/HR.Entities/bin/Debug/MySql.Data.xml
+C:/Users/s-n_e/Source/Repos/ahmedalmi95/HR-System/HR.Entities/bin/Debug/MySql.Data.Entity.EF6.xml
+C:/Users/s-n_e/Source/Repos/ahmedalmi95/HR-System/HR.Entities/obj/Debug/HR.Entities.csproj.CoreCompileInputs.cache
+C:/Users/s-n_e/Source/Repos/ahmedalmi95/HR-System/HR.Entities/obj/Debug/HR.Entities.csproj.CopyComplete
+C:/Users/s-n_e/Source/Repos/ahmedalmi95/HR-System/HR.Entities/obj/Debug/HR.Entities.dll
+C:/Users/s-n_e/Source/Repos/ahmedalmi95/HR-System/HR.Entities/obj/Debug/HR.Entities.pdb
+C:/Users/s-n_e/Source/Repos/ahmedalmi95/HR-System/HR.Entities/obj/Debug/HR.Entities.csprojAssemblyReference.cache
+C:/Users/ggateway/source/repos/HR-System/HR.Entities/obj/Debug/HR.Entities.csprojAssemblyReference.cache
+C:/Users/ggateway/source/repos/HR-System/HR.Entities/obj/Debug/HR.Entities.csproj.CoreCompileInputs.cache
+C:/Users/ggateway/source/repos/HR-System/HR.Entities/obj/Debug/HR.Entities.dll
+C:/Users/ggateway/source/repos/HR-System/HR.Entities/obj/Debug/HR.Entities.pdb
+C:/Users/ggateway/source/repos/HR-System/HR.Entities/bin/Debug/HR.Entities.dll.config
+C:/Users/ggateway/source/repos/HR-System/HR.Entities/bin/Debug/HR.Entities.dll
+C:/Users/ggateway/source/repos/HR-System/HR.Entities/bin/Debug/HR.Entities.pdb
+C:/Users/ggateway/source/repos/HR-System/HR.Entities/bin/Debug/EntityFramework.dll
+C:/Users/ggateway/source/repos/HR-System/HR.Entities/bin/Debug/EntityFramework.SqlServer.dll
+C:/Users/ggateway/source/repos/HR-System/HR.Entities/bin/Debug/MySql.Data.dll
+C:/Users/ggateway/source/repos/HR-System/HR.Entities/bin/Debug/MySql.Data.Entity.EF6.dll
+C:/Users/ggateway/source/repos/HR-System/HR.Entities/bin/Debug/Oracle.ManagedDataAccess.dll
+C:/Users/ggateway/source/repos/HR-System/HR.Entities/bin/Debug/Oracle.ManagedDataAccess.EntityFramework.dll
+C:/Users/ggateway/source/repos/HR-System/HR.Entities/bin/Debug/EntityFramework.xml
+C:/Users/ggateway/source/repos/HR-System/HR.Entities/bin/Debug/EntityFramework.SqlServer.xml
+C:/Users/ggateway/source/repos/HR-System/HR.Entities/bin/Debug/MySql.Data.xml
+C:/Users/ggateway/source/repos/HR-System/HR.Entities/bin/Debug/MySql.Data.Entity.EF6.xml
+C:/Users/ggateway/source/repos/HR-System/HR.Entities/obj/Debug/HR.Entities.csproj.CopyComplete
+D:/HR System/HR-System/HR.Entities/bin/Debug/HR.Entities.dll.config
+D:/HR System/HR-System/HR.Entities/bin/Debug/HR.Entities.dll
+D:/HR System/HR-System/HR.Entities/bin/Debug/HR.Entities.pdb
+D:/HR System/HR-System/HR.Entities/bin/Debug/EntityFramework.dll
+D:/HR System/HR-System/HR.Entities/bin/Debug/EntityFramework.SqlServer.dll
+D:/HR System/HR-System/HR.Entities/bin/Debug/MySql.Data.dll
+D:/HR System/HR-System/HR.Entities/bin/Debug/MySql.Data.Entity.EF6.dll
+D:/HR System/HR-System/HR.Entities/bin/Debug/Oracle.ManagedDataAccess.dll
+D:/HR System/HR-System/HR.Entities/bin/Debug/Oracle.ManagedDataAccess.EntityFramework.dll
+D:/HR System/HR-System/HR.Entities/bin/Debug/EntityFramework.xml
+D:/HR System/HR-System/HR.Entities/bin/Debug/EntityFramework.SqlServer.xml
+D:/HR System/HR-System/HR.Entities/bin/Debug/MySql.Data.xml
+D:/HR System/HR-System/HR.Entities/bin/Debug/MySql.Data.Entity.EF6.xml
+D:/HR System/HR-System/HR.Entities/obj/Debug/HR.Entities.csproj.CoreCompileInputs.cache
+D:/HR System/HR-System/HR.Entities/obj/Debug/HR.Entities.csproj.CopyComplete
+D:/HR System/HR-System/HR.Entities/obj/Debug/HR.Entities.dll
+D:/HR System/HR-System/HR.Entities/obj/Debug/HR.Entities.pdb
+D:/HR System/HR-System/HR.Entities/obj/Debug/HR.Entities.csprojAssemblyReference.cache
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.Entities/bin/Debug/HR.Entities.dll.config
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.Entities/bin/Debug/HR.Entities.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.Entities/bin/Debug/HR.Entities.pdb
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.Entities/bin/Debug/EntityFramework.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.Entities/bin/Debug/EntityFramework.SqlServer.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.Entities/bin/Debug/MySql.Data.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.Entities/bin/Debug/MySql.Data.Entity.EF6.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.Entities/bin/Debug/Oracle.ManagedDataAccess.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.Entities/bin/Debug/Oracle.ManagedDataAccess.EntityFramework.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.Entities/bin/Debug/EntityFramework.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.Entities/bin/Debug/EntityFramework.SqlServer.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.Entities/bin/Debug/MySql.Data.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.Entities/bin/Debug/MySql.Data.Entity.EF6.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.Entities/obj/Debug/HR.Entities.csproj.AssemblyReference.cache
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.Entities/obj/Debug/HR.Entities.csproj.CoreCompileInputs.cache
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.Entities/obj/Debug/HR.Entities.csproj.CopyComplete
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.Entities/obj/Debug/HR.Entities.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard/HR.Entities/obj/Debug/HR.Entities.pdb
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/bin/Debug/HR.Entities.dll.config
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/bin/Debug/HR.Entities.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/bin/Debug/HR.Entities.pdb
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/bin/Debug/BouncyCastle.Crypto.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/bin/Debug/EntityFramework.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/bin/Debug/EntityFramework.SqlServer.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/bin/Debug/Google.Protobuf.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/bin/Debug/K4os.Compression.LZ4.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/bin/Debug/K4os.Compression.LZ4.Streams.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/bin/Debug/K4os.Hash.xxHash.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/bin/Debug/MySql.Data.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/bin/Debug/MySql.Data.Entity.EF5.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/bin/Debug/Oracle.ManagedDataAccess.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/bin/Debug/Oracle.ManagedDataAccess.EntityFramework.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/bin/Debug/System.Buffers.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/bin/Debug/System.IO.Pipelines.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/bin/Debug/System.Memory.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/bin/Debug/System.Numerics.Vectors.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/bin/Debug/System.Runtime.CompilerServices.Unsafe.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/bin/Debug/System.Threading.Tasks.Extensions.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/bin/Debug/BouncyCastle.Crypto.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/bin/Debug/EntityFramework.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/bin/Debug/EntityFramework.SqlServer.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/bin/Debug/Google.Protobuf.pdb
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/bin/Debug/Google.Protobuf.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/bin/Debug/K4os.Compression.LZ4.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/bin/Debug/K4os.Compression.LZ4.Streams.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/bin/Debug/K4os.Hash.xxHash.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/bin/Debug/System.Buffers.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/bin/Debug/System.IO.Pipelines.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/bin/Debug/System.Memory.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/bin/Debug/System.Numerics.Vectors.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/bin/Debug/System.Runtime.CompilerServices.Unsafe.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/bin/Debug/System.Threading.Tasks.Extensions.xml
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/obj/Debug/HR.Entities.csproj.AssemblyReference.cache
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/obj/Debug/HR.Entities.csproj.CoreCompileInputs.cache
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/obj/Debug/HR.Entities.csproj.CopyComplete
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/obj/Debug/HR.Entities.dll
+F:/Best Practica/Applications/Web/hr/admin-dashboard-template/HR.Entities/obj/Debug/HR.Entities.pdb
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/obj/Debug/HR.Entities.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/obj/Debug/HR.Entities.pdb
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/bin/Debug/HR.Entities.dll.config
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/bin/Debug/HR.Entities.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/bin/Debug/HR.Entities.pdb
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/bin/Debug/BouncyCastle.Crypto.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/bin/Debug/EntityFramework.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/bin/Debug/EntityFramework.SqlServer.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/bin/Debug/Google.Protobuf.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/bin/Debug/K4os.Compression.LZ4.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/bin/Debug/K4os.Compression.LZ4.Streams.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/bin/Debug/K4os.Hash.xxHash.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/bin/Debug/MySql.Data.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/bin/Debug/MySql.Data.Entity.EF5.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/bin/Debug/Oracle.ManagedDataAccess.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/bin/Debug/Oracle.ManagedDataAccess.EntityFramework.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/bin/Debug/System.Buffers.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/bin/Debug/System.IO.Pipelines.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/bin/Debug/System.Memory.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/bin/Debug/System.Numerics.Vectors.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/bin/Debug/System.Runtime.CompilerServices.Unsafe.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/bin/Debug/System.Threading.Tasks.Extensions.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/bin/Debug/BouncyCastle.Crypto.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/bin/Debug/EntityFramework.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/bin/Debug/EntityFramework.SqlServer.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/bin/Debug/Google.Protobuf.pdb
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/bin/Debug/Google.Protobuf.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/bin/Debug/K4os.Compression.LZ4.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/bin/Debug/K4os.Compression.LZ4.Streams.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/bin/Debug/K4os.Hash.xxHash.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/bin/Debug/System.Buffers.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/bin/Debug/System.IO.Pipelines.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/bin/Debug/System.Memory.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/bin/Debug/System.Numerics.Vectors.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/bin/Debug/System.Runtime.CompilerServices.Unsafe.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/bin/Debug/System.Threading.Tasks.Extensions.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/obj/Debug/HR.Entities.csproj.AssemblyReference.cache
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/obj/Debug/HR.Entities.csproj.CoreCompileInputs.cache
+/Users/mohamadalhawash/RiderProjects/epms-backend/HR.Entities/obj/Debug/HR.Entities.csproj.CopyComplete
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/bin/Debug/HR.Entities.dll.config
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/bin/Debug/HR.Entities.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/bin/Debug/HR.Entities.pdb
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/bin/Debug/BouncyCastle.Crypto.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/bin/Debug/EntityFramework.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/bin/Debug/EntityFramework.SqlServer.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/bin/Debug/Google.Protobuf.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/bin/Debug/K4os.Compression.LZ4.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/bin/Debug/K4os.Compression.LZ4.Streams.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/bin/Debug/K4os.Hash.xxHash.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/bin/Debug/MySql.Data.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/bin/Debug/MySql.Data.Entity.EF5.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/bin/Debug/Oracle.ManagedDataAccess.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/bin/Debug/Oracle.ManagedDataAccess.EntityFramework.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/bin/Debug/System.Buffers.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/bin/Debug/System.IO.Pipelines.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/bin/Debug/System.Memory.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/bin/Debug/System.Numerics.Vectors.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/bin/Debug/System.Runtime.CompilerServices.Unsafe.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/bin/Debug/System.Threading.Tasks.Extensions.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/bin/Debug/BouncyCastle.Crypto.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/bin/Debug/EntityFramework.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/bin/Debug/EntityFramework.SqlServer.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/bin/Debug/Google.Protobuf.pdb
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/bin/Debug/Google.Protobuf.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/bin/Debug/K4os.Compression.LZ4.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/bin/Debug/K4os.Compression.LZ4.Streams.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/bin/Debug/K4os.Hash.xxHash.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/bin/Debug/System.Buffers.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/bin/Debug/System.IO.Pipelines.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/bin/Debug/System.Memory.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/bin/Debug/System.Numerics.Vectors.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/bin/Debug/System.Runtime.CompilerServices.Unsafe.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/bin/Debug/System.Threading.Tasks.Extensions.xml
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/obj/Debug/HR.Entities.csproj.AssemblyReference.cache
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/obj/Debug/HR.Entities.csproj.CoreCompileInputs.cache
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/obj/Debug/HR.Entities.csproj.CopyComplete
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/obj/Debug/HR.Entities.dll
+/Users/mohamadalhawash/RiderProjects/epms-backend-new/HR.Entities/obj/Debug/HR.Entities.pdb

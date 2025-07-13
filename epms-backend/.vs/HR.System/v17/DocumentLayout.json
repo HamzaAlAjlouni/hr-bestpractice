@@ -1,0 +1,228 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\hr-bestpractice\\epms-backend\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E88D1794-8720-44BC-A22F-3B4636A46776}|HR.APIs\\HR.APIs.csproj|E:\\hr-bestpractice\\epms-backend\\hr.apis\\controllers\\actionplanscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E88D1794-8720-44BC-A22F-3B4636A46776}|HR.APIs\\HR.APIs.csproj|solutionrelative:hr.apis\\controllers\\actionplanscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88937862-E242-4798-B6B1-805DEACAE47B}|HR.Entities\\HR.Entities.csproj|E:\\hr-bestpractice\\epms-backend\\hr.entities\\infrastructure\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88937862-E242-4798-B6B1-805DEACAE47B}|HR.Entities\\HR.Entities.csproj|solutionrelative:hr.entities\\infrastructure\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E88D1794-8720-44BC-A22F-3B4636A46776}|HR.APIs\\HR.APIs.csproj|e:\\hr-bestpractice\\epms-backend\\hr.apis\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E88D1794-8720-44BC-A22F-3B4636A46776}|HR.APIs\\HR.APIs.csproj|solutionrelative:hr.apis\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E88D1794-8720-44BC-A22F-3B4636A46776}|HR.APIs\\HR.APIs.csproj|E:\\hr-bestpractice\\epms-backend\\hr.apis\\controllers\\stratigicobjectivescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E88D1794-8720-44BC-A22F-3B4636A46776}|HR.APIs\\HR.APIs.csproj|solutionrelative:hr.apis\\controllers\\stratigicobjectivescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E88D1794-8720-44BC-A22F-3B4636A46776}|HR.APIs\\HR.APIs.csproj|E:\\hr-bestpractice\\epms-backend\\hr.apis\\controllers\\reportscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E88D1794-8720-44BC-A22F-3B4636A46776}|HR.APIs\\HR.APIs.csproj|solutionrelative:hr.apis\\controllers\\reportscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E88D1794-8720-44BC-A22F-3B4636A46776}|HR.APIs\\HR.APIs.csproj|E:\\hr-bestpractice\\epms-backend\\hr.apis\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{E88D1794-8720-44BC-A22F-3B4636A46776}|HR.APIs\\HR.APIs.csproj|solutionrelative:hr.apis\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E88D1794-8720-44BC-A22F-3B4636A46776}|HR.APIs\\HR.APIs.csproj|E:\\hr-bestpractice\\epms-backend\\hr.apis\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E88D1794-8720-44BC-A22F-3B4636A46776}|HR.APIs\\HR.APIs.csproj|solutionrelative:hr.apis\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88937862-E242-4798-B6B1-805DEACAE47B}|HR.Entities\\HR.Entities.csproj|E:\\hr-bestpractice\\epms-backend\\hr.entities\\models\\objectivekpientity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88937862-E242-4798-B6B1-805DEACAE47B}|HR.Entities\\HR.Entities.csproj|solutionrelative:hr.entities\\models\\objectivekpientity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88937862-E242-4798-B6B1-805DEACAE47B}|HR.Entities\\HR.Entities.csproj|E:\\hr-bestpractice\\epms-backend\\hr.entities\\models\\projectevaluationentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88937862-E242-4798-B6B1-805DEACAE47B}|HR.Entities\\HR.Entities.csproj|solutionrelative:hr.entities\\models\\projectevaluationentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88937862-E242-4798-B6B1-805DEACAE47B}|HR.Entities\\HR.Entities.csproj|E:\\hr-bestpractice\\epms-backend\\hr.entities\\models\\employeeperformancesegmententity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88937862-E242-4798-B6B1-805DEACAE47B}|HR.Entities\\HR.Entities.csproj|solutionrelative:hr.entities\\models\\employeeperformancesegmententity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88937862-E242-4798-B6B1-805DEACAE47B}|HR.Entities\\HR.Entities.csproj|E:\\hr-bestpractice\\epms-backend\\hr.entities\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{88937862-E242-4798-B6B1-805DEACAE47B}|HR.Entities\\HR.Entities.csproj|solutionrelative:hr.entities\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 16,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:132:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DBContext.cs",
+              "DocumentMoniker": "E:\\hr-bestpractice\\epms-backend\\HR.Entities\\Infrastructure\\DBContext.cs",
+              "RelativeDocumentMoniker": "HR.Entities\\Infrastructure\\DBContext.cs",
+              "ToolTip": "E:\\hr-bestpractice\\epms-backend\\HR.Entities\\Infrastructure\\DBContext.cs",
+              "RelativeToolTip": "HR.Entities\\Infrastructure\\DBContext.cs",
+              "ViewState": "AgIAALAAAAAAAAAAAIBCwL4AAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-13T17:52:30.827Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Web.config",
+              "DocumentMoniker": "E:\\hr-bestpractice\\epms-backend\\HR.APIs\\Web.config",
+              "RelativeDocumentMoniker": "HR.APIs\\Web.config",
+              "ToolTip": "E:\\hr-bestpractice\\epms-backend\\HR.APIs\\Web.config",
+              "RelativeToolTip": "HR.APIs\\Web.config",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAQwG0AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-07-13T17:52:30.843Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DashBoardController.cs",
+              "DocumentMoniker": "E:\\hr-bestpractice\\epms-backend\\HR.APIs\\Controllers\\DashBoardController.cs",
+              "RelativeDocumentMoniker": "HR.APIs\\Controllers\\DashBoardController.cs",
+              "ToolTip": "E:\\hr-bestpractice\\epms-backend\\HR.APIs\\Controllers\\DashBoardController.cs",
+              "RelativeToolTip": "HR.APIs\\Controllers\\DashBoardController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-13T17:52:30.887Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "EmployeePerformanceSegmentEntity.cs",
+              "DocumentMoniker": "E:\\hr-bestpractice\\epms-backend\\HR.Entities\\Models\\EmployeePerformanceSegmentEntity.cs",
+              "RelativeDocumentMoniker": "HR.Entities\\Models\\EmployeePerformanceSegmentEntity.cs",
+              "ToolTip": "E:\\hr-bestpractice\\epms-backend\\HR.Entities\\Models\\EmployeePerformanceSegmentEntity.cs",
+              "RelativeToolTip": "HR.Entities\\Models\\EmployeePerformanceSegmentEntity.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB4AAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-13T17:52:31.067Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "StratigicObjectivesController.cs",
+              "DocumentMoniker": "E:\\hr-bestpractice\\epms-backend\\HR.APIs\\Controllers\\StratigicObjectivesController.cs",
+              "RelativeDocumentMoniker": "HR.APIs\\Controllers\\StratigicObjectivesController.cs",
+              "ToolTip": "E:\\hr-bestpractice\\epms-backend\\HR.APIs\\Controllers\\StratigicObjectivesController.cs",
+              "RelativeToolTip": "HR.APIs\\Controllers\\StratigicObjectivesController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-13T17:52:31.069Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ReportsController.cs",
+              "DocumentMoniker": "E:\\hr-bestpractice\\epms-backend\\HR.APIs\\Controllers\\ReportsController.cs",
+              "RelativeDocumentMoniker": "HR.APIs\\Controllers\\ReportsController.cs",
+              "ToolTip": "E:\\hr-bestpractice\\epms-backend\\HR.APIs\\Controllers\\ReportsController.cs",
+              "RelativeToolTip": "HR.APIs\\Controllers\\ReportsController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAGEAAABHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-13T17:52:31.069Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "E:\\hr-bestpractice\\epms-backend\\HR.APIs\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "HR.APIs\\Controllers\\UsersController.cs",
+              "ToolTip": "E:\\hr-bestpractice\\epms-backend\\HR.APIs\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "HR.APIs\\Controllers\\UsersController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACEAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-13T17:52:31.069Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ObjectiveKPIEntity.cs",
+              "DocumentMoniker": "E:\\hr-bestpractice\\epms-backend\\HR.Entities\\Models\\ObjectiveKPIEntity.cs",
+              "RelativeDocumentMoniker": "HR.Entities\\Models\\ObjectiveKPIEntity.cs",
+              "ToolTip": "E:\\hr-bestpractice\\epms-backend\\HR.Entities\\Models\\ObjectiveKPIEntity.cs",
+              "RelativeToolTip": "HR.Entities\\Models\\ObjectiveKPIEntity.cs",
+              "ViewState": "AQIAABoAAAAAAAAAAAAMwCQAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-13T17:52:31.071Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ProjectEvaluationEntity.cs",
+              "DocumentMoniker": "E:\\hr-bestpractice\\epms-backend\\HR.Entities\\Models\\ProjectEvaluationEntity.cs",
+              "RelativeDocumentMoniker": "HR.Entities\\Models\\ProjectEvaluationEntity.cs",
+              "ToolTip": "E:\\hr-bestpractice\\epms-backend\\HR.Entities\\Models\\ProjectEvaluationEntity.cs",
+              "RelativeToolTip": "HR.Entities\\Models\\ProjectEvaluationEntity.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAACoAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-13T17:52:31.071Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ActionPlansController.cs",
+              "DocumentMoniker": "E:\\hr-bestpractice\\epms-backend\\HR.APIs\\Controllers\\ActionPlansController.cs",
+              "RelativeDocumentMoniker": "HR.APIs\\Controllers\\ActionPlansController.cs",
+              "ToolTip": "E:\\hr-bestpractice\\epms-backend\\HR.APIs\\Controllers\\ActionPlansController.cs",
+              "RelativeToolTip": "HR.APIs\\Controllers\\ActionPlansController.cs",
+              "ViewState": "AgIAAGICAAAAAAAAAAAuwOEBAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-13T17:52:31.071Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "App.config",
+              "DocumentMoniker": "E:\\hr-bestpractice\\epms-backend\\HR.Entities\\App.config",
+              "RelativeDocumentMoniker": "HR.Entities\\App.config",
+              "ToolTip": "E:\\hr-bestpractice\\epms-backend\\HR.Entities\\App.config",
+              "RelativeToolTip": "HR.Entities\\App.config",
+              "ViewState": "AQIAACwAAAAAAAAAAAAAwD8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-07-13T17:52:31.071Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

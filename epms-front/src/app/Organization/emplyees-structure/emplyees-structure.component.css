@@ -1,0 +1,25 @@
+.treeView {
+  overflow: visible !important;
+}
+
+.image-container {
+  width: 500px; /* Adjust this width as per your requirement */
+  height: 300px; /* Adjust this height as per your requirement */
+  overflow: auto;
+  position: relative;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.mini-map {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 100px; /* Adjust the mini-map size as per your requirement */
+  height: 60px; /* Adjust the mini-map size as per your requirement */
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid #000;
+}

@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\ASUS\Desktop\hr publish</_PublishTargetUrl>
+    <History>True|2023-07-25T07:19:30.5262394Z;True|2023-06-08T17:48:16.4555689+04:00;True|2023-06-07T16:27:53.2117417+04:00;True|2023-06-01T15:06:13.6646087+04:00;True|2023-05-30T16:47:41.0142360+04:00;True|2023-05-25T13:47:47.1050991+04:00;True|2023-05-24T16:37:38.1990202+04:00;True|2023-05-17T08:46:07.6781223+04:00;True|2023-05-16T16:55:30.9640927+04:00;True|2023-05-03T14:44:36.0957577+04:00;True|2023-04-24T08:41:44.6022965+04:00;True|2023-04-24T08:40:34.2380688+04:00;True|2023-04-18T13:55:17.0820348+04:00;True|2023-04-17T13:40:28.5452875+04:00;True|2023-04-17T13:39:52.5711658+04:00;True|2023-04-11T11:40:42.1529468+04:00;True|2023-04-05T09:04:40.8704976+04:00;True|2023-04-02T15:41:09.7222181+04:00;True|2023-03-26T13:51:31.5512702+04:00;True|2023-03-26T13:51:19.2618786+04:00;True|2023-03-22T16:11:44.2324260+04:00;True|2023-03-21T14:09:59.3053731+04:00;True|2023-03-21T14:09:50.5289916+04:00;True|2023-03-20T11:54:05.5621152+04:00;True|2023-03-07T13:26:49.8670949+04:00;True|2022-07-13T09:16:06.1685414+04:00;True|2022-06-27T20:34:48.7415336+04:00;True|2022-06-27T15:20:18.4099165+04:00;True|2022-06-27T15:19:35.6932395+04:00;True|2022-06-27T14:06:58.0579687+04:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="Areas/HelpPage/HelpPage.css">
+      <publishTime>05/03/2021 14:42:52</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/Api.cshtml">
+      <publishTime>05/03/2021 14:42:52</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/ApiGroup.cshtml">
+      <publishTime>05/03/2021 14:42:52</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/HelpPageApiModel.cshtml">
+      <publishTime>05/03/2021 14:42:52</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/ImageSample.cshtml">
+      <publishTime>05/03/2021 14:42:52</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/InvalidSample.cshtml">
+      <publishTime>05/03/2021 14:42:52</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/Parameters.cshtml">
+      <publishTime>05/03/2021 14:42:52</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/Samples.cshtml">
+      <publishTime>05/03/2021 14:42:52</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/TextSample.cshtml">
+      <publishTime>05/03/2021 14:42:52</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/Index.cshtml">
+      <publishTime>05/03/2021 14:42:52</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Shared/_Layout.cshtml">
+      <publishTime>05/03/2021 14:42:52</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Web.config">
+      <publishTime>05/03/2021 14:42:52</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/_ViewStart.cshtml">
+      <publishTime>05/03/2021 14:42:52</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>05/03/2021 14:43:02</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.pdb">
+      <publishTime>05/03/2021 14:43:02</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>05/03/2021 14:43:02</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>05/03/2021 14:43:02</publishTime>
+    </File>
+    <File Include="bin/ExcelDataReader.DataSet.dll">
+      <publishTime>05/03/2021 14:43:02</publishTime>
+    </File>
+    <File Include="bin/ExcelDataReader.DataSet.pdb">
+      <publishTime>05/03/2021 14:43:02</publishTime>
+    </File>
+    <File Include="bin/ExcelDataReader.dll">
+      <publishTime>05/03/2021 14:43:02</publishTime>
+    </File>
+    <File Include="bin/ExcelDataReader.pdb">
+      <publishTime>05/03/2021 14:43:02</publishTime>
+    </File>
+    <File Include="bin/HR.APIs.dll">
+      <publishTime>07/25/2023 11:00:40</publishTime>
+    </File>
+    <File Include="bin/HR.APIs.pdb">
+      <publishTime>07/25/2023 11:00:40</publishTime>
+    </File>
+    <File Include="bin/HR.Entities.dll">
+      <publishTime>07/03/2023 13:31:35</publishTime>
+    </File>
+    <File Include="bin/HR.Entities.dll.config">
+      <publishTime>06/08/2023 16:45:11</publishTime>
+    </File>
+    <File Include="bin/HR.Entities.pdb">
+      <publishTime>07/03/2023 13:31:35</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>05/03/2021 14:43:02</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>05/03/2021 14:43:02</publishTime>
+    </File>
+    <File Include="bin/Swashbuckle.Core.dll">
+      <publishTime>05/03/2021 14:43:02</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>05/03/2021 14:43:02</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>05/03/2021 14:43:02</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>05/03/2021 14:43:02</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>05/03/2021 14:43:02</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>05/03/2021 14:43:02</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>05/03/2021 14:43:02</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>05/03/2021 14:43:02</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>05/03/2021 14:43:02</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>05/03/2021 14:43:02</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>05/03/2021 14:43:02</publishTime>
+    </File>
+    <File Include="bin/WebActivatorEx.dll">
+      <publishTime>05/03/2021 14:43:02</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>05/03/2021 14:43:02</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css">
+      <publishTime>05/03/2021 14:42:52</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css">
+      <publishTime>05/03/2021 14:42:52</publishTime>
+    </File>
+    <File Include="Content/Site.css">
+      <publishTime>05/03/2021 14:42:52</publishTime>
+    </File>
+    <File Include="Excel Template/Employees Import Template.xlsx">
+      <publishTime>05/03/2021 14:42:52</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>05/03/2021 14:42:52</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.eot">
+      <publishTime>05/03/2021 14:42:52</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.svg">
+      <publishTime>05/03/2021 14:42:52</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>05/03/2021 14:42:52</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.woff">
+      <publishTime>05/03/2021 14:42:52</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>05/03/2021 14:42:52</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>12/29/2022 11:39:19</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js">
+      <publishTime>05/03/2021 14:42:52</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js">
+      <publishTime>05/03/2021 14:42:52</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.js">
+      <publishTime>05/03/2021 14:42:52</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.js">
+      <publishTime>05/03/2021 14:42:52</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.map">
+      <publishTime>05/03/2021 14:42:52</publishTime>
+    </File>
+    <File Include="Scripts/modernizr-2.6.2.js">
+      <publishTime>05/03/2021 14:42:52</publishTime>
+    </File>
+    <File Include="Scripts/respond.js">
+      <publishTime>05/03/2021 14:42:52</publishTime>
+    </File>
+    <File Include="Scripts/respond.min.js">
+      <publishTime>05/03/2021 14:42:52</publishTime>
+    </File>
+    <File Include="Scripts/_references.js">
+      <publishTime>05/03/2021 14:42:52</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>05/03/2021 14:42:52</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>05/03/2021 14:42:52</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>05/03/2021 14:42:52</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>05/03/2021 14:42:52</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>05/03/2021 14:42:52</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>07/25/2023 11:19:28</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,39 @@
+﻿<section class="content-header">
+        <h1>
+            {{GetLocalResourceObject('Landing')}}
+            <small> {{GetLocalResourceObject('Home')}}</small></h1>
+        <ol class="breadcrumb">
+            <li> {{GetLocalResourceObject('Home')}}</li>
+            <li class="active">{{GetLocalResourceObject('Landing')}}</li>
+        </ol>
+    </section>
+    <section class="content landing">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="company-name"><i class="fa fa-building"></i> Company Name</h3>
+      </div>
+        <!-- left column --> 
+        <div class="col-md-12">
+                <div class="box box-primary" >
+                    <div class="box-header with-border">
+                        <h3 class="box-title"><i class="fa fa-eye"></i> {{GetLocalResourceObject('OurVision')}}</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body" id="divVision">
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title"><i class="fa fa-bullseye"></i> {{GetLocalResourceObject('OurMission')}}</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body" id="divMission">
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+    </div>
+</section>

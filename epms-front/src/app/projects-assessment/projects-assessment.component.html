@@ -1,0 +1,611 @@
+<section class="content">
+  <!--Search Area-->
+  <div *ngIf="!AddOnFly" class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">{{ GetLocalResourceObject("lblSearch") }}</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form #SearchForm="ngForm">
+          <div class="box-body">
+            <div class="row">
+              <div class="col-xs-2">
+                <label>{{ GetLocalResourceObject("lblSearchYear") }}</label>
+                <select
+                  (change)="ddlYearChange()"
+                  [(ngModel)]="ddlSearchYear"
+                  class="form-control"
+                  id="ddlSearchYear"
+                  name="ddlSearchYear"
+                  required
+                >
+                  <option
+                    *ngFor="let x of ddlSearchYearsList"
+                    value="{{ x.id }}"
+                  >
+                    {{ x.year }}
+                  </option>
+                </select>
+                <label style="margin-top:1rem;">Assessment Status</label>
+                <select
+                  [(ngModel)]="ddlAssessmentStatus"
+                  class="form-control"
+                  id="ddlAssessmentStatus"
+                  name="ddlAssessmentStatus"
+                >
+                  <option value="">All</option>
+                  <option value="0">Waiting Approval</option>
+                  <option value="2">Confirmed</option>
+                  <option value="3">Declined</option>
+                </select>
+              </div>
+              <div class="col-xs-3">
+                <label>{{
+                    GetLocalResourceObject("lblSearchStratigicObjective")
+                  }}</label>
+                <select
+                  [(ngModel)]="ddlSearchObjective"
+                  class="form-control"
+                  id="ddlSearchObjective"
+                  name="ddlSearchObjective"
+                  required
+                >
+                  <option value="0">All</option>
+                  <option
+                    *ngFor="let x of ddlSearchObjectivesList"
+                    value="{{ x.id }}"
+                  >
+                    {{ x.name }}
+                  </option>
+                </select>
+              </div>
+              <div class="col-xs-3">
+                <label>{{ GetLocalResourceObject("lblSearchUnit") }}</label>
+                <select
+                  [(ngModel)]="ddlSearchUnit"
+                  class="form-control"
+                  id="ddlSearchUnit"
+                  name="ddlSearchUnit"
+                >
+                  <option *ngIf="modificationPermission" selected value="-1">
+                    {{ GetLocalResourceObject("All") }}
+                  </option>
+                  <option
+                    *ngFor="let x of ddlSearchUnitsList"
+                    value="{{ x.ID }}"
+                  >
+                    {{ x.NAME }}
+                  </option>
+                </select>
+              </div>
+              <div class="col-xs-3">
+                <label style="margin-bottom: .8rem;">Quarters</label>
+                <div class="row">
+                  <div class="col-xs-3">
+                    <label><input (change)="filterQ1Changed($event)" [(ngModel)]="filterQ1" name="q1Filter"
+                                  style="margin-top: 0;" type="checkbox"> Q1</label>
+
+                  </div>
+                  <div class="col-xs-3">
+                    <label><input (change)="filterQ2Changed($event)" [(ngModel)]="filterQ2" name="q2Filter"
+                                  style="margin-top: 0;" type="checkbox"> Q2</label>
+                  </div>
+                  <div class="col-xs-3">
+                    <label><input (change)="filterQ3Changed($event)" [(ngModel)]="filterQ3" name="q3Filter"
+                                  style="margin-top: 0;" type="checkbox"> Q3</label>
+                  </div>
+                  <div class="col-xs-3">
+                    <label><input (change)="filterQ4Changed($event)" [(ngModel)]="filterQ4" name="q4Filter"
+                                  style="margin-top: 0;" type="checkbox"> Q4</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-xs-1">
+                <label>Search</label>
+                <button
+                  (click)="searchProjectsAssessment()"
+                  [disabled]="SearchForm.invalid"
+                  class="btn btn-primary form-control"
+                >
+                  {{ GetLocalResourceObject("btnSearch") }}
+                </button>
+              </div>
+            </div>
+
+          </div>
+          <!-- /.box-body -->
+
+        </form>
+      </div>
+      <!-- /.box -->
+    </div>
+    <!--/.col (right) -->
+  </div>
+
+  <div *ngIf="!AddOnFly" class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-primary">
+
+        <!-- /.box-header -->
+        <div *ngIf="showWeight" class="box-body">
+          <div class="row ">
+            <div class="col-sm-3 col-md-3 col-3">
+              <div class="description-block border-right border-bold">
+                <h5 class="description-header mb-4">{{ plannedWeight | number: "1.1-2" }}%</h5>
+                <br>
+                <span class="description-text mt-5">{{ "reviewAndAssesment.plannedWeight" | translate }}</span>
+              </div>
+
+            </div>
+
+            <div class="col-sm-3 col-md-3 col-3">
+              <div class="description-block border-right border-bold">
+
+                <h5 class="description-header">{{ actualWeight.toFixed(2) }}%</h5>
+                <br>
+                <span class="description-text">{{ "reviewAndAssesment.actualWeight" | translate }}</span>
+              </div>
+
+            </div>
+
+            <div class="col-sm-3 col-md-3 col-3">
+              <div class="description-block border-right border-bold">
+
+                <h5 class="description-header">{{ successRate.toFixed(2) }}%</h5>
+                <br>
+                <span class="description-text">Progress</span>
+
+              </div>
+
+            </div>
+
+            <div class="col-sm-3 col-md-3 col-3">
+              <div class="description-block ">
+
+                <h5 class="description-header">{{ progress.toFixed(2) }}%</h5>
+                <br>
+                <span class="description-text">{{ "reviewAndAssesment.successRate" | translate }}</span>
+
+              </div>
+
+            </div>
+
+
+          </div>
+        </div>
+
+      </div>
+      <!-- /.box -->
+    </div>
+    <!--/.col (right) -->
+  </div>
+  <!--List-->
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div *ngIf="!AddOnFly" class="box-header">
+          <h3 class="box-title">
+            {{ GetLocalResourceObject("lblProjectsAssessmentList") }}
+            ({{ projectAssessmentList ? projectAssessmentList.length : 0 }})
+          </h3>
+        </div>
+        <!-- /.box-header -->
+        <div
+          [(ngModel)]="formRow"
+          class="
+            box-body
+            table-responsive
+            no-padding
+            table-wrapper-scroll-y
+
+          "
+        >
+          <table class="table table-hover table-responsive table-bordered table-striped mb-0">
+            <tbody>
+            <tr>
+              <th class="td-col5">
+                {{ GetLocalResourceObject("thProject") }}
+              </th>
+              <th *ngIf="is_reveiwer_user" class="header-cols" style="width: 20%">
+                {{ GetLocalResourceObject("lblUnit") }}
+              </th>
+
+              <th class="header-cols">
+                {{ GetLocalResourceObject("thWeight") }} %
+              </th>
+
+              <th class="header-cols">
+                {{ "reviewAndAssesment.plannedStrategy" | translate }} %
+              </th>
+              <th class="header-cols">
+                {{ "strategic.project.kpis" | translate }}
+              </th>
+
+              <th class="header-cols">
+                {{ GetLocalResourceObject("thPerce") }}
+              </th>
+
+              <th class="header-cols">
+                {{ "reviewAndAssesment.weightResult" | translate }}
+              </th>
+              <th class="header-cols">
+                <div>{{ GetLocalResourceObject("thPercObj") }}</div>
+                <div>/{{ GetLocalResourceObject("thWObj") }}</div>
+              </th>
+              <th class="header-cols">
+                <div>{{ GetLocalResourceObject("thActualCost") }}</div>
+                <div>/{{ GetLocalResourceObject("thPlannedCost") }}</div>
+              </th>
+
+              <th class="header-cols">
+                {{ GetLocalResourceObject("thEvidencesFiles") }}
+              </th>
+
+              <th class="header-cols">
+                Assessment Status
+              </th>
+              <!--              <th *ngIf="is_reveiwer_user">-->
+              <!--                {{ "reviewAndAssesment.approval" | translate }}-->
+              <!--              </th>-->
+            </tr>
+            <tr *ngFor="let x of projectAssessmentList"
+                [ngStyle]="
+                  x.Style != 'undefind' && x.Style != null && x.Style != ''
+                    ? getStyleObj(x.Style)
+                    : ''">
+              <td class="td-col5" style="font-size: 14px" valign="middle">
+                {{ x.Name }}
+              </td>
+              <td *ngIf="is_reveiwer_user" style="font-size: 14px">{{ x.UnitName }}</td>
+              <td style="font-size: 14px">{{ x.WeigthValue.toFixed(2) }}</td>
+
+              <td style="text-align: center;font-size: 14px">{{ x.plannedStratigy.toFixed(2) }} %</td>
+              <td>
+                <table
+                  align="center"
+                  class="table"
+                  style="background-color: bisque"
+                >
+                  <tbody>
+                  <tr>
+                    <th>KPIs</th>
+                    <th *ngIf="filterQ1">{{ "employeesPlan.quarter1" | translate }}</th>
+                    <th *ngIf="filterQ2">{{ "employeesPlan.quarter2" | translate }}</th>
+                    <th *ngIf="filterQ3">{{ "employeesPlan.quarter3" | translate }}</th>
+                    <th *ngIf="filterQ4">{{ "employeesPlan.quarter4" | translate }}</th>
+                    <th>
+                      <div *ngIf="filterQ1 && filterQ2 && filterQ3 && filterQ4">
+
+                        <div>{{ GetLocalResourceObject("thResult") }}</div>
+                        <div>/{{ GetLocalResourceObject("thTarget") }}</div>
+                      </div>
+                      <div
+                        *ngIf="(filterQ1 || filterQ2 || filterQ3 || filterQ4) && !(filterQ1 && filterQ2 && filterQ3 && filterQ4)">
+
+                        <div>Result</div>
+                        <div>/Target</div>
+                      </div>
+
+                    </th>
+                    <th> KPI Success %</th>
+                  </tr>
+                  <tr *ngFor="let y of x.KPIs; let d = index">
+                    <td align="center" class="td-col1">
+                      <i
+                        [class]=" y.BetterUpDown===2 ?'fa fa-arrow-down': 'fa fa-arrow-up'"></i>
+
+                      {{ y.KPI_name }}
+                      <!--                      ({{y.kpiType==1 ? 'sum' : y.kpiType==2 ? 'Avg' : y.kpiType==3? 'Last' : y.kpiType==4?'Min' : y.kpiType==5 ? 'Max':''}})-->
+                    </td>
+
+                    <td *ngIf="filterQ1">
+                      <input
+                        [(ngModel)]="y.Q1_A"
+                        [disabled]="q1Status==false || y.Q1_P == 0 || x.assessment_status == 2"
+                        class="txt-ass1 form-control"
+                        title="Actual Target"
+                        type="number"
+                      />
+                      <input
+                        [(ngModel)]="y.Q1_P"
+                        [disabled]="true"
+                        class="txt-ass1 form-control"
+                        title="Plan Target"
+                        type="number"
+                      />
+                    </td>
+                    <td *ngIf="filterQ2">
+                      <input
+                        [(ngModel)]="y.Q2_A"
+                        [disabled]="q2Status==false ||y.Q2_P == 0 || x.assessment_status == 2"
+                        class="txt-ass1 form-control"
+                        title="Actual Target"
+                        type="number"
+                      />
+                      <input
+                        [(ngModel)]="y.Q2_P"
+                        [disabled]="true"
+                        class="txt-ass1 form-control"
+                        title="Plan Target"
+                        type="number"
+                      />
+                    </td>
+                    <td *ngIf="filterQ3">
+
+                      <input
+                        [(ngModel)]="y.Q3_A"
+                        [disabled]="q3Status==false ||y.Q3_P == 0 || x.assessment_status == 2"
+                        class="txt-ass1 form-control"
+                        title="Actual Target"
+                        type="number"
+                      />
+                      <input
+                        [(ngModel)]="y.Q3_P"
+                        [disabled]="true"
+                        class="txt-ass1 form-control"
+                        title="Plan Target"
+                        type="number"
+                      />
+                    </td>
+                    <td *ngIf="filterQ4">
+
+                      <input
+                        [(ngModel)]="y.Q4_A"
+                        [disabled]="q4Status==false ||y.Q4_P == 0 || x.assessment_status == 2"
+                        class="txt-ass1 form-control"
+                        title="Actual Target"
+                        type="number"
+                      />
+                      <input
+                        [(ngModel)]="y.Q4_P"
+                        [disabled]="true"
+                        class="txt-ass1 form-control"
+                        title="Plan Target"
+                        type="number"
+                      />
+                    </td>
+
+                    <td *ngIf="filterQ1 && filterQ2 && filterQ3 && filterQ4">{{ y.AnnualResult }}/{{ y.Target }}</td>
+                    <td
+                      *ngIf="(filterQ1 || filterQ2 || filterQ3 || filterQ4) && !(filterQ1 && filterQ2 && filterQ3 && filterQ4)">
+                      {{ getFilteredResult(y) }}/{{ getFilteredTarget(y) }}
+                    </td>
+                    <td>{{ getKPISuccessPercentage(y) }}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>
+                <div [style.background-color]="getColorHex(x)"
+                     style="color:#565050 !important "> {{ getProjectFilteredPercentage(x).toFixed(1) > 120 ? 120 : getProjectFilteredPercentage(x).toFixed(1) }}
+                  %
+                </div>
+
+              </td>
+              <td style="text-align: center ;font-size: 14px">
+                {{ getProjectWeightResult(x).toFixed(2) }} %
+
+              </td>
+              <td>
+                {{ getProjectStrategyWeightResult(x).toFixed(2) }}
+              </td>
+              <!--                <td>-->
+              <!--                  {{ x.projectPercentageFromEntireStratigic }}-->
+              <!--                </td>-->
+              <td>
+                <div>
+                  <input
+                    [(ngModel)]="x.ActualCost"
+                    [disabled]="x.assessment_status == 2"
+                    class="txt-ass1 form-control"
+                    min="0"
+                    type="number"
+                  />
+                </div>
+                <div>/{{ x.PlannedCost }}</div>
+              </td>
+              <td>
+                <table>
+                  <tr *ngFor="let file of x.RequiredsDocumnets">
+
+                    <td>
+                      {{ file.doc_name }}
+                      <br>
+                      <button
+                        (click)="fpDocumentRef.click()"
+                        id="btnUploadDoc"
+                        name="btnUploadDoc"
+                      >
+                        <i aria-hidden="true" class="fa fa-upload"></i>
+                      </button>
+                      <input
+                        #fpDocumentRef
+                        (change)="
+                            addFile(x.ID, fpDocumentRef, file.ID)
+                          "
+                        id="fpDocument"
+                        name="fpDocument"
+                        style="display: none"
+                        type="file"
+                      />
+                    </td>
+                  </tr>
+                </table>
+                <table>
+                  <tr *ngFor="let file of x.UploadedDocuments">
+                    <td>
+                      <a href="{{ file.FileUrl }}" target="_blank">{{
+                          file.doc_name
+                        }}</a>
+                      &nbsp;
+                      <button
+                        (click)="RemoveEvident(file.ID)"
+                        id="btnRemoveDoc"
+                        name="btnRemoveDoc"
+                      >
+                        <i class="fa fa-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+
+
+              <td>
+                <a (click)="openAssesmentApprovalModal(x)">
+
+                  {{ x.assessment_status_text }}
+                </a>
+
+
+              </td>
+
+              <!--              <td *ngIf="is_reveiwer_user">-->
+              <!--                <button-->
+              <!--                  *ngIf="x.assessment_status != 2"-->
+              <!--                  (click)="ConfirmResult(x.ID)"-->
+              <!--                >-->
+              <!--                  {{ "setup.approval.confirm" | translate }}-->
+              <!--                </button>-->
+              <!--                <button-->
+              <!--                  *ngIf="x.assessment_status == 2"-->
+              <!--                  (click)="DeclineResult(x.ID)"-->
+              <!--                >-->
+              <!--                  {{ "setup.approval.decline" | translate }}-->
+              <!--                </button>-->
+              <!--              </td>-->
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="box-footer">
+          <button (click)="saveProjectsAssessment()" class="btn btn-primary">
+            {{ GetLocalResourceObject("lblSave") }}
+          </button>
+        </div>
+        <!-- /.box-body -->
+      </div>
+    </div>
+    <!-- /.col -->
+  </div>
+</section>
+
+<div class="modal fade" id="approvalModal" style="display: none">
+  <div
+    class="modal-dialog modal-lg"
+    style="overflow-y: auto; height: 500px; width: 90%"
+  >
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="close"
+          (click)="closeAssessmentApprovalModal()"
+          aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title">Project Assessment Approval</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12" #approvalModal>
+
+            <div class="box box-primary">
+              <div class="box-header with-border">
+                <h3 class="box-title">
+                  Approvals
+                </h3>
+              </div>
+              <form #ProjectForm="ngForm">
+                <div class="box-body" #EntryPanel>
+
+
+                  <table class="table table-hover" align="center">
+
+                    <tbody>
+                    <tr>
+                      <th style="width: 15%">
+                        Status
+                      </th>
+                      <th style="width: 15%">
+                        Created By
+                      </th>
+                      <th style="width: 10%">
+                        Date
+                      </th>
+                      <th style="width: 40%">
+                        Note
+                      </th>
+
+                    </tr>
+                    <ng-container *ngFor="let x of currentProject?.Approvals; let i = index">
+                      <tr *ngIf="x.Status>3"
+                        [style.background-color]="
+                      x.style == 'service' ? '#959595' : ''
+                   "
+                      >
+                        <td align="center" class="td-col3" style="font-size: 16px">
+                          {{  getApprovalStatusText(x.Status)  }}
+                        </td>
+                        <td align="center" class="td-col3">{{ x.CreatedBy }}</td>
+                        <td align="center" class="td-col3">{{ x.CreatedDate }}</td>
+                        <td align="center" class="td-col3">{{ x.Note }}</td>
+
+
+                      </tr>
+                    </ng-container>
+                    </tbody>
+                  </table>
+                  <!-- /.box-body -->
+                </div>
+                <div class="box-footer text-right">
+                  <div class="margin-bottom">
+              <textarea
+                class="form-control"
+                placeholder="Type your notes ..."
+                rows="2"
+                name="approvalNote"
+                id="approvalNote"
+                [(ngModel)]="approvalNote">
+
+              </textarea>
+                  </div>
+
+
+                  <button
+                    class="btn btn-primary btn-sm"
+                    [disabled]="ProjectForm.invalid"
+                    *ngIf="is_reveiwer_user && currentProject?.plannedStatus===2"
+                    (click)="ConfirmResult()">
+                    Confirm
+                  </button>
+                  <button
+                    class="btn btn-primary btn-sm"
+                    [disabled]="ProjectForm.invalid"
+                    *ngIf="is_reveiwer_user   && currentProject?.plannedStatus===2"
+                    (click)="DeclineResult()">
+                    Decline
+                  </button>
+
+                  {{currentProject?.plannedStatus!==2 ? "Project needs approval planning" : ""}}
+
+
+                </div>
+              </form>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

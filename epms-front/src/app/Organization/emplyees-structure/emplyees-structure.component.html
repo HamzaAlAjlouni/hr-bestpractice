@@ -1,0 +1,80 @@
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">{{ "employeesPlan.employeeStructure" | translate }}</h3>
+
+
+
+        </div>
+        <div class="box-body" style="overflow: scroll;">
+          <div  id="chart-container"></div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="modal fade" id="addEmpModal" style="display: none">
+  <div class="modal-dialog modal-lg" style="overflow-y: auto; height: 500px">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="close"
+          (click)="closeEmployeeModal()"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title">{{ "employeesPlan.newEmployee" | translate }}</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12">
+            <form role="form">
+              <app-employees
+                #EmployeeAddOnFly
+                [AddOnFly]="true"
+                (AddOnFlySave)="AddOnFlySave($event)"
+              ></app-employees>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="empPerformance" style="display: none">
+  <div class="modal-dialog modal-lg" style="overflow-y: auto; height: 500px">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="close"
+          (click)="closeEmpPerformacnceModal()"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title">{{ "employeesPlan.employeePerformancePlan" | translate }}</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12">
+            <form role="form">
+              <app-employee-objectve
+                #empPerformance
+                [AddOnFly]="true"
+                (empPerformanceClose)="empPerformanceClose($event)"
+              ></app-employee-objectve>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

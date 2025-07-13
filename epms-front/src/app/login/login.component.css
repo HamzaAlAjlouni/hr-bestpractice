@@ -1,0 +1,82 @@
+/* .login-box-body {
+    background: #6b41c5;
+    color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 8px 1px rgba(96, 160, 202, 0.582);
+  }
+
+  body.login-page {
+    background: #fff;
+  }
+  .login-bg {
+    background: url("../../assets/dist/img/bpLogin.png") center center no-repeat;
+    background-size: cover;
+    height: 100vh;
+  }
+  .login-content {
+    background: #6b41c5;
+    height: 100vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  @media (max-width: 768px) {
+    .login-box,
+    .register-box {
+      width: 90%;
+      margin-top: 0;
+      padding: 20px 0 0 0;
+    }
+  } */
+
+.login-content {
+
+
+}
+
+.login-box, .register-box {
+  width: 360px;
+  margin: 30% auto;
+}
+
+
+.login-title {
+margin-bottom: 2rem;
+  font-size: 20px;
+
+}
+
+.center-element {
+
+
+}
+
+.login-container {
+  background-color: #ffffff;
+height: 100vh;
+  display: flex;
+  align-items: center !important;
+  align-content: center !important;
+  justify-content: center;
+  justify-items: center;
+
+}
+.p-5{
+
+  padding: 3rem;
+
+}
+.login-input{
+padding-left: 20px;
+padding-right: 20px;
+  height: 40px;
+
+
+}
+
+.test{
+  background: url("../../assets/dist/img/login-background-pattren.jpg") center center no-repeat;
+
+
+}

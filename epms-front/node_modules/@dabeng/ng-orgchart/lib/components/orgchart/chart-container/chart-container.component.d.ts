@@ -1,0 +1,33 @@
+import { OnInit, EventEmitter, TemplateRef } from '@angular/core';
+import { NodeSelectService } from '../shared/services/node-select.service';
+export declare class ChartContainerComponent implements OnInit {
+    private nodeSelectService;
+    datasource: any;
+    nodeHeading: string;
+    nodeContent: string;
+    nodeTemplate: TemplateRef<any>;
+    groupScale: number;
+    pan: boolean;
+    zoom: boolean;
+    zoomoutLimit: number;
+    zoominLimit: number;
+    containerClass: string;
+    chartClass: string;
+    select: string;
+    nodeClick: EventEmitter<any>;
+    chartClick: EventEmitter<{}>;
+    cursorVal: string;
+    panning: boolean;
+    startX: number;
+    startY: number;
+    transformVal: string;
+    constructor(nodeSelectService: NodeSelectService);
+    ngOnInit(): void;
+    panEndHandler(): void;
+    panHandler(e: any): void;
+    panStartHandler(e: any): void;
+    setChartScale(newScale: any): void;
+    zoomHandler(e: any): void;
+    onClickChart(e: any): void;
+    onNodeClick(nodeData: any): void;
+}

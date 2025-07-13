@@ -1,0 +1,43 @@
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('global', 'lblLevel', 'Level', '1', 'en');
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('global', 'lblNeeded', 'Needed', '1', 'en');
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('global', 'lblNoOfEmployee', 'No of Employees', '1', 'en');
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('global', 'lblPlanned', 'Planned (standard)', '1', 'en');
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('global', 'lblProjectResult', 'Project Result', '1', 'en');
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('global', 'lblProjectResultPercentage', 'Project Result Percentage', '1', 'en');
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('global', 'lblRealEmployeeRank', 'Real Employee Rank', '1', 'en');
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('global', 'lblResult', 'Result', '1', 'en');
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('global', 'lblTarget', 'Target', '1', 'en');
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('global', 'lblUnitWeight', 'Unit Weight', '1', 'en');
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('global', 'PlannedQuota', 'Planned Quota', '1', 'en');
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('global', 'RemainingEmployee', 'Remaining Employees', '1', 'en');
+
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('global', 'lblLevel', 'درجة', '1', 'ar');
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('global', 'lblNeeded', 'المطلوب', '1', 'ar');
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('global', 'lblNoOfEmployee', 'عدد الموظفين', '1', 'ar');
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('global', 'lblPlanned', 'المخطط له', '1', 'ar');
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('global', 'lblProjectResult', 'انجاز القسم', '1', 'ar');
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('global', 'lblProjectResultPercentage', 'نسبة انجاز القسم', '1', 'ar');
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('global', 'lblRealEmployeeRank', 'ترتيب الموظفين الحقيقي', '1', 'ar');
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('global', 'lblResult', 'النتيجة', '1', 'ar');
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('global', 'lblTarget', 'المستهدف', '1', 'ar');
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('global', 'lblUnitWeight', 'وزن القسم', '1', 'ar');
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('global', 'PlannedQuota', 'الحصة المقررة', '1', 'ar');
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('global', 'RemainingEmployee', 'باقي الموظفين', '1', 'ar');
+
+
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('#/ProjectPlanningChart', 'lblAddObjective', 'Add Objective', '1', 'en');
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('#/ProjectPlanningChart', 'lblAddObjective', 'اضافة هدف استراتيجي', '1', 'ar');
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('#/ProjectPlanningChart', 'lblPlannedCost', 'Planned Cost', '1', 'en');
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('#/ProjectPlanningChart', 'lblPlannedCost', 'التكلفة المخطط لها', '1', 'ar');
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('#/ProjectPlanningChart', 'lblWeight', 'Weight', '1', 'en');
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('#/ProjectPlanningChart', 'lblWeight', 'الوزن', '1', 'ar');
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('#/ProjectPlanningChart', 'lblEditObjective', 'Edit Objective', '1', 'en');
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('#/ProjectPlanningChart', 'lblEditObjective', 'تعديل الهدف', '1', 'ar');
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('#/ProjectPlanningChart', 'lblAddProject', 'Add Project', '1', 'en');
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('#/ProjectPlanningChart', 'lblAddProject', 'اضافة مشروع', '1', 'ar');
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('#/ProjectPlanningChart', 'lblProjectsList', 'Projects List', '1', 'en');
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('#/ProjectPlanningChart', 'lblProjectsList', 'قائمة المشاريع', '1', 'ar');
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('#/ProjectPlanningChart', 'lblObjectiveKPIsAssessment', 'Objective KPIs Assessment', '1', 'en');
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('#/ProjectPlanningChart', 'lblObjectiveKPIsAssessment', 'تقييم مؤشرات الهدف', '1', 'ar');
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('#/ProjectPlanningChart', 'lblEditProject', 'Edit Project', '1', 'en');
+INSERT INTO `tbl_resources` (`url`, `resource_key`, `resource_value`, `org_id`, `culture_name`) VALUES ('#/ProjectPlanningChart', 'lblEditProject', 'تعديل مشروع', '1', 'ar');

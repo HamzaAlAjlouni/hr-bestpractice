@@ -1,0 +1,279 @@
+<!-- Content Header (Page header) -->
+<section class="content-header" *ngIf="!AddOnFly">
+  <h1>
+    Action Plans Reveiw & Assessment
+    <small>Review & Assessment</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li>Review & Assessment</li>
+    <li class="active">Action Plans Review & Assessment</li>
+  </ol>
+</section>
+
+<section class="content">
+  <!--Search Area-->
+  <div class="row" *ngIf="!AddOnFly">
+    <!-- left column -->
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Action Plans Search</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form #SearchForm="ngForm">
+          <div class="box-body">
+            <div class="row">
+              <div class="col-xs-3">
+                <label>Year</label>
+                <select
+                  required
+                  class="form-control"
+                  name="ddlSearchYear"
+                  id="ddlSearchYear"
+                  (change)="ddlYearChange()"
+                  [(ngModel)]="ddlSearchYear"
+                >
+                  <option
+                    *ngFor="let x of ddlSearchYearsList"
+                    value="{{ x.id }}"
+                  >
+                    {{ x.year }}
+                  </option>
+                </select>
+              </div>
+              <div class="col-xs-3">
+                <label>Unit</label>
+                <select
+                  class="form-control"
+                  name="ddlUnitSearch"
+                  (change)="fillDDLSearchObjectives()"
+                  id="ddlUnitSearch"
+                  [(ngModel)]="ddlUnitSearch"
+                >
+                  <option [value]="null" selected>All</option>
+                  <option *ngFor="let x of unitLst" value="{{ x.ID }}">
+                    {{ x.NAME }}
+                  </option>
+                </select>
+              </div>
+              <div class="col-xs-3">
+                <label>Project</label>
+                <select
+                  required
+                  class="form-control"
+                  name="ddlSearchProject"
+                  id="ddlSearchProject"
+                  [(ngModel)]="ddlSearchProject"
+                  (change)="getProjectKPIByProjectId(ddlSearchProject)"
+                >
+                  <option
+                    *ngFor="let x of ddlSearchProjectsList"
+                    value="{{ x.ID }}"
+                  >
+                    {{ x.Name }}
+                  </option>
+                </select>
+              </div>
+              <div class="col-xs-3">
+                <label> Project KPI </label>
+                <select
+                  class="form-control"
+                  name="ddlProjectKPISearch"
+                  id="ddlProjectKPISearch"
+                  [(ngModel)]="ddlProjectKPISearch"
+                  #ddlProjectKPISearchRef="ngModel"
+                >
+                  <option value="">--All--</option>
+                  <option
+                    *ngFor="let x of projectsKPIList"
+                    value="{{ x.ID }}"
+                  >
+                    {{ x.Name }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <!-- /.box-body -->
+
+          <div class="box-footer">
+            <button
+              [disabled]="SearchForm.invalid"
+              (click)="LoadActionPlans()"
+              class="btn btn-primary"
+            >
+              Search
+            </button>
+          </div>
+        </form>
+      </div>
+      <!-- /.box -->
+    </div>
+    <!--/.col (right) -->
+  </div>
+
+  <div class="row" *ngIf="!AddOnFly">
+    <!-- left column -->
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-primary">
+
+        <!-- /.box-header -->
+        <div *ngIf="showWeight" class="box-body">
+          <div class="row ">
+            <div class="col-sm-3 col-md-6 col-6">
+              <div class="description-block border-right border-bold">
+                <h5 class="description-header mb-4">{{ plannedWeight | number: "1.1-2" }}%</h5>
+                <br>
+                <span class="description-text mt-5">{{ "reviewAndAssesment.plannedWeight" | translate }}</span>
+              </div>
+
+            </div>
+
+            <div class="col-sm-3 col-md-6 col-6">
+              <div class="description-block  border-bold">
+
+                <h5 class="description-header">{{ actualWeight | number: "1.1-2" }}%</h5>
+                <br>
+                <span class="description-text">{{ "reviewAndAssesment.actualWeight" | translate }}</span>
+              </div>
+
+            </div>
+
+
+
+
+          </div>
+        </div>
+
+      </div>
+      <!-- /.box -->
+    </div>
+    <!--/.col (right) -->
+  </div>
+  <!--List-->
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header" *ngIf="!AddOnFly">
+          <h3 class="box-title">Action Plans List</h3>
+        </div>
+        <!-- /.box-header -->
+        <div
+          class="box-body table-responsive no-padding table-wrapper-scroll-y "
+          [(ngModel)]="formRow"
+        >
+          <table class="table table-hover">
+            <tbody>
+              <tr>
+                <th>Project KPI</th>
+                <th>Activity Name</th>
+
+                <th>Employee</th>
+                <th>Activity Weight</th>
+                <th>Activity Date</th>
+
+                <th>Activity KPIs</th>
+                <th>Result Percentage %</th>
+                <th>Attachment</th>
+                <th *ngIf="is_reveiwer_user">Approval</th>
+              </tr>
+              <tr *ngFor="let x of actionPlansList">
+                <td align="center">{{ x.ProjectKpiName }}</td>
+                <td align="center">{{ x.PlanName }}</td>
+                <td align="center">{{ x.EmpName }}</td>
+                <td align="center">{{ x.planWeight }}</td>
+                <td align="center">{{ x.planDate }}</td>
+
+                <td>
+                  <table class="table" style="background-color: bisque">
+                    <tbody>
+                      <tr>
+                        <th style="width: 30%">KPI Name</th>
+                        <th style="width: 17%">KPI Target</th>
+                        <th style="width: 17%">KPI Weight</th>
+                        <th style="width: 17%">Result</th>
+                        <th style="width: 17%">Result Percentage</th>
+                      </tr>
+                      <tr *ngFor="let i of x.PlanKPIs">
+                        <td align="center">{{ i.kpiName }}</td>
+                        <td align="center">{{ i.kpiTarget }}</td>
+                        <td align="center">{{ i.kpiWeight }}</td>
+                        <td align="center">
+                          <input
+                          type="number"
+                          min="0"
+                          max="100"
+                          name="txtResult"
+                          id="txtResult"
+                          [disabled]="x.assessment_status == 2"
+                          [(ngModel)]="i.result"
+                          class="form-control"
+                          />
+                        </td>
+                        <td align="center">{{i.resultPercentage}} %</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+                <td align="center">{{x.resultPercentageAll}}</td>
+                <td *ngIf="x.attachment == null || x.attachment == ''">
+                  <button
+                    id="btnUploadDoc"
+                    name="btnUploadDoc"
+                    (click)="fpDocumentRef.click()"
+                  >
+                    <i class="fa fa-upload" aria-hidden="true"></i>
+                  </button>
+                  <input
+                    type="file"
+                    style="display: none"
+                    id="fpDocument"
+                    name="fpDocument"
+                    #fpDocumentRef
+                    (change)="addFile(x.ID, fpDocumentRef)"
+                  />
+                </td>
+                <td *ngIf="x.attachment != null && x.attachment != ''">
+                  <a href="{{ x.attachment }}" target="_blank">Download</a>
+                  &nbsp;
+                  <button
+                    id="btnRemoveDoc"
+                    *ngIf="x.assessment_status != 2"
+                    name="btnRemoveDoc"
+                    (click)="RemoveEvident(x.ID)"
+                  >
+                    <i class="fa fa-trash"></i>
+                  </button>
+                </td>
+                <td *ngIf="is_reveiwer_user">
+                  <button
+                    *ngIf="x.assessment_status != 2"
+                    (click)="ConfirmResult(x.ID)"
+                  >
+                    Confirm
+                  </button>
+                  <button
+                    *ngIf="x.assessment_status == 2"
+                    (click)="DeclineResult(x.ID)"
+                  >
+                    Decline
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="box-footer">
+          <button (click)="onSaveKpisResults()" class="btn btn-primary">
+            Save
+          </button>
+        </div>
+        <!-- /.box-body -->
+      </div>
+    </div>
+    <!-- /.col -->
+  </div>
+</section>

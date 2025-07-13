@@ -1,0 +1,14 @@
+INSERT INTO `hr_db`.`adm_codes` (`MAJOR_NO`, `MINOR_NO`, `NAME`, `CODE`, `company_id`, `created_by`, `created_date`, `name2`) VALUES ('3', '1', 'Yearly', '1', '1', 'ADMIN', '2019/1/1', 'Yearly');
+INSERT INTO `hr_db`.`adm_codes` (`MAJOR_NO`, `MINOR_NO`, `NAME`, `CODE`, `company_id`, `created_by`, `created_date`, `name2`) VALUES ('3', '2', 'Midterm', '2', '1', 'ADMIN', '2019/1/1', 'Midterm');
+INSERT INTO `hr_db`.`adm_codes` (`MAJOR_NO`, `MINOR_NO`, `NAME`, `CODE`, `company_id`, `created_by`, `created_date`, `name2`) VALUES ('3', '3', 'Quarterly', '3', '1', 'ADMIN', '2019/1/1', 'Quarterly');
+INSERT INTO `hr_db`.`adm_codes` (`MAJOR_NO`, `MINOR_NO`, `NAME`, `CODE`, `company_id`, `created_by`, `created_date`, `name2`) VALUES ('4', '1', 'Accumulative', '1', '1', 'admin', '2019/1/1', 'Accumulative');
+INSERT INTO `hr_db`.`adm_codes` (`MAJOR_NO`, `MINOR_NO`, `NAME`, `CODE`, `company_id`, `created_by`, `created_date`, `name2`) VALUES ('4', '2', 'Average', '2', '1', 'admin', '2019/1/1', 'Average');
+INSERT INTO `hr_db`.`adm_codes` (`MAJOR_NO`, `MINOR_NO`, `NAME`, `CODE`, `company_id`, `created_by`, `created_date`, `name2`) VALUES ('4', '3', 'Last', '3', '1', 'admin', '2019/1/1', 'Last');
+INSERT INTO `hr_db`.`adm_codes` (`MAJOR_NO`, `MINOR_NO`, `NAME`, `CODE`, `company_id`, `created_by`, `created_date`, `name2`) VALUES ('4', '4', 'Maximum', '4', '1', 'admin', '2019/1/1', 'Maximum');
+INSERT INTO `hr_db`.`adm_codes` (`MAJOR_NO`, `MINOR_NO`, `NAME`, `CODE`, `company_id`, `created_by`, `created_date`, `name2`) VALUES ('4', '5', 'Minimum', '5', '1', 'admin', '2019/1/1', 'Minimum');
+INSERT INTO `hr_db`.`adm_codes` (`MAJOR_NO`, `MINOR_NO`, `NAME`, `CODE`, `company_id`, `created_by`, `created_date`, `name2`) VALUES ('5', '1', 'Percentage', '1', '1', 'admin', '2019/1/1', 'Percentage');
+INSERT INTO `hr_db`.`adm_codes` (`MAJOR_NO`, `MINOR_NO`, `NAME`, `CODE`, `company_id`, `created_by`, `created_date`, `name2`) VALUES ('5', '2', 'Value', '1', '1', 'admin', '2019/1/1', 'Value');
+INSERT INTO `hr_db`.`adm_codes` (`MAJOR_NO`, `MINOR_NO`, `NAME`, `CODE`, `company_id`, `created_by`, `created_date`, `name2`) VALUES ('6', '1', 'Q1', '1', '1', 'admin', '2019/1/1', 'Q1');
+INSERT INTO `hr_db`.`adm_codes` (`MAJOR_NO`, `MINOR_NO`, `NAME`, `CODE`, `company_id`, `created_by`, `created_date`, `name2`) VALUES ('6', '2', 'Q2', '2', '1', 'admin', '2019/1/1', 'Q2');
+INSERT INTO `hr_db`.`adm_codes` (`MAJOR_NO`, `MINOR_NO`, `NAME`, `CODE`, `company_id`, `created_by`, `created_date`, `name2`) VALUES ('6', '3', 'Q3', '3', '1', 'admin', '2019/1/1', 'Q3');
+INSERT INTO `hr_db`.`adm_codes` (`MAJOR_NO`, `MINOR_NO`, `NAME`, `CODE`, `company_id`, `created_by`, `created_date`, `name2`) VALUES ('6', '4', 'Q4', '4', '1', 'admin', '2019/1/1', 'Q4');

@@ -1,0 +1,207 @@
+<section class="content-header" *ngIf="!AddOnFly">
+  <h1>
+    {{ "dashboard.UnitsPerformanceMonitor" | translate }}
+    <small>{{ "reviewAndAssesment.ReviewAssessment" | translate }}</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li>{{ "reviewAndAssesment.ReviewAssessment" | translate }}</li>
+    <li class="active">{{ "dashboard.UnitsPerformanceMonitor" | translate }}</li>
+  </ol>
+</section>
+
+<!--Projects-->
+<section class="content">
+
+
+  <div class="row row-margin " *ngIf="!AddOnFly">
+    <div class="col-md-12">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">{{ "setup.approval.search" | translate }}</h3>
+        </div>
+        <form #ProjectsForm="ngForm">
+          <div class="box-body">
+            <div class="row">
+              <div class="col-xs-3">
+                <label>{{ "setup.trafficLightSetup.year" | translate }}</label>
+                <select
+                  required
+                  class="form-control"
+                  name="ddlYear"
+                  id="ddlYear"
+                  [(ngModel)]="ddlYear"
+                  #ddlYearRef="ngModel"
+                >
+                  <option *ngFor="let x of yearLst" value="{{ x.id }}">
+                    {{ x.year }}
+                  </option>
+                </select>
+
+                <ValidatorCallOut
+                  ID="ddlYearValidator"
+                  [Visibiltiy]="ddlYearRef.invalid && ddlYearRef.touched"
+                  [ControlToValidate]="ddlYearRef"
+                  ErrorMessage="This field is required."
+                >
+                </ValidatorCallOut>
+              </div>
+
+              <div class="col-xs-3">
+                <label>{{ "employeesPlan.unit" | translate }}</label>
+                <select
+                  class="form-control"
+                  name="ddlUnitSearch"
+                  id="ddlUnitSearch"
+                  [(ngModel)]="ddlUnitSearch"
+                >
+                  <option [value]="null" selected>All</option>
+                  <option *ngFor="let x of unitLst" value="{{ x.ID }}">
+                    {{ x.NAME }}
+                  </option>
+                </select>
+              </div>
+              <div class="col-xs-3">
+                <label>Actual / Plan</label>
+                <select
+                  class="form-control"
+                  name="showActualCol"
+                  id="showActualCol"
+                  (change)="showActualColChange($event)"
+                  [(ngModel)]="showActualCol">
+                  <option [value]="1">Actual</option>
+                  <option [value]="0" >Planned</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <!-- /.box-body -->
+
+          <div class="box-footer" style="text-align: right">
+            <button
+              [disabled]="ProjectsForm.invalid"
+              class="btn btn-primary pull-right"
+              (click)="SearchUnits()"
+            >
+              {{ "setup.approval.search" | translate }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="row row-margin">
+    <div class="col-6 col-md-6 col-sm-12 col-container" style=" padding-left: 0">
+
+      <div class="box">
+        <div class="box-header" style=" vertical-align: middle">
+          <h3 class="box-title">{{ "dashboard.EmployeesPerformanceDistribution" | translate }}</h3>
+        </div>
+        <div class="box-body">
+          <DataGrid
+            #gvEmpDistribution
+            [ShowButtons]="false"
+            [RowSelection]="false"
+            [AllowExportExcel]="false"
+            [HideFooter]="false"
+            (GridEvent)="gvEmpDistributionHandler($event)"
+          >
+          </DataGrid>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-6 col-sm-12 col-container" id="container500" style="padding-left: 0">
+
+    </div>
+
+
+  </div>
+
+
+  <div class="row row-margin">
+
+    <div class="col-6 col-md-4 col-sm-12 col-container" id="gvUnitChartSingleContainer" style="">
+
+    </div>
+
+    <div class="col-6 col-md-8 col-sm-12 col-container" id="gvUnitChartContainer" style="">
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+
+  <div class="row row-margin">
+    <div class="col col-container">
+      <div class="box">
+        <div class="box-header" style="">
+          <h3 class="box-title">{{ "dashboard.UnitsPerformanceComparisonList" | translate }}</h3>
+          <!-- <div class="pull-right box-tools">
+                        <button type="button" class="btn btn-success btn-sm btn-Add-right"
+                        (click)="AddActionPlan()" data-widget="Add" data-toggle="tooltip"
+                            title="" data-original-title="Add">
+                            <i class="fa fa-plus"></i>
+                        </button>
+                    </div> -->
+        </div>
+        <div class="box-body" style="width: 100%">
+          <DataGrid
+            #gvUnits
+            [ShowButtons]="true"
+            [RowSelection]="false"
+            [AllowExportExcel]="false"
+            [HideFooter]="false"
+            (GridEvent)="gvunitsHandler($event)"
+          >
+          </DataGrid>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+  </div>
+  <div class="row row-margin" style="padding-left: 0">
+    <div class="col-xs-12" style="padding-left: 0">
+      <div class="box">
+        <div class="box-header" style="vertical-align: middle; ">
+          <h3 class="box-title">
+            {{ "dashboard.UnitEmployeesQouta" | translate }} - {{unitName}}
+          </h3>
+        </div>
+        <div class="box-body">
+
+          <div class="row">
+
+            <div class="col-6 col-md-6 col-sm-12 col-container">   <DataGrid
+              #gvUnitQouta
+              [ShowButtons]="false"
+              [RowSelection]="false"
+              [AllowExportExcel]="false"
+              [HideFooter]="false"
+
+            >
+            </DataGrid></div>
+            <div class="col-6 col-md-6 col-sm-12 col-container">
+
+
+              <div  id="container500Sub" style="padding-left: 0">
+
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

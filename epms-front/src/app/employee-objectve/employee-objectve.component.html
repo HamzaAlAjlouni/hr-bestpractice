@@ -1,0 +1,1399 @@
+<section *ngIf="!AddOnFly" class="content-header">
+  <h1>
+    {{ GetLocalResourceObject("EmployeesperfomancePlan") }}
+    <small>{{ GetLocalResourceObject("Organization") }}</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li>{{ GetLocalResourceObject("Organization") }}</li>
+    <li class="active">
+      {{ GetLocalResourceObject("EmployeesperfomancePlan") }}
+    </li>
+  </ol>
+</section>
+<section class="content">
+  <div *ngIf="!AddOnFly" class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">{{ GetLocalResourceObject("Search") }}</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form #SearchForm="ngForm">
+          <div class="box-body">
+            <div class="row">
+              <div class="col-xs-3">
+                <label>{{ GetLocalResourceObject("Year") }}</label>
+                <select
+                  [(ngModel)]="AssesmentSearchYearID"
+                  class="form-control"
+                  id="AssesmentSearchYearID"
+                  name="AssesmentSearchYearID"
+                >
+                  <option *ngFor="let x of YearList" value="{{ x.id }}">
+                    {{ x.year }}
+                  </option>
+                </select>
+              </div>
+
+              <div *ngIf="userContextService.Role!=='Employee'&&userContextService.Role!=='Unit'" class="col-xs-3">
+                <label>{{ "employeesPlan.unit" | translate }}</label>
+                <select
+                  (change)="loadUnitEmployees()"
+                  [(ngModel)]="ddlUnitSearch"
+                  class="form-control"
+                  id="ddlUnitSearch"
+                  name="ddlUnitSearch"
+                >
+                  <option *ngIf="modificationPermission" value="">All</option>
+                  <option *ngFor="let x of UnitsList" value="{{ x.ID }}">
+                    {{ x.NAME }}
+                  </option>
+                </select>
+              </div>
+
+              <div class="col-xs-6">
+                <label>{{ GetLocalResourceObject("Employee") }}</label>
+                <select
+                  (change)="selectEmployeeEntry()"
+                  [(ngModel)]="AssesmentSearchEmployeeID"
+                  class="form-control"
+                  id="AssesmentSearchEmployeeID"
+                  name="AssesmentSearchEmployeeID"
+                >
+                  <option value="-1">
+                    {{ GetLocalResourceObject("All") }}
+                  </option>
+                  <option *ngFor="let x of EmployeeList" value="{{ x.ID }}">
+                    {{ x.name1_1 }} {{ x.name1_4 }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <!-- /.box-body -->
+
+          <div class="box-footer">
+            <button (click)="LoadAssesment()" class="btn btn-primary">
+              {{ GetLocalResourceObject("Search") }}
+            </button>
+          </div>
+        </form>
+      </div>
+      <!-- /.box -->
+    </div>
+    <!--/.col (right) -->
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">
+            {{ GetLocalResourceObject("EmployeesAssesmentList") }}
+          </h3>
+          <div *ngIf="!AddOnFly" class="pull-right box-tools">
+            <button
+
+              (click)="AssesmentAddMode()"
+              class="btn btn-success btn-sm"
+              data-original-title="Add"
+              data-toggle="tooltip"
+              data-widget="Add"
+              title=""
+              type="button"
+            >
+              <i class="fa fa-plus"></i>
+            </button>
+          </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <DataGrid
+            #gvAssesment
+            (GridEvent)="gvAssesmentEvent($event)"
+            [AllowExportExcel]="false"
+            [HideFooter]="false"
+            [RowSelection]="false"
+            [ShowButtons]="true"
+          >
+          </DataGrid>
+        </div>
+        <!-- /.box-body -->
+      </div>
+      <!-- /.box -->
+
+      <!-- /.box -->
+    </div>
+    <!-- /.col -->
+  </div>
+  <div *ngIf="showAssesmentEntry" class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">
+            {{ GetLocalResourceObject("AssesmentEntry") }}
+          </h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form #AssementForm="ngForm">
+          <div class="box-body">
+            <div class="row">
+              <div class="col-xs-3" style="display: none">
+                <label>{{ GetLocalResourceObject("Year") }}</label>
+                <select
+                  #AssesmentYearIDRef="ngModel"
+                  [(ngModel)]="AssesmentYearID"
+                  class="form-control"
+                  id="AssesmentYearID"
+                  name="AssesmentYearID"
+                  required
+                >
+                  <option *ngFor="let x of YearList" value="{{ x.id }}">
+                    {{ x.year }}
+                  </option>
+                </select>
+
+                <ValidatorCallOut
+                  ErrorMessage="This field is required."
+                  ID="AssesmentYearIDValidator"
+                  [ControlToValidate]="AssesmentYearIDRef"
+                  [Visibiltiy]="
+                    AssesmentYearIDRef.invalid && AssesmentYearIDRef.touched
+                  "
+                >
+                </ValidatorCallOut>
+              </div>
+              <div class="col-xs-6">
+                <label>{{ GetLocalResourceObject("Employee") }}</label>
+                <select
+                  #AssesmentEmployeeIDRef="ngModel"
+                  (change)="loadEmpManager()"
+                  [(ngModel)]="AssesmentEmployeeID"
+                  class="form-control"
+                  id="AssesmentEmployeeID"
+                  name="AssesmentEmployeeID"
+                  required
+                >
+                  <option *ngFor="let x of FilterdEmployeeList" value="{{ x.ID }}">
+                    {{ x.name1_1 }} {{ x.name1_4 }}
+                  </option>
+                </select>
+
+                <ValidatorCallOut
+                  ErrorMessage="This field is required."
+                  ID="AssesmentEmployeeIDValidator"
+                  [ControlToValidate]="AssesmentEmployeeIDRef"
+                  [Visibiltiy]="
+                    AssesmentEmployeeIDRef.invalid &&
+                    AssesmentEmployeeIDRef.touched
+                  "
+                >
+                </ValidatorCallOut>
+              </div>
+
+              <div class="col-xs-3">
+                <label>{{ GetLocalResourceObject("Reviewer") }}</label>
+                <select
+                  [(ngModel)]="AssesmentReviewerID"
+                  class="form-control"
+                  disabled
+                  id="AssesmentReviewerID"
+                  name="AssesmentReviewerID"
+                >
+                  <option *ngFor="let x of EmployeeList" value="{{ x.ID }}">
+                    {{ x.name1_1 }} {{ x.name1_4 }}
+                  </option>
+                </select>
+              </div>
+              <div class="col-xs-3">
+                <label>{{
+                    "employeesPlan.revisingDirector" | translate
+                  }}</label>
+                <select
+                  [(ngModel)]="AssesmentManagerID"
+                  class="form-control"
+                  id="AssesmentManagerID"
+                  name="AssesmentManagerID"
+                >
+                  <option *ngFor="let x of EmployeeList" value="{{ x.ID }}">
+                    {{ x.name1_1 }} {{ x.name1_4 }}
+                  </option>
+                </select>
+              </div>
+              <div class="col-xs-3">
+                <label>{{ GetLocalResourceObject("AgreementDate") }}</label>
+                <input
+                  #AssesmentAgreementDateRef="ngModel"
+                  [(ngModel)]="AssesmentAgreementDate"
+                  class="form-control"
+                  id="AssesmentAgreementDate"
+                  name="AssesmentAgreementDate"
+                  required
+                  type="date"
+                />
+
+                <ValidatorCallOut
+                  ErrorMessage="This field is required."
+                  ID="AssesmentAgreementDateValidator"
+                  [ControlToValidate]="AssesmentAgreementDateRef"
+                  [Visibiltiy]="
+                    AssesmentAgreementDateRef.invalid &&
+                    AssesmentAgreementDateRef.touched
+                  "
+                >
+                </ValidatorCallOut>
+              </div>
+              <!--
+                            <div class="col-xs-3">
+                                <label>{{GetLocalResourceObject('Target')}}</label>
+                                <input type="number" required class="form-control" name='AssesmentTarget'
+                                    id='AssesmentTarget' [(ngModel)]='AssesmentTarget' #AssesmentTargetRef='ngModel'>
+
+                                <ValidatorCallOut ID="AssesmentTargetValidator"
+                                [Visibiltiy]="AssesmentTargetRef.invalid && AssesmentTargetRef.touched"
+                                [ControlToValidate]="AssesmentTargetRef"
+                                    ErrorMessage='This field is required.'>
+                                </ValidatorCallOut>
+                            </div>-->
+              <div class="col-xs-9">
+                <label>{{ "employeesPlan.attachment" | translate }}</label>
+                <input
+                  [(ngModel)]="AssesmentAttachment"
+                  class="form-control"
+                  id="AssesmentAttachment"
+                  name="AssesmentAttachment"
+                  type="file"
+                />
+              </div>
+              <div class="col-xs-3">
+                <label>{{ GetLocalResourceObject("KPICycle") }}</label>
+                <select
+                  #AssesmentKpiCycleRef="ngModel"
+                  [(ngModel)]="AssesmentKpiCycle"
+                  [disabled]="AssesmentUpdateMode"
+                  class="form-control"
+                  id="AssesmentKpiCycle"
+                  name="AssesmentKpiCycle"
+                  required
+                >
+                  <option
+                    *ngFor="let x of KpiCycleList"
+                    value="{{ x.MINOR_NO }}"
+                  >
+                    {{ x.NAME }}
+                  </option>
+                </select>
+
+                <ValidatorCallOut
+                  ErrorMessage="This field is required."
+                  ID="AssesmentKpiCycleValidator"
+                  [ControlToValidate]="AssesmentKpiCycleRef"
+                  [Visibiltiy]="
+                    AssesmentKpiCycleRef.invalid && AssesmentKpiCycleRef.touched
+                  "
+                >
+                </ValidatorCallOut>
+              </div>
+              <div class="col-xs-2">
+                <div class="checkbox">
+                  <label>
+                    <input
+                      [(ngModel)]="IsQuarter1"
+                      [disabled]="AssesmentUpdateMode"
+                      id="cbIsQuarter1"
+                      name="cbIsQuarter1"
+                      type="checkbox"
+                    />{{ "employeesPlan.quarter1" | translate }}
+                  </label>
+                </div>
+              </div>
+
+              <div class="col-xs-2">
+                <div class="checkbox">
+                  <label>
+                    <input
+                      [(ngModel)]="IsQuarter2"
+                      [disabled]="AssesmentUpdateMode"
+                      id="cbIsQuarter2"
+                      name="cbIsQuarter2"
+                      type="checkbox"
+                    />{{ "employeesPlan.quarter2" | translate }}
+                  </label>
+                </div>
+              </div>
+
+              <div class="col-xs-2">
+                <div class="checkbox">
+                  <label>
+                    <input
+                      [(ngModel)]="IsQuarter3"
+                      [disabled]="AssesmentUpdateMode"
+                      id="cbIsQuarter3"
+                      name="cbIsQuarter3"
+                      type="checkbox"
+                    />{{ "employeesPlan.quarter3" | translate }}
+                  </label>
+                </div>
+              </div>
+              <div class="col-xs-3">
+                <div class="checkbox">
+                  <label>
+                    <input
+                      [(ngModel)]="IsQuarter4"
+                      [disabled]="AssesmentUpdateMode"
+                      id="cbIsQuarter4"
+                      name="cbIsQuarter4"
+                      type="checkbox"
+                    />{{ "employeesPlan.quarter4" | translate }}
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.box-body -->
+
+          <div class="box-footer">
+            <button
+              (click)="SaveAssesment()"
+              [disabled]="AssementForm.invalid"
+              class="btn btn-primary"
+            >
+              {{ GetLocalResourceObject("Save") }}
+            </button>
+          </div>
+        </form>
+      </div>
+      <!-- /.box -->
+    </div>
+    <!--/.col (right) -->
+  </div>
+  <div *ngIf="showTab" class="row">
+    <div class="col-md-12">
+      <!-- Custom Tabs -->
+      <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs">
+          <li class="active">
+            <a data-toggle="tab" href="#tab_2">{{
+                GetLocalResourceObject("Competencies")
+              }}</a>
+          </li>
+          <li>
+            <a data-toggle="tab" href="#tab_1">{{
+                GetLocalResourceObject("Objectivies")
+              }}</a>
+          </li>
+
+        </ul>
+        <div class="tab-content">
+          <div
+            class="tab-pane "
+            id="tab_1"
+            style="background-color: #ecf0f5"
+          >
+            <section class="content">
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="box">
+                    <div class="box-header">
+                      <h3 class="box-title">
+                        {{ GetLocalResourceObject("ObjectiveList") }}
+                      </h3>
+                      <div class="pull-right box-tools">
+                        <button
+                          (click)="ObjectiveAddMode()"
+                          class="btn btn-success btn-sm"
+                          data-original-title="Add"
+                          data-toggle="tooltip"
+                          data-widget="Add"
+                          title=""
+                          type="button"
+                        >
+                          <i class="fa fa-plus"></i>
+                        </button>
+                        <button
+                          (click)="ImportActionPlansToEmployeeObjectives()"
+                          class="btn btn-success btn-sm"
+                          data-original-title="Add"
+                          data-toggle="tooltip"
+                          data-widget="Add"
+                          title=""
+                          type="button"
+                        >
+                          <i class="fa fa-arrow-circle-down"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                      <DataGrid
+                        #gvObjective
+                        (GridEvent)="gvObjectiveEvent($event)"
+                        [AllowExportExcel]="false"
+                        [HideFooter]="false"
+                        [RowSelection]="false"
+                        [ShowButtons]="true"
+                      >
+                      </DataGrid>
+                    </div>
+                    <!-- /.box-body -->
+                  </div>
+                  <!-- /.box -->
+
+                  <!-- /.box -->
+                </div>
+                <!-- /.col -->
+              </div>
+              <div *ngIf="showObjectiveEntry" class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+                  <!-- general form elements -->
+                  <div class="box box-primary">
+                    <div class="box-header with-border">
+                      <h3 class="box-title">
+                        {{ GetLocalResourceObject("ObjectiveEntry") }}
+                      </h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form #ObjectiveForm="ngForm">
+                      <div class="box-body">
+                        <div class="row">
+                          <div class="col-xs-3">
+                            <label>#</label>
+                            <input
+                              #ObjectiveCodeRef="ngModel"
+                              [(ngModel)]="ObjectiveCode"
+                              class="form-control"
+                              disabled
+                              id="ObjectiveCode"
+                              name="ObjectiveCode"
+                              required
+                              type="text"
+                            />
+
+                            <ValidatorCallOut
+                              ErrorMessage="This field is required."
+                              ID="ObjectiveCodeValidator"
+                              [ControlToValidate]="ObjectiveCodeRef"
+                              [Visibiltiy]="
+                                ObjectiveCodeRef.invalid &&
+                                ObjectiveCodeRef.touched
+                              "
+                            >
+                            </ValidatorCallOut>
+                          </div>
+                          <div class="col-xs-6">
+                            <label>{{ GetLocalResourceObject("Name") }}</label>
+                            <input
+                              #ObjectiveNameRef="ngModel"
+                              [(ngModel)]="ObjectiveName"
+                              class="form-control"
+                              id="ObjectiveName"
+                              name="ObjectiveName"
+                              required
+                              type="text"
+                            />
+
+                            <ValidatorCallOut
+                              ErrorMessage="This field is required."
+                              ID="ObjectiveNameValidator"
+                              [ControlToValidate]="ObjectiveNameRef"
+                              [Visibiltiy]="
+                                ObjectiveNameRef.invalid &&
+                                ObjectiveNameRef.touched
+                              "
+                            >
+                            </ValidatorCallOut>
+                          </div>
+                          <div class="col-xs-3">
+                            <label>{{
+                                GetLocalResourceObject("Weight")
+                              }}</label>
+                            <input
+                              #ObjectiveWeightRef="ngModel"
+                              [(ngModel)]="ObjectiveWeight"
+                              [max]="ObjectiveMaxWeight"
+                              class="form-control"
+                              id="ObjectiveWeight"
+                              min="0"
+                              name="ObjectiveWeight"
+                              required
+                              type="number"
+                            />
+
+                            <ValidatorCallOut
+                              ErrorMessage="This field is required."
+                              ID="ObjectiveWeightValidator"
+                              [ControlToValidate]="ObjectiveWeightRef"
+                              [Visibiltiy]="
+                                ObjectiveWeightRef.invalid &&
+                                ObjectiveWeightRef.touched
+                              "
+                            >
+                            </ValidatorCallOut>
+                          </div>
+                          <!-- here -->
+                          <!-- <div class="col-xs-3">
+                            <label>{{
+                              GetLocalResourceObject("lblKpiMeasure")
+                            }}</label>
+                            <select
+                              class="form-control"
+                              required
+                              name="ddlTarget_type"
+                              id="ddlTarget_type"
+                              [(ngModel)]="ddlTarget_type"
+                              #ddlTarget_typeRef="ngModel"
+                            >
+                              <option value="1">
+                                {{
+                                  GetLocalResourceObject(
+                                    "lblKpiMeasurePercentageOption"
+                                  )
+                                }}
+                              </option>
+                              <option value="2">
+                                {{
+                                  GetLocalResourceObject(
+                                    "lblKpiMeasureValueOption"
+                                  )
+                                }}
+                              </option>
+                            </select>
+
+                            <ValidatorCallOut
+                              ID="ddlTarget_typeValidator"
+                              [Visibiltiy]="
+                                ddlTarget_typeRef.invalid &&
+                                ddlTarget_typeRef.touched
+                              "
+                              [ControlToValidate]="v"
+                              ErrorMessage="This field is required."
+                            >
+                            </ValidatorCallOut>
+                          </div> -->
+
+                          <!-- <div class="col-xs-3">
+                            <label>{{
+                              GetLocalResourceObject("Target")
+                            }}</label>
+                            <input
+                              type="text"
+                              required
+                              class="form-control"
+                              name="ObjectiveTarget"
+                              id="ObjectiveTarget"
+                              [(ngModel)]="ObjectiveTarget"
+                              #ObjectiveTargetRef="ngModel"
+                            />
+
+                            <ValidatorCallOut
+                              ID="ObjectiveTargetValidator"
+                              [Visibiltiy]="
+                                ObjectiveTargetRef.invalid &&
+                                ObjectiveTargetRef.touched
+                              "
+                              [ControlToValidate]="ObjectiveTargetRef"
+                              ErrorMessage="This field is required."
+                            >
+                            </ValidatorCallOut>
+                          </div> -->
+                        </div>
+
+                        <!-- <div class="row"> -->
+                        <!-- <div class="col-xs-3">
+                            <label>{{
+                              GetLocalResourceObject("lblQ1Target")
+                            }}</label>
+                            <input
+                              class="form-control"
+                              [required]="IsQuarter1"
+                              name="Q1Target"
+                              type="number"
+                              [disabled]="!IsQuarter1 || ObjectiveUpdateMode"
+                              [(ngModel)]="obj_Q1_Target"
+                            />
+                          </div>
+
+                          <div class="col-xs-3">
+                            <label>{{
+                              GetLocalResourceObject("lblQ2Target")
+                            }}</label>
+                            <input
+                              class="form-control"
+                              [required]="IsQuarter2"
+                              name="Q2Target"
+                              type="number"
+                              [disabled]="!IsQuarter2 || ObjectiveUpdateMode"
+                              [(ngModel)]="obj_Q2_Target"
+                            />
+                          </div>
+                          <div class="col-xs-3">
+                            <label>{{
+                              GetLocalResourceObject("lblQ3Target")
+                            }}</label>
+                            <input
+                              class="form-control"
+                              [required]="IsQuarter3"
+                              name="Q3Target"
+                              type="number"
+                              [disabled]="!IsQuarter3 || ObjectiveUpdateMode"
+                              [(ngModel)]="obj_Q3_Target"
+                            />
+                          </div>
+                          <div class="col-xs-3">
+                            <label>{{
+                              GetLocalResourceObject("lblQ4Target")
+                            }}</label>
+                            <input
+                              class="form-control"
+                              [required]="IsQuarter4"
+                              name="Q4Target"
+                              type="number"
+                              [disabled]="!IsQuarter4 || ObjectiveUpdateMode"
+                              [(ngModel)]="obj_Q4_Target"
+                            />
+                          </div> -->
+                        <!-- </div> -->
+
+                        <!-- end here -->
+
+                        <div class="row">
+                          <div class="col-xs-6">
+                            <label>{{
+                                GetLocalResourceObject("Project")
+                              }}</label>
+                            <select
+                              [(ngModel)]="ObjectiveProjectID"
+                              class="form-control"
+                              id="ObjectiveProjectID"
+                              name="ObjectiveProjectID"
+                            >
+                              <option
+                                *ngFor="let x of ProjectList"
+                                value="{{ x.ID }}"
+                              >
+                                {{ x.Name }}
+                              </option>
+                            </select>
+                          </div>
+                          <div class="col-xs-6">
+                            <label>
+                                Competency
+                            </label>
+                            <select
+                              [(ngModel)]="ObjectiveCompetencyID"
+                              class="form-control"
+                              id="ObjectiveCompetencyID"
+                              name="ObjectiveCompetencyID"
+                            >
+                              <option
+                                *ngFor="let x of CompentenceDataSource"
+                                value="{{ x.CompetencyId }}"
+                              >
+                                {{ x.name }}
+                              </option>
+                            </select>
+                          </div>
+                          <div class="col-xs-12">
+                            <label>{{
+                                GetLocalResourceObject("PositionDesc")
+                              }}</label>
+                            <select
+                              (change)="getPositionDesc()"
+                              [(ngModel)]="ObjectivePositionDescID"
+                              class="form-control"
+                              id="ObjectivePositionDescID"
+                              name="ObjectivePositionDescID"
+                            >
+                              <option
+                                *ngFor="let x of ObjectivePositionDescList"
+                                value="{{ x.id }}"
+                              >
+                                {{ x.Name }}
+                              </option>
+                            </select>
+                          </div>
+
+                          <div class="col-xs-12">
+                            <label>{{ GetLocalResourceObject("Note") }}</label>
+                            <input
+                              [(ngModel)]="ObjectiveNote"
+                              class="form-control"
+                              id="ObjectiveNote"
+                              name="ObjectiveNote"
+                              type="text"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <!-- /.box-body -->
+
+                      <div class="box-footer">
+                        <button
+                          (click)="SaveObjective()"
+                          [disabled]="ObjectiveForm.invalid || ObjectiveWeightValid()"
+                          class="btn btn-primary"
+                        >
+                          {{ GetLocalResourceObject("Save") }}
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                  <!-- /.box -->
+                </div>
+                <!--/.col (right) -->
+              </div>
+              <!-- Objective KPI -->
+              <div *ngIf="showObjectiveKPIList" class="row">
+                <div class="col-xs-12">
+                  <div class="box">
+                    <div class="box-header">
+                      <h3 class="box-title">
+                        {{ GetLocalResourceObject("ObjectiveKPIList") }}
+                      </h3>
+                      <div class="pull-right box-tools">
+                        <button
+                          (click)="ObjectiveKPIAddMode()"
+                          class="btn btn-success btn-sm"
+                          data-original-title="Add"
+                          data-toggle="tooltip"
+                          data-widget="Add"
+                          title=""
+                          type="button"
+                        >
+                          <i class="fa fa-plus"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                      <DataGrid
+                        #gvObjectiveKPI
+                        (GridEvent)="gvObjectiveKPIEvent($event)"
+                        [AllowExportExcel]="false"
+                        [HideFooter]="false"
+                        [RowSelection]="false"
+                        [ShowButtons]="true"
+                      >
+                      </DataGrid>
+                    </div>
+                    <!-- /.box-body -->
+                  </div>
+                  <!-- /.box -->
+
+                  <!-- /.box -->
+                </div>
+                <!-- /.col -->
+              </div>
+              <div *ngIf="showObjectiveKPIEntry" class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+                  <!-- general form elements -->
+                  <div class="box box-primary">
+                    <div class="box-header with-border">
+                      <h3 class="box-title">
+                        {{ GetLocalResourceObject("ObjectiveKPIEntry") }}
+                      </h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start for kpi-->
+                    <form #ObjectiveKPIForm="ngForm">
+                      <div class="box-body">
+                        <div class="row">
+                          <div class="col-xs-6">
+                            <label>{{ GetLocalResourceObject("Name") }}</label>
+                            <input
+                              #ObjectiveKPINameRef="ngModel"
+                              [(ngModel)]="ObjectiveKPIName"
+                              class="form-control"
+                              id="ObjectiveKPIName"
+                              name="ObjectiveKPIName"
+                              required
+                              type="text"
+                            />
+
+                            <ValidatorCallOut
+                              ErrorMessage="This field is required."
+                              ID="ObjectiveKPINameValidator"
+                              [ControlToValidate]="ObjectiveKPINameRef"
+                              [Visibiltiy]="
+                                ObjectiveKPINameRef.invalid &&
+                                ObjectiveKPINameRef.touched
+                              "
+                            >
+                            </ValidatorCallOut>
+                          </div>
+
+                          <div class="col-xs-6">
+                            <label>{{
+                                GetLocalResourceObject("lblKpiMeasure")
+                              }}</label>
+                            <select
+                              #ddlTarget_typeRef="ngModel"
+                              [(ngModel)]="ddlTarget_type"
+                              class="form-control"
+                              id="ddlTarget_type"
+                              name="ddlTarget_type"
+                              required
+                            >
+                              <option value="1">
+                                {{
+                                  GetLocalResourceObject(
+                                    "lblKpiMeasurePercentageOption"
+                                  )
+                                }}
+                              </option>
+                              <option value="2">
+                                {{
+                                  GetLocalResourceObject(
+                                    "lblKpiMeasureValueOption"
+                                  )
+                                }}
+                              </option>
+                            </select>
+                          </div>
+
+                          <!-- <div class="col-xs-4">
+                            <label>{{
+                              GetLocalResourceObject("Weight")
+                            }}</label>
+                            <input
+                              type="number"
+                              required
+                              class="form-control"
+                              name="ddlKPIWeight"
+                              id="ddlKPIWeight"
+                              [(ngModel)]="ddlKPIWeight"
+                              #ddlKPIWeightRef="ngModel"
+                            />
+                            <ValidatorCallOut
+                              ID="ddlKPIWeightValidator"
+                              [Visibiltiy]="
+                                ddlKPIWeightRef.invalid &&
+                                ddlKPIWeightRef.touched
+                              "
+                              [ControlToValidate]="ddlKPIWeightRef"
+                              ErrorMessage="This field is required."
+                            >
+                            </ValidatorCallOut>
+                          </div> -->
+                        </div>
+                        <div class="row">
+                          <div class="col-xs-3">
+                            <label style="margin-top: 1rem">{{
+                                GetLocalResourceObject("lblQ1Target")
+                              }}</label>
+                            <input
+                              (input)="changeKPIType(KPITypeId)"
+                              [(ngModel)]="objKPI_Q1_Target"
+                              [disabled]="!IsQuarter1 || ObjectiveKPIUpdateMode"
+                              [required]="IsQuarter1 && !ObjectiveKPIUpdateMode && objKPI_Q1_Target>0"
+                              class="form-control"
+                              name="Q1kpiTarget"
+                              type="number"
+                            />
+                          </div>
+
+                          <div class="col-xs-3">
+                            <label style="margin-top: 1rem">{{
+                                GetLocalResourceObject("lblQ2Target")
+                              }}</label>
+                            <input
+                              (input)="changeKPIType(KPITypeId)"
+                              [(ngModel)]="objKPI_Q2_Target"
+                              [disabled]="!IsQuarter2 || ObjectiveKPIUpdateMode"
+                              [required]="IsQuarter2"
+                              class="form-control"
+                              name="Q2kpiTarget"
+                              type="number"
+                            />
+                          </div>
+                          <div class="col-xs-3">
+                            <label style="margin-top: 1rem">{{
+                                GetLocalResourceObject("lblQ3Target")
+                              }}</label>
+                            <input
+                              (input)="changeKPIType(KPITypeId)"
+                              [(ngModel)]="objKPI_Q3_Target"
+                              [disabled]="!IsQuarter3 || ObjectiveKPIUpdateMode"
+                              [required]="IsQuarter3"
+                              class="form-control"
+                              name="Q3kpiTarget"
+                              type="number"
+                            />
+                          </div>
+                          <div class="col-xs-3">
+                            <label style="margin-top: 1rem">{{
+                                GetLocalResourceObject("lblQ4Target")
+                              }}</label>
+                            <input
+                              (input)="changeKPIType(KPITypeId)"
+                              [(ngModel)]="objKPI_Q4_Target"
+                              [disabled]="!IsQuarter4 || ObjectiveKPIUpdateMode"
+                              [required]="(IsQuarter4 && objKPI_Q4_Target > 0)"
+                              class="form-control"
+                              name="Q4kpiTarget"
+                              type="number"
+                            />
+                          </div>
+                          <div class="col-xs-3">
+                            <label style="margin-top: 1rem">KPI Type</label>
+                            <select
+                              #ddlKpiTypeRef="ngModel"
+                              (change)="changeKPIType(KPITypeId)"
+                              [(ngModel)]="KPITypeId"
+                              class="form-control"
+                              id="ddlKpiType"
+                              name="ddlKpiType"
+                              required
+                            >
+                              <option
+                                *ngFor="let x of KpiTypeLst"
+                                value="{{ x.MINOR_NO }}"
+                              >
+                                {{ x.NAME }}
+                              </option>
+                            </select>
+
+                            <ValidatorCallOut
+                              ErrorMessage="This field is required."
+                              ID="ddlKpiTypeValidator"
+                              [ControlToValidate]="ddlKpiTypeRef"
+                              [Visibiltiy]="
+                                ddlKpiTypeRef.invalid && ddlKpiTypeRef.touched
+                              "
+                            >
+                            </ValidatorCallOut>
+                          </div>
+
+                          <div class="col-xs-3">
+                            <label style="margin-top: 1rem">Anuual Target</label>
+                            <input
+                              #ObjectiveKPITargetRef="ngModel"
+                              [(ngModel)]="ObjectiveKPITarget"
+                              class="form-control"
+                              disabled
+                              id="ObjectiveKPITarget"
+                              name="ObjectiveKPITarget"
+                              required
+                              type="number"
+                            />
+                            <ValidatorCallOut
+                              ErrorMessage="This field is required."
+                              ID="ObjectiveKPITargetValidator"
+                              [ControlToValidate]="ObjectiveKPITargetRef"
+                              [Visibiltiy]="
+                                ObjectiveKPITargetRef.invalid &&
+                                ObjectiveKPITargetRef.touched
+                              "
+                            >
+                            </ValidatorCallOut>
+                          </div>
+                          <div class="col-xs-3">
+                            <label style="margin-top: 1rem"> Better Up/Down </label>
+                            <select
+                              #ddlBetterUpDownRef="ngModel"
+                              (change)="betterUpDownChange()"
+                              [(ngModel)]="ddlBetterUpDown"
+                              class="form-control"
+                              id="ddlBetterUpDown"
+                              name="ddlBetterUpDown"
+                              required
+                            >
+                              <option
+                                *ngFor="let x of BetterUpDownList"
+                                value="{{ x.id }}"
+                              >
+                                {{ x.name }}
+                              </option>
+                            </select>
+
+                            <ValidatorCallOut
+                              ErrorMessage="This field is required."
+                              ID="betterUpDownValidator"
+                              [ControlToValidate]="ddlBetterUpDownRef"
+                              [Visibiltiy]="ddlBetterUpDownRef.invalid && ddlBetterUpDownRef.touched">
+                            </ValidatorCallOut>
+                          </div>
+
+                        </div>
+                      </div>
+                      <!-- /.box-body -->
+
+                      <div class="box-footer">
+                        <button
+                          (click)="SaveObjectiveKPI()"
+                          [disabled]="ObjectiveKPIForm.invalid"
+                          class="btn btn-primary"
+                        >
+                          {{ GetLocalResourceObject("Save") }}
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                  <!-- /.box -->
+                </div>
+                <!--/.col (right) -->
+              </div>
+            </section>
+          </div>
+          <div class="tab-pane active" id="tab_2" style="background-color: #ecf0f5">
+            <section class="content">
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="box">
+                    <div class="box-header">
+                      <h3 class="box-title">
+                        {{ GetLocalResourceObject("CompetenceList") }}
+                      </h3>
+                      <div class="pull-right box-tools">
+                        <button
+                          (click)="CompetenceAddMode()"
+                          class="btn btn-success btn-sm"
+                          data-original-title="Add"
+                          data-toggle="tooltip"
+                          data-widget="Add"
+                          title=""
+                          type="button"
+                        >
+                          <i class="fa fa-plus"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                      <DataGrid
+                        #gvCompetence
+                        (GridEvent)="gvCompetenceEvent($event)"
+                        [AllowExportExcel]="false"
+                        [HideFooter]="false"
+                        [RowSelection]="false"
+                        [ShowButtons]="true"
+                      >
+                      </DataGrid>
+                    </div>
+                    <!-- /.box-body -->
+                  </div>
+                  <!-- /.box -->
+
+                  <!-- /.box -->
+                </div>
+                <!-- /.col -->
+              </div>
+              <div *ngIf="showCompetanceEntry" class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+                  <!-- general form elements -->
+                  <div class="box box-primary">
+                    <div class="box-header with-border">
+                      <h3 class="box-title">
+                        {{ GetLocalResourceObject("CompetenceEntry") }}
+                      </h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form #CompetenceForm="ngForm">
+                      <div class="box-body">
+                        <div class="row">
+                          <div class="col-xs-3">
+                            <label>{{
+                                GetLocalResourceObject("Nature")
+                              }}</label>
+                            <select
+                              #ddlCompetenceNatureIDRef="ngModel"
+                              (change)="fillCompetenceCompetenceList()"
+                              [(ngModel)]="ddlCompetenceNatureID"
+                              class="form-control"
+                              id="ddlCompetenceNatureID"
+                              name="ddlCompetenceNatureID"
+                              required
+                            >
+                              <option
+                                *ngFor="let x of competenceNatureList"
+                                value="{{ x.MINOR_NO }}"
+                              >
+                                {{ x.NAME }}
+                              </option>
+                            </select>
+                          </div>
+
+                          <div class="col-xs-9">
+                            <label>{{
+                                GetLocalResourceObject("Competence")
+                              }}</label>
+                            <select
+                              #CompetenceCompetenceIDRef="ngModel"
+                              [(ngModel)]="CompetenceCompetenceID"
+                              class="form-control"
+                              id="CompetenceCompetenceID"
+                              name="CompetenceCompetenceID"
+                              required
+                            >
+                              <option
+                                *ngFor="let x of CompetenceCompetenceList"
+                                value="{{ x.CompetenceID }}"
+                              >
+                                {{ x.CompetenceName }}
+                              </option>
+                            </select>
+
+                            <ValidatorCallOut
+                              ErrorMessage="This field is required."
+                              ID="CompetenceCompetenceIDValidator"
+                              [ControlToValidate]="CompetenceCompetenceIDRef"
+                              [Visibiltiy]="
+                                CompetenceCompetenceIDRef.invalid &&
+                                CompetenceCompetenceIDRef.touched
+                              "
+                            >
+                            </ValidatorCallOut>
+                          </div>
+
+                          <div class="col-xs-3">
+                            <label>{{
+                                GetLocalResourceObject("CompetenceLevel")
+                              }}</label>
+                            <select
+                              #CompetenceLevelIDRef="ngModel"
+                              [(ngModel)]="CompetenceLevelID"
+                              class="form-control"
+                              id="CompetenceLevelID"
+                              name="CompetenceLevelID"
+                              required
+                            >
+                              <option
+                                *ngFor="let x of CompetenceLevelList"
+                                value="{{ x.MINOR_NO }}"
+                              >
+                                {{ x.NAME }}
+                              </option>
+                            </select>
+
+                            <ValidatorCallOut
+                              ErrorMessage="This field is required."
+                              ID="CompetenceLevelIDValidator"
+                              [ControlToValidate]="CompetenceLevelIDRef"
+                              [Visibiltiy]="
+                                CompetenceLevelIDRef.invalid &&
+                                CompetenceLevelIDRef.touched
+                              "
+                            >
+                            </ValidatorCallOut>
+                          </div>
+                          <div class="col-xs-3">
+                            <label>{{
+                                GetLocalResourceObject("Weight")
+                              }}</label>
+                            <input
+                              [(ngModel)]="CompetenceWeight"
+                              class="form-control"
+                              id="CompetenceWeight"
+                              max="{{ CompetenceMaxWeight }}"
+                              min="0"
+                              name="CompetenceWeight"
+                              type="number"
+                            />
+                          </div>
+                          <!-- <div class="col-xs-3">
+                                                        <label>{{GetLocalResourceObject('Target')}}</label>
+                                                        <input disabled value='5' type="number" required class="form-control" name='CompetenceTarget' id='CompetenceTarget' [(ngModel)]='CompetenceTarget' #CompetenceTargetRef='ngModel'>
+
+
+                                                        <ValidatorCallOut ID="CompetenceTargetValidator" [Visibiltiy]="CompetenceTargetRef.invalid && CompetenceTargetRef.touched" [ControlToValidate]="CompetenceTargetRef" ErrorMessage='This field is required.'>
+                                                        </ValidatorCallOut>
+                                                    </div> -->
+                        </div>
+                      </div>
+                      <!-- /.box-body -->
+
+                      <div class="box-footer">
+                        <button
+                          (click)="SaveCompetence()"
+                          [disabled]="CompetenceWeight == 0 || CompetenceLevelID == null || CompetenceCompetenceID == null"
+                          class="btn btn-primary"
+                        >
+                          {{ GetLocalResourceObject("Save") }}
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                  <!-- /.box -->
+                </div>
+                <!--/.col (right) -->
+              </div>
+
+              <div *ngIf="showCompetanceKPIList" class="row">
+                <div class="col-xs-12">
+                  <div class="box">
+                    <div class="box-header">
+                      <h3 class="box-title">
+                        {{ GetLocalResourceObject("CompetenceKPIList") }}
+                      </h3>
+                      <div class="pull-right box-tools">
+                        <button
+                          (click)="CompetenceKPIAddMode()"
+                          class="btn btn-success btn-sm"
+                          data-original-title="Add"
+                          data-toggle="tooltip"
+                          data-widget="Add"
+                          title=""
+                          type="button"
+                        >
+                          <i class="fa fa-plus"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                      <DataGrid
+                        #gvCompetenceKPI
+                        (GridEvent)="gvCompetenceKPIEvent($event)"
+                        [AllowExportExcel]="false"
+                        [HideFooter]="false"
+                        [RowSelection]="false"
+                        [ShowButtons]="true"
+                      >
+                      </DataGrid>
+                    </div>
+                    <!-- /.box-body -->
+                  </div>
+                  <!-- /.box -->
+
+                  <!-- /.box -->
+                </div>
+                <!-- /.col -->
+              </div>
+              <div *ngIf="showCompetanceKPIEntry" class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+                  <!-- general form elements -->
+                  <div class="box box-primary">
+                    <div class="box-header with-border">
+                      <h3 class="box-title">
+                        {{ GetLocalResourceObject("CompetenceKPIEntry") }}
+                      </h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form #CompetenceKPIForm="ngForm">
+                      <div class="box-body">
+                        <div class="row">
+                          <div class="col-xs-9">
+                            <label>{{ GetLocalResourceObject("KPI") }}</label>
+                            <select
+                              #CompetenceKPITypeIDRef="ngModel"
+                              [(ngModel)]="CompetenceKPITypeID"
+                              class="form-control"
+                              id="CompetenceKPITypeID"
+                              name="CompetenceKPITypeID"
+                              required
+                            >
+                              <option
+                                *ngFor="let x of CompetenceKPIList"
+                                value="{{ x.ID }}"
+                              >
+                                {{ x.NAME }}
+                              </option>
+                            </select>
+
+                            <ValidatorCallOut
+                              ErrorMessage="This field is required."
+                              ID="CompetenceKPITypeIDValidator"
+                              [ControlToValidate]="CompetenceKPITypeIDRef"
+                              [Visibiltiy]="
+                                CompetenceKPITypeIDRef.invalid &&
+                                CompetenceKPITypeIDRef.touched
+                              "
+                            >
+                            </ValidatorCallOut>
+                          </div>
+                          <div class="col-xs-3">
+                            <label>{{
+                                GetLocalResourceObject("Target")
+                              }}</label>
+                            <input
+                              #CompetenceKPITargetRef="ngModel"
+                              [(ngModel)]="CompetenceKPITarget"
+                              class="form-control"
+                              disabled
+                              id="CompetenceKPITarget"
+                              name="CompetenceKPITarget"
+                              required
+                              type="text"
+                            />
+
+                            <ValidatorCallOut
+                              ErrorMessage="This field is required."
+                              ID="CompetenceKPITargetValidator"
+                              [ControlToValidate]="CompetenceKPITargetRef"
+                              [Visibiltiy]="
+                                CompetenceKPITargetRef.invalid &&
+                                CompetenceKPITargetRef.touched
+                              "
+                            >
+                            </ValidatorCallOut>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- /.box-body -->
+
+                      <div class="box-footer">
+                        <button
+                          (click)="SaveCompetenceKPI()"
+                          [disabled]="CompetenceKPIForm.invalid"
+                          class="btn btn-primary"
+                        >
+                          {{ GetLocalResourceObject("Save") }}
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                  <!-- /.box -->
+                </div>
+                <!--/.col (right) -->
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">
+            Assessment Planning Approval Order
+
+          </h3>
+
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <span>
+            <p
+              style="padding: 0.6rem;">- Manager Approval: {{ AssessmentStatus >= 1 ? "Reviewed by: " + getEmployeeName(AssessmentEmpManagerId) : "Need Review From (" + getEmployeeName(AssessmentEmpManagerId) + ")" }} </p>
+            <p
+              style="padding: 0.6rem;">- Director Approval: {{ AssessmentStatus >= 2 ? "Approved by: " + getEmployeeName(AssessmentEmpReviewerId) : "Need Approval From (" + getEmployeeName(AssessmentEmpReviewerId) + ")" }}</p>
+          </span>
+        </div>
+        <!-- /.box-body -->
+      </div>
+      <!-- /.box -->
+      <div *ngIf="showApproveAction()" class="box-footer">
+        <button (click)="changeAssessmentStatus()" class="btn btn-primary">
+          {{ getApprovalActionText() }}
+        </button>
+      </div>
+      <!-- /.box -->
+    </div>
+
+  </div>
+</section>
